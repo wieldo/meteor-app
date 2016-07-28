@@ -1,0 +1,9 @@
+meteor-navigation {
+    md-list-item {
+        &.active {
+            p {
+                font-weight: bold;                
+            }
+        }
+    }
+}

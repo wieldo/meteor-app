@@ -1,0 +1,9 @@
+select-birthday {
+    div.formly-field {
+        float: left;
+    }
+    div[ng-transclude] {
+        clear: both;
+        float: none;
+    }
+}

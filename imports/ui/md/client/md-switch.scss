@@ -1,0 +1,9 @@
+md-switch {
+    &.md-meteorApp-theme {
+        &.md-checked {
+            .md-bar {
+                background-color: #6B63AC;
+            }
+        }
+    }
+}

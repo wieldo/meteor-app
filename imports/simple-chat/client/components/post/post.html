@@ -1,0 +1,12 @@
+<form ng-submit="vm.send()">
+    <md-input-container>
+        <textarea
+        ng-model="vm.message"
+        id="chat-post-message"
+        aria-label="post new message"
+        columns="1"
+        rows="5">
+        </textarea>
+    </md-input-container>
+    <md-button type="submit">Send</md-button>
+</form>

@@ -1,0 +1,14 @@
+<md-list-item
+  class="md-3-line"
+  id="chat-message-{{::vm.message._id}}"
+  ng-style="!vm.me && {'background': '##f1f1f1'}">
+  <div class="md-list-item-text" layout="column">
+    <chat-message-author author="vm.message.author"></chat-message-author>
+    <h4>
+        {{::vm.message.createdAt | date : 'medium'}} -
+        <chat-message-read-by users="vm.message.readBy" id-key="userId" date-key="readAt"></chat-message-read-by>
+    </h4>
+    <div marked="vm.message.text"></div>
+  </div>
+</md-list-item>
+<ng-transclude></ng-transclude>

@@ -1,0 +1,37 @@
+<meteor-navigation></meteor-navigation>
+<md-toolbar class="meteor-primary">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-click='vm.sidenav.left.open()' aria-label='Open navigation' title='Open navigation'>
+            <i class="zmdi zmdi-menu"></i>
+        </md-button>
+        <h3>
+            <span>
+                {{ vm.navigation.selected }}
+            </span>
+        </h3>
+        <span flex></span>
+        {{vm.currentUser.username}}
+        <md-button link="Sign in" ng-click="click()" ui-sref='app.signin' ng-if="!vm.currentUser">
+            <p>
+                Sign in
+            </p>
+        </md-button>
+        <md-button link="Sign up" ng-click="click()" ui-sref='app.signup' ng-if="!vm.currentUser">
+            <p>
+                Sign up
+            </p>
+        </md-button>
+        <md-button link="Settings" ng-click="click()" ui-sref='app.settings' ng-if="vm.currentUser" ui-sref-active="active">
+            <p>
+                Settings
+            </p>
+        </md-button>
+        <!--<md-button link="Chat" ng-click="click()" ui-sref='app.chat' ui-sref-active="active"><p>Chat</p></md-button>-->
+        <md-button ng-click="vm.logout()" ng-if="vm.currentUser">
+            <p>
+                Logout
+            </p>
+        </md-button>
+    </div>
+</md-toolbar>
+<ui-view></ui-view>

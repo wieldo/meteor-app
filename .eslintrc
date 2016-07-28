@@ -1,0 +1,32 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jquery": true,
+        "mongo": true,
+        "meteor": true
+    },
+    "globals": {
+      "Fake": false,
+      "Chat": false,
+      "SimpleSchema": false,
+      "angular2now": false,
+      "moment": false
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": false
+    },
+    "rules": {
+        "camelcase": 1,
+        "semi": 1,
+        "indent": [
+            "error",
+            4
+        ],
+        "no-console": 0
+    }
+}

@@ -1,0 +1,20 @@
+md-toolbar {
+	&.meteor-primary {
+		&:not(.md-menu-toolbar){
+			//background-color: rgb(63,81,181);
+			//color: rgba(255,255,255,0.87);
+			background-color: #fff;
+			color: rgb(63,81,181);
+
+			border-bottom: 1px solid #f5f5f5;
+
+			.md-button:not(.md-raised) {
+				color: rgb(63,81,181);
+			}
+		}
+
+		.md-button:not(.md-raised) {
+			color: rgb(63,81,181);
+		}
+	}
+}

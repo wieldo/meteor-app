@@ -1,0 +1,9 @@
+<md-list>
+    <md-list-item ng-repeat="channel in vm.channels" ng-click="vm.select(channel, $event)">
+        <p>
+            {{channel._id}}
+            {{channel.name}}
+        </p>
+        <i class="zmdi zmdi-comments zmdi-hc-2x"></i>
+    </md-list-item>
+</md-list>

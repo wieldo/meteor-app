@@ -1,0 +1,57 @@
+
+
+@import "{}/imports/ui/scss/font.scss";
+
+// CLASS
+@import "{}/imports/ui/scss/class/navigation.scss";
+
+// TAG
+@import "{}/imports/ui/scss/tag/body.scss";
+@import "{}/imports/ui/scss/tag/code.scss";
+@import "{}/imports/ui/scss/tag/h.scss";
+@import "{}/imports/ui/scss/tag/small.scss";
+@import "{}/imports/ui/scss/tag/table.scss";
+
+// MD
+@import "{}/imports/ui/md/client/md-button.scss";
+@import "{}/imports/ui/md/client/md-checkbox.scss";
+@import "{}/imports/ui/md/client/md-chips.scss";
+@import "{}/imports/ui/md/client/md-datepicker.scss";
+@import "{}/imports/ui/md/client/md-input-container.scss";
+@import "{}/imports/ui/md/client/md-list.scss";
+@import "{}/imports/ui/md/client/md-radio-group.scss";
+@import "{}/imports/ui/md/client/md-select.scss";
+@import "{}/imports/ui/md/client/md-slider.scss";
+@import "{}/imports/ui/md/client/md-sidenav.scss";
+@import "{}/imports/ui/md/client/md-switch.scss";
+@import "{}/imports/ui/md/client/md-toolbar.scss";
+
+app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    ui-view,
+    [ui-view] {
+        display: flex;
+
+        width: 100%;
+        height: 100%;
+
+        > * {
+            width: inherit;
+        }
+    }
+
+    > ui-view {
+        display: flex;
+    }
+
+
+    pre {
+        font-family: "Courier New", "Courier", "monospace";
+        font-size: 0.875em;
+    }
+
+}
