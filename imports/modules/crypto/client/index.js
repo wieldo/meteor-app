@@ -1,17 +1,15 @@
 import templateUrl from "./view.html";
+import {moduleName} from "../lib/module";
 import {init, SetModule, Component, State, LocalInjectables} from "angular2-now";
 init();
-SetModule("crypto");
+SetModule(moduleName);
 @State({
     name: "app.crypto",
     url: "/crypto"
 })
 @Component({
-    selector: "crypto",
-    templateUrl: templateUrl,
-    providers: [
-        "$scope"
-    ]
+    selector: "crypto1",
+    templateUrl: templateUrl
 })
 @LocalInjectables
 export class CryptoComponent {
