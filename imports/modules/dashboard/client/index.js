@@ -9,9 +9,7 @@ SetModule(moduleName);
     url: '/dashboard'
 })
 @Component({
-    selector: "dashboard"
-})
-@View({
+    selector: "dashboard",
     templateUrl: templateUrl
 })
 @LocalInjectables
