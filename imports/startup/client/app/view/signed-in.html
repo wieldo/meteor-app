@@ -1,0 +1,71 @@
+<div>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+        <simple-navigation
+            name="{{vm.navigation_app.name}}"
+            header="{{vm.navigation_app.header}}"
+            options="{{vm.navigation_app.options}}"
+        ></simple-navigation>
+    </md-sidenav>
+    <div flex layout="row" layout-fill>
+        <div flex="10" layout="column" class="navigation">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" ng-click='vm.sidenav.left.open()' aria-label='Choose workspace' title='Choose workspace'>
+                        <i class="zmdi zmdi-menu"></i>
+                    </md-button>
+                    <h3>
+                        <span>
+                            Application
+                        </span>
+                    </h3>
+                </div>
+            </md-toolbar>
+            <simple-navigation
+                id="app"
+                header="{{vm.navigation_workspaces.header}}"
+                options="{{vm.navigation_workspaces.options}}"
+                name="{{vm.navigation_workspaces.name}}"
+            ></simple-navigation>
+        </div>
+        <div flex layout="column">
+            <md-toolbar class="meteor-primary">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Toggle menu" title="Toggle menu">
+                        <i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i>
+                    </md-button>
+                    <h3>
+                        <span>
+                            {{vm.selected}}
+                        </span>
+                    </h3>
+                    <span flex></span>
+                    <md-button>
+                        <p>
+                            {{vm.currentUser.emails[0].address}}
+                        </p>
+                    </md-button>
+                    <!--
+                    <md-button class="icon-button">
+                        <p>
+                            <i class="zmdi zmdi-comment-outline zmdi-hc-lg"></i>
+                        </p>
+                    </md-button>
+                    -->
+                    <md-button class="icon-button" ng-click="vm.logout()">
+                        <p>
+                            <i class="zmdi zmdi-power zmdi-hc-lg"></i>
+                        </p>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <!--
+            <app-toolbar></app-toolbar>-->
+            <!--
+            -->
+            <ui-view></ui-view>
+        </div>
+        <!--
+        <simple-chat></simple-chat>
+        -->
+    </div>
+</div>
