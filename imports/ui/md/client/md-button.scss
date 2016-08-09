@@ -1,4 +1,7 @@
-
 .md-button {
-  font-weight: 400;
+    border-radius: 0;
+    font-weight: 400;
+    .md-ripple-container {
+        border-radius: inherit;
+    }
 }
