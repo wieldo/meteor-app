@@ -6,5 +6,28 @@
                 Encrypt some mongo fields
             </small>
         </h3>
+
+        <div>
+            <p>
+                <label>
+                    Form value:
+                    <input ng-model="myModel" encrypted-model="vm.key" style="width: 100%">
+                </label>
+            </p>
+            <p>
+                <label>
+                    Encrypted value:
+                    <input readonly="readonly" ng-model="myModel" style="width: 100%">
+                </label>
+            </p>
+            <p>
+                Decrypted value: {{ myModel | decrypt:vm.key }}
+            </p>
+            <p>
+                Decrypting contant value <em>'My secret text'</em>: <br/>
+                {{ 'U2FsdGVkX1+u2ptbxWVPoRdMv98yBDgp3L8cVTP8Dh4=' | decrypt:vm.key }}
+            </p>
+
+        </div>
     </section>
 </md-content>
