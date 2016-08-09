@@ -5,9 +5,9 @@ import {init,SetModule,State,Component,LocalInjectables} from "angular2-now";
 init();
 SetModule(moduleName);
 @State({
-    name: 'app.clients.dashboard',
+    name: "app.clients.dashboard",
     defaultRoute: true,
-    url: '/dashboard'
+    url: "/dashboard"
 })
 @Component({
     selector: "dashboard",
