@@ -1,5 +1,5 @@
 <div layout="row" layout-fill ng-cloak style="height: 500px;">
-    <div layout="column" class="navigation" style="width: 500px;">
+    <div layout="column" class="userschannels">
         <md-tabs md-dynamic-height md-border-bottom>
             <!-- Users -->
             <md-tab label="Users">
@@ -11,7 +11,7 @@
             </md-tab>
         </md-tabs>
     </div>
-    <md-content flex class="md-padding" layout="column">
+    <md-content flex class="md-padding" layout="column" class="messages">
         <!-- Users -->
         <md-content ng-if="vm.userId">
             <h3>
