@@ -1,0 +1,53 @@
+<md-content class="navigation_holder">
+    <div ng-if="!vm.navigation.options[0].items">
+        <!-- OPTIONS HEADER -->
+        <md-subheader ng-if="vm.navigation.header">
+            {{vm.navigation.header}}
+        </md-subheader>
+
+        <!-- MENU OPTIONS -->
+        <ul>
+            <li
+                ng-repeat ="option in vm.navigation.options"
+                ng-init="option_index = $index"
+                ng-class  ="[{active: (vm.navigation.selected.options_index == option_index)}]"
+                ng-if="option.hidden === false"
+            >
+                <md-button
+                    ui-sref="{{option.uisref}}"
+                    ng-click="option.select()"
+                    aria-label="{{vm.navigation.options[option_index].ariaLabel}}"
+                    ng-disabled="vm.navigation.options[option_index].ngDisabled"
+                >
+                    <i ng-if='option.icon' class='{{option.icon}}'></i>
+                    {{option.name}}
+                </md-button>
+            </li>
+        </ul>
+    </div>
+    <div ng-if="vm.navigation.options[0].items" ng-repeat ="option in vm.navigation.options" ng-init="option_index = $index">
+        <!-- OPTIONS HEADER -->
+        <md-subheader>
+            {{option.header}}
+        </md-subheader>
+        <!-- MENU OPTIONS -->
+        <ul>
+            <li
+                ng-repeat ="item in option.items"
+                ng-init="item_index = $index"
+                ng-class  ="[{active: (vm.navigation.selected.options_index == option_index && vm.navigation.selected.items_index == item_index)}]"
+                ng-if="item.hidden !== true"
+            >
+                <md-button
+                    ui-sref="{{vm.navigation.options[option_index].items[item_index].uisref}}"
+                    ng-click="vm.navigation.options[option_index].items[item_index].select()"
+                    aria-label="{{item.ariaLabel}}"
+                    ng-disabled="vm.navigation.options[option_index].items[item_index].ngDisabled"
+                >
+                    <i ng-if='item.icon' class='{{vm.navigation.options[option_index].items[item_index].icon}}'></i>
+                    {{vm.navigation.options[option_index].items[item_index].name}}
+                </md-button>
+            </li>
+        </ul>
+    </div>
+</md-content>
