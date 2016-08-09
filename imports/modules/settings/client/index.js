@@ -5,7 +5,7 @@ import {init, SetModule, Component, State, LocalInjectables} from "angular2-now"
 init();
 SetModule(moduleName);
 @State({
-    name: "app.settings",
+    name: "app.clients.settings",
     url: "/settings",
     resolve: {
         user: ($stateParams, $state, $timeout) => {
