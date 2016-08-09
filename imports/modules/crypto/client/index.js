@@ -4,7 +4,7 @@ import {init, SetModule, Component, State, LocalInjectables} from "angular2-now"
 init();
 SetModule(moduleName);
 @State({
-    name: "app.crypto",
+    name: "app.developers.crypto",
     url: "/crypto"
 })
 @Component({
