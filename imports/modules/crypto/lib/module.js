@@ -1,29 +1,26 @@
 export const moduleName = "crypto";
-import {init, SetModule, Directive, Inject, Filter} from "angular2-now";
+import {init, SetModule, Directive, Inject, Filter, LocalInjectables} from "angular2-now";
 import CryptoJS from "crypto-js";
 
 init();
 SetModule(moduleName, []);
 
-var KEY_SIZE = 256,
+export var KEY_SIZE = 256,
     KEY_ITERATIONS = 10;
 
-export function initKey(password, salt) {
-    return CryptoJS.PBKDF2(password, salt, {keySize: KEY_SIZE / 32, iterations: KEY_ITERATIONS}).toString();
-}
-
 @Directive({
-    selector: 'encrypted-model',
-    bind: {key: '=encryptedModel'}
+    selector: "encrypted-model",
+    bind: {key: "=encryptedModel"}
 })
-@Inject('@ngModel')
+@Inject("@ngModel")
+@LocalInjectables
 class EncryptedModel {
     constructor() {
         this.$dependson = function (ngModel) {
-            var that = this;
+            var context = this;
             ngModel.$formatters.push(function (value) {
-                if (value && that.key) {
-                    return CryptoJS.AES.decrypt(value, that.key)
+                if (value && context.key) {
+                    return CryptoJS.AES.decrypt(value, context.key)
                         .toString(CryptoJS.enc.Utf8);
                 }
 
@@ -31,18 +28,17 @@ class EncryptedModel {
             });
 
             ngModel.$parsers.push(function (value) {
-                if (value && that.key) {
-                    return CryptoJS.AES.encrypt(value, that.key);
+                if (value && context.key) {
+                    return CryptoJS.AES.encrypt(value, context.key);
                 }
 
                 return value;
             });
-        }
-
+        };
     }
 }
 
-@Filter({name: 'decrypt'})
+@Filter({name: "decrypt"})
 class DecryptFilter {
     constructor() {
         return function (value, key) {
