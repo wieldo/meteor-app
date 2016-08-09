@@ -31,7 +31,6 @@ export class ChatChannelsComponent {
      */
     select(channel, event) {
         event.preventDefault();
-
         if (angular.isFunction(this.onSelect)) {
             this.onSelect({
                 channelId: channel._id
