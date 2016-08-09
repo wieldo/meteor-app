@@ -1,7 +1,8 @@
 import templateUrl from "./view";
 import "./style";
-import {moduleName} from "/imports/modules/signin/lib/client/module";
 import fields from "/imports/modules/signin/form/lib/api/collection";
+import { Email } from "meteor/email";
+import {moduleName} from "/imports/modules/signin/lib/client/module";
 import {init,SetModule,Component,LocalInjectables} from "angular2-now";
 
 init();
@@ -30,7 +31,7 @@ export class SigninFormComponent {
     signIn = (username,password) => {
         Meteor.loginWithPassword(username, password, (result) => {
             if (!result) {
-                this.$state.go('app.dashboard');
+                this.$state.go('app.clients.dashboard');
             }
             this.result = result;
         });
