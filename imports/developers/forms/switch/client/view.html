@@ -1,0 +1,104 @@
+<section>
+	<h3 class="md-headline">
+		Switch
+	</h3>
+    <md-button class="md-primary md-link" ng-href="https://material.angularjs.org/1.0.6/demo/slider">
+		Go to Material Design official page
+	</md-button>
+	<div>
+		<md-content>
+			<md-tabs md-dynamic-height md-border-bottom>
+
+                <!-- Parameters Tab -->
+                <md-tab label="Parameters">
+                  <md-content>
+                    <div class='example'>
+                        <table class='parameters'>
+                            <thead>
+                                <tr>
+                                    <th>templateOptions</th>
+                                    <th>Type</th>
+                                    <th>defaultValue</th>
+                                    <th>Directive</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ngFalseValue</td>
+                                    <td>Expression || Function(value, options, scope)</td>
+                                    <td></td>
+                                    <td>ng-false-value</td>
+                                    <td>The value to which the expression should be set when not selected.</td>
+                                </tr>
+                                <tr>
+                                    <td>mdNoInk</td>
+                                    <td>Boolean</td>
+                                    <td></td>
+                                    <td>md-no-ink</td>
+                                    <td>Use of attribute indicates use of ripple ink effects</td>
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>String</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Switch name.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngTrueValue</td>
+                                    <td>Expression || Function(value, options, scope)</td>
+                                    <td></td>
+                                    <td>ng-true-value</td>
+                                    <td>The value to which the expression should be set when selected.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngChange</td>
+                                    <td>Function(value, options, scope)</td>
+                                    <td></td>
+                                    <td>ng-change</td>
+                                    <td>Angular expression to be executed when input changes due to user interaction with the input element.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </md-content>
+                </md-tab>
+            </md-tabs>
+		</md-content>
+	</div>
+</section>
+<section ng-repeat="element in vm.elements">
+    <form name="{{ element.form }}" ng-submit="vm.onSubmit(element.form)">
+        <h3 class="md-subhead">
+            {{ element.title }}
+            <small>
+                {{ element.description }}
+            </small>
+        </h3>
+
+        <div ng-cloak>
+            <md-content>
+                <md-tabs md-dynamic-height md-border-bottom>
+
+                    <!-- Example Tab -->
+                    <md-tab label="Example">
+                        <md-content>
+                            <div class='example md-padding'>
+                                <formly-form model="element.model" fields="element.field" options="element.options">
+                                    <md-button type='submit' class="md-primary md-raised">
+                                        Submit
+                                    </md-button>
+                                </formly-form>
+                            </div>
+                        </md-content>
+                    </md-tab>
+
+                    <!-- JS -->
+                    <md-tab label="JS" ng-if="element.js"><md-content><pre><code>{{ element.js }}<code/></pre></md-content></md-tab>
+
+                </md-tabs>
+            </md-content>
+        </div>
+    </form>
+</section>
