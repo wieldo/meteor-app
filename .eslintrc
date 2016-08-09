@@ -21,6 +21,7 @@
         "allowImportExportEverywhere": false
     },
     "rules": {
+        "quotes": [2, "double",{"avoidEscape": true, "allowTemplateLiterals": true}],
         "camelcase": 1,
         "semi": 1,
         "indent": [
