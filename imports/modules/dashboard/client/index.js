@@ -1,11 +1,12 @@
-import {moduleName} from "../lib/module";
-import templateUrl from "./view";
 import "./style";
-import {init,SetModule,State,Component,View,LocalInjectables} from "angular2-now";
+import templateUrl from "./view";
+import {moduleName} from "../lib/module";
+import {init,SetModule,State,Component,LocalInjectables} from "angular2-now";
 init();
 SetModule(moduleName);
 @State({
-    name: 'app.dashboard',
+    name: 'app.clients.dashboard',
+    defaultRoute: true,
     url: '/dashboard'
 })
 @Component({
