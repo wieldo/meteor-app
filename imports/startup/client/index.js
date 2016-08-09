@@ -8,8 +8,8 @@ import "/imports/modules/chat/client/";
 import "/imports/modules/dashboard/lib/module";
 import "/imports/modules/dashboard/client/";
 // Module Forms
-import "/imports/modules/forms/lib/client/module";
-import "/imports/modules/forms/lib/client/component";
+import "./../../developers/forms/lib/module";
+import "./../../developers/forms/client/";
 // Sidenav
 import "/imports/ui/sidenav/lib/service";
 // Module To do
@@ -28,6 +28,8 @@ import "/imports/modules/settings/client/";
 import "/imports/modules/crypto/lib/module";
 import "/imports/modules/crypto/client/";
 
+import "/imports/ui/navigation/lib/module";
+
 import {init, SetModule} from "angular2-now";
 // initialize
 export const ModuleName = "app";
@@ -40,6 +42,7 @@ SetModule(ModuleName,[
     "crypto",
     "Dashboard",
     "ModuleForms",
+    "SimpleNavigationModule",
     "Todo",
     "Settings",
     "Sidenav",
@@ -54,10 +57,17 @@ SetModule(ModuleName,[
     $mdThemingProvider.setDefaultTheme("default");
     $locationProvider.html5Mode(true);
     $sceProvider.enabled(false);
-}).run(($rootScope, $state) => {
+}).run(($rootScope, $state, SimpleNavigationService) => {
     $rootScope.$on("$stateChangeError", (event, toState, toParams, fromState, fromParams, error) => {
+        console.log(error);
     });
-    $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
+    $rootScope.$on("$stateChangeStart", () => {
+    });
+    $rootScope.$on("$stateChangeSuccess", () => {
         highlight("pre code");
+        console.log($state);
+        console.log("CHANGE"+ $state.includes("app.clients"));
+        //NavigationService.setType($state.includes("app.clients") === true ? "clients" : "developers");
     });
+
 });
