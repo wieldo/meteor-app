@@ -1,0 +1,18 @@
+simple-navigation {
+    &#app {
+        width: inherit;
+        md-toolbar.md-default-theme:not(.md-menu-toolbar),
+        md-toolbar:not(.md-menu-toolbar) {
+            background-color: #fff;
+            color: #000;
+        }
+        md-list-item {
+            width: inherit;
+            &.active {
+                p {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
