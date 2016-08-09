@@ -27,6 +27,7 @@ This is an example of Module Meteor Application on angular2-now with packages be
 - necolas normalize.css - https://github.com/necolas/normalize.css/,
 - underscore - http://underscorejs.org/,
 - momentjs - http://momentjs.com/
+- meteor add email
 
 ## Install
 ```
@@ -41,6 +42,7 @@ npm install --save autoprefixer postcss-scss normalize.css moment semver
 npm install --save eslint angular-marked babel-eslint
 npm install eslint@1.x babel-eslint@5 --save
 npm install eslint@2.x babel-eslint@6 --save
+npm install crypto-js --save
 ```
 
 ## How to run
