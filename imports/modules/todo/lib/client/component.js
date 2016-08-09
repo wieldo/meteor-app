@@ -1,29 +1,28 @@
-import './style';
-import templateUrl from './view';
-import {ModuleName} from './module';
-import TodoSchema from '/imports/modules/todo/api/schemas';
-import TodoCollection from '/imports/modules/todo/api/collection';
-import '/imports/modules/todo/form/lib/client/component';
-import {init,SetModule,Component,State,View,Inject,LocalInjectables,MeteorReactive} from 'angular2-now';
+import "./style";
+import "/imports/modules/todo/form/lib/client/component";
+import templateUrl from "./view";
+import TodoSchema from "/imports/modules/todo/api/schemas";
+import TodoCollection from "/imports/modules/todo/api/collection";
+import {ModuleName} from "./module";
+import {init,SetModule,Component,State,LocalInjectables,MeteorReactive} from "angular2-now";
 
 SetModule(ModuleName);
 init();
 @State({
-    name: 'app.todo',
-    url: '/todo'
+    name: "app.clients.todo",
+    url: "/todo"
 })
 @Component({
-    selector: 'meteor-todo',
+    selector: "meteor-todo",
     providers: [
-        '$scope',
-        '$timeout'
+        "$scope",
+        "$timeout"
     ],
     templateUrl: templateUrl
 })
 @MeteorReactive
 @LocalInjectables
 export class TodoComponent {
-
     constructor(){
         this._helpers();
         this._subscribes();
