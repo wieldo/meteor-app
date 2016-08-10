@@ -1,8 +1,8 @@
 import templateUrl from "./view";
-import {ModuleName} from '/imports/startup/client/';
+import {moduleName} from "./../lib/module";
 import {init,SetModule,Component, State} from "angular2-now";
 init();
-SetModule(ModuleName);
+SetModule(moduleName);
 @State({
     name: "app.developers.dashboard",
     url: "/dashboard"
