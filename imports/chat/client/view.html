@@ -1,0 +1,37 @@
+<div layout="row" layout-fill ng-cloak style="height: 500px;">
+    <div layout="column" class="userschannels">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <!-- Users -->
+            <md-tab label="Users">
+                <chat-users on-select="vm.selectUser(userId)"></chat-users>
+            </md-tab>
+            <!-- Channels -->
+            <md-tab label="Channels">
+                <chat-channels on-select="vm.selectChannel(channelId)"></chat-channels>
+            </md-tab>
+        </md-tabs>
+    </div>
+    <md-content flex class="md-padding" layout="column" class="messages">
+        <!-- Users -->
+        <md-content ng-if="vm.userId">
+            <h3>
+                User {{vm.userId}}
+            </h3>
+            <chat-messages-direct user="vm.userId"></chat-messages-direct>
+            <chat-post-direct user="vm.userId"></chat-post-direct>
+        </md-content>
+        <!-- Channels -->
+        <md-content ng-if="vm.channelId">
+            <h3>
+                Channel {{vm.channelId}}
+            </h3>
+            <chat-messages-channel channel="vm.channelId"></chat-messages-channel>
+            <chat-post-channel channel="vm.channelId"></chat-post-channel>
+        </md-content>
+
+        <!-- Default -->
+        <span ng-if="!vm.userId && !vm.channelId">
+            Select user or channel
+        </span>
+    </md-content>
+</div>
