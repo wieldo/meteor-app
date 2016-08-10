@@ -1,0 +1,13 @@
+<form name="vm.form" ng-submit="vm.Submit(vm.form)">
+    <formly-form model="vm.model" fields="vm.fields" options="vm.options">
+        <md-button class="md-raised md-primary" type='submit' aria-label="submit" ng-show="!vm.model._id">
+            Submit
+        </md-button>
+        <md-button class="md-raised md-primary" type='submit' aria-label="submit" ng-show="vm.model._id">
+            Update
+        </md-button>
+        <md-button class="md-primary" ng-click="vm.Reset()" aria-label="submit" ng-show="vm.model._id">
+            Cancel
+        </md-button>
+    </formly-form>
+</form>
