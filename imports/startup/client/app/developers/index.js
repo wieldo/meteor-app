@@ -1,5 +1,4 @@
 import "./style";
-import "./../../../../developers/dashboard/client/";
 import templateUrl from "./../view/signed-in.html";
 import {ModuleName} from "./../../";
 import developersNavigationCollection from "./../../../../navigation/api/developers";

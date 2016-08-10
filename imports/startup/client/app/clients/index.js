@@ -1,4 +1,3 @@
-
 import clientsNavigationCollection from "./../../../../navigation/api/clients";
 import appNavigationCollection from "./../../../../navigation/api/app";
 import templateUrl from "./../view/signed-in.html";

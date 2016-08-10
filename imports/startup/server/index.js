@@ -1,3 +1,3 @@
-import "/imports/modules/todo/lib/server/fixtures";
-import "/imports/modules/todo/lib/server/publications";
-import "/imports/simple-chat/server";
+import "./../../clients/modules/todo/server/fixtures";
+import "./../../clients/modules/todo/server/publications";
+import "./../../simple-chat/server";

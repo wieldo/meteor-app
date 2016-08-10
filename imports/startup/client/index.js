@@ -1,34 +1,29 @@
 import {ModuleName as Core} from "./core";
 import {moduleName as Routing} from "./routing";
 import highlight from "./helpers/highlight";
-
 // Chat
-import "/imports/modules/chat/client/";
+import "./../../chat/client/";
 // Dashboard
-import "/imports/modules/dashboard/lib/module";
-import "/imports/modules/dashboard/client/";
+import "./../../clients/modules/dashboard/lib/module";
+import "./../../clients/modules/dashboard/client/";
 // Module Forms
-import "./../../developers/forms/lib/module";
-import "./../../developers/forms/client/";
+import "./../../developers/modules/index";
 // Sidenav
-import "/imports/ui/sidenav/lib/service";
+import "./../../ui/sidenav/lib/service";
 // Module To do
-import "/imports/modules/todo/lib/client/module";
-import "/imports/modules/todo/lib/client/component";
+import "./../../clients/modules/todo/lib/module";
+import "./../../clients/modules/todo/client/";
 // Module Signin
-import "/imports/modules/signin/lib/client/module";
-import "/imports/modules/signin/lib/client/component";
+import "./../../clients/modules/signin/lib/module";
+import "./../../clients/modules/signin/client/";
 // Module Signup
-import "/imports/modules/signup/lib/module";
-import "/imports/modules/signup/client/";
+import "./../../clients/modules/signup/lib/module";
+import "./../../clients/modules/signup/client/";
 // Settings
-import "/imports/modules/settings/lib/module";
-import "/imports/modules/settings/client/";
-
-import "/imports/modules/crypto/lib/module";
-import "/imports/modules/crypto/client/";
-
-import "/imports/ui/navigation/lib/module";
+import "./../../clients/modules/settings/lib/module";
+import "./../../clients/modules/settings/client/";
+// Navigation
+import "./../../ui/navigation/lib/module";
 
 import {init, SetModule} from "angular2-now";
 // initialize
@@ -38,10 +33,10 @@ SetModule(ModuleName,[
     Core,
     Routing,
     "ngMaterial",
+
     // Modules
-    "crypto",
     "Dashboard",
-    "ModuleForms",
+    "Developers",
     "SimpleNavigationModule",
     "Todo",
     "Settings",
