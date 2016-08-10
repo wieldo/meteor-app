@@ -22,7 +22,7 @@ SetModule(moduleName);
 @LocalInjectables
 export class SimpleNavigationService {
     context = this;
-    debug = true;
+    debug = false;
     name = null; // navigation name
     navigation = {};
 
@@ -206,9 +206,11 @@ export class SimpleNavigationService {
             let option_index = i;
             // with items - two level menu
             if (options[i].items) {
+                /*
                 _.each(options[i].items,(item) => {
                     console.log(item);
                 });
+                */
                 for (var j = 0; j < options[i].items.length; j++) {
                     let item_index = j;
 
@@ -229,7 +231,6 @@ export class SimpleNavigationService {
                     // define items.select
                     options[i].items[j]["select"] = () => {
                         // select only if option is not disabled
-                        console.log("DEBUG" +this.debug);
                         if (this.debug === true) {
                             console.group(`options[i].items[j].["select"]`);
                             console.debug(`options[option_index]: `, JSON.stringify(options[option_index]));
