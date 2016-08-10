@@ -86,29 +86,22 @@ How do I know when to release 1.0.0?
 - AngularJS Git Commit Message Conventions https://gist.github.com/stephenparish/9941e89d80e2bc58a153
 - http://karma-runner.github.io/0.10/dev/git-commit-msg.html
 
-## File structure
+## Todo file structure example
 ```
-/client
-/imports
-  /api
-  /modules
-    /forms
-    /todo
-  /navigation
-  /startup
-    /client
-      /app
-    /server
-  /ui
-    /forms
-      /docs
-      /lib
-      /types
-    /md
-    /scss
-    /sidenav
-/server
-package.js
+imports
+  /clients
+    /modules
+      /todo
+        /api
+          collection.js
+          schemas.js
+        /lib
+          module.js
+        /client
+          index.js // primary component
+          /subcomponent
+            /client
+              index.js
 ```
 
 ## Road map
