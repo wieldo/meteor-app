@@ -1,0 +1,19 @@
+<form name="vm.form" ng-submit="vm.onSubmit()">
+    <md-checkbox ng-model="vm.debug">
+        Debug {{vm.component.name}}
+    </md-checkbox>
+    <div class="messages" ng-class="{'error': vm.result.error}">
+        {{vm.result.reason}}
+        <p ng-repeat="message in result.messages" ng-if="result.messages">
+            {{message}}
+        </p>
+    </div>
+    <formly-form model="vm.model" fields="vm.fields" options="vm.options">
+        <div class="actions">
+            <ng-transclude></ng-transclude>
+            <md-button type="submit" class="md-primary">
+                signin
+            </md-button>
+        </div>
+    </formly-form>
+</form>
