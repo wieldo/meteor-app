@@ -1,10 +1,19 @@
 import templateUrl from "./view/index";
+// abstract states
 import "./developers";
 import "./clients";
-import "./../../../ui/app/toolbar/client";
+import "./sign";
 import "./../../../ui/navigation/client/";
 import {ModuleName} from "/imports/startup/client/";
-import { SetModule, init, Component, State, bootstrap, options, LocalInjectables } from "angular2-now";
+import {
+    init,
+    SetModule,
+    State,
+    Component,
+    bootstrap,
+    options,
+    LocalInjectables
+} from "angular2-now";
 options({controllerAs: "vm"});
 init();
 export var $Component = {
