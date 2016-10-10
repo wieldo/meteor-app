@@ -1,7 +1,7 @@
 import {usersSchema} from "./schema";
 let validate = (model) => {
     // Debug
-    var debug = true;
+    var debug = false;
     if (Meteor.isServer)
         debug = false;
 

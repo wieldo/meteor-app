@@ -1,7 +1,7 @@
 
 Meteor.startup(function(){
     if (Meteor.isServer){
-        var debug = true;
+        var debug = false;
         Meteor.publish("users.list", (find) => {
             if(debug === true ) {
                 console.log(`find: `,find);
