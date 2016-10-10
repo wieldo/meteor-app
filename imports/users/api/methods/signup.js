@@ -4,7 +4,7 @@ export const usersSignUp = new ValidatedMethod({
     name: "todo.insert",
     //validate: todoSchema.pick(["name"]).validator(),
     run(model){
-        var debug = true;
+        var debug = false;
         if (Meteor.isServer)
             debug = false;
 
@@ -36,7 +36,7 @@ export var usersSignUp;
 
 Meteor.methods({
     "users.signup"(model){
-        var debug = true;
+        var debug = false;
         if (Meteor.isServer)
             debug = false;
 
