@@ -12,7 +12,9 @@
       "Chat": false,
       "SimpleSchema": false,
       "angular2now": false,
-      "moment": false
+      "moment": false,
+      "angular": false,
+      "ValidatedMethod": true
     },
     "extends": "eslint:recommended",
     "parser": "babel-eslint",
