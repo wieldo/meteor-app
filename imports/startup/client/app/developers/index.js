@@ -3,8 +3,15 @@ import templateUrl from "./../view/signed-in.html";
 import {ModuleName} from "./../../";
 import developersNavigationCollection from "./../../../../navigation/api/developers";
 import appNavigationCollection from "./../../../../navigation/api/app";
-import {$Service} from "./../../../../ui/navigation/lib/service";
-import {init,SetModule,Component,State,LocalInjectables,MeteorReactive } from "angular2-now";
+import "./../../../../ui/navigation/lib/service";
+import {
+    init,
+    SetModule,
+    Component,
+    State,
+    LocalInjectables,
+    MeteorReactive
+} from "angular2-now";
 
 init();
 SetModule(ModuleName);
@@ -15,7 +22,7 @@ SetModule(ModuleName);
         user: ($stateParams, $state, $timeout) => {
             if (!Meteor.userId()) {
                 $timeout(function() {
-                    $state.go("app.signin");
+                    $state.go("app.sign.in");
                 },0);
             }
         }
@@ -24,12 +31,11 @@ SetModule(ModuleName);
 @Component({
     selector: "developers",
     templateUrl: templateUrl,
-    replace: true,
     providers: [
         "$q",
         "$state",
         "SidenavService",
-        $Service.name
+        "SimpleNavigationService"
     ]
 })
 @MeteorReactive
@@ -38,10 +44,12 @@ export class AppDevelopersComponent {
     type = "developers";
     constructor(){
         this.sidenav = this.SidenavService.Init();
-        this.navigation_workspaces = developersNavigationCollection;
-        this.navigation_app = appNavigationCollection;
+        // Navigation Api
+        this.navigationWorkspaces = developersNavigationCollection;
+        this.navigationApp = appNavigationCollection;
+        // Navigation
         this.SimpleNavigationService.getSelectedPromise().then(null, null, (notify) => {
-            this.selected = notify[this.type].selected.name;
+            this.simpleNavigation = notify;
         });
         this._helpers();
     }
@@ -57,7 +65,7 @@ export class AppDevelopersComponent {
 
     logout = () => {
         Meteor.logout((result) => {
-            this.$state.go("app.signin");
+            this.$state.go("app.sign.in");
         });
     }
 }
