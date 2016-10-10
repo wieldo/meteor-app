@@ -1,10 +1,14 @@
+// Modules
 import {
     Core,
-    Routing,
-    highlight,
-    hljs,
-    jsfy
+    Routing
 } from "/imports/lib";
+
+// Filters
+import {
+    highlightAuto,
+    unsafe
+} from "/imports/lib/filter";
 
 // API USERS
 import "./../../users";
@@ -16,6 +20,8 @@ import {
     locationProvider,
     sceProvider
 } from "./../config";
+// run
+import run from "./run";
 // Imported Modules that are used in primary module below
 import "./modules";
 // Imported Components that are used in primary module below
@@ -52,22 +58,7 @@ SetModule(ModuleName).config(locationProvider);
 SetModule(ModuleName).config(sceProvider);
 
 // Runs
-SetModule(ModuleName).run(($rootScope, $state) => {
-    $rootScope.$on("$stateChangeError", (event, toState, toParams, fromState, fromParams, error) => {
-    });
-    $rootScope.$on("$stateChangeStart", () => {
-    });
-    $rootScope.$on("$stateChangeSuccess", () => {
-        highlight("pre code");
-    });
-
-}).filter("highlight", function() {
-    return function(input) {
-        if (input) {
-            return hljs.highlightAuto(jsfy(input)).value;
-        }
-        return input;
-    };
-}).filter("unsafe", function($sce) {
-    return $sce.trustAsHtml;
-});
+SetModule(ModuleName)
+    .run(run)
+    .filter("highlight", highlightAuto)
+    .filter("unsafe", unsafe);
