@@ -1,9 +1,17 @@
-import clientsNavigationCollection from "./../../../../navigation/api/clients";
+import clientsNavigation from "./../../../../navigation/api/clients";
 import appNavigationCollection from "./../../../../navigation/api/app";
 import templateUrl from "./../view/signed-in.html";
+import "./style";
 import {ModuleName} from "./../../";
-import {$Service} from "./../../../../ui/navigation/lib/service";
-import { SetModule, init, Component, State, LocalInjectables, MeteorReactive } from "angular2-now";
+import "./../../../../ui/navigation/lib/service";
+import {
+    SetModule,
+    init,
+    Component,
+    State,
+    LocalInjectables,
+    MeteorReactive
+} from "angular2-now";
 
 init();
 SetModule(ModuleName);
@@ -14,7 +22,7 @@ SetModule(ModuleName);
         user: ($stateParams, $state, $timeout) => {
             if (!Meteor.userId()) {
                 $timeout(function() {
-                    $state.go("app.signin");
+                    $state.go("app.sign.in");
                 },0);
             }
         }
@@ -28,7 +36,8 @@ SetModule(ModuleName);
         "$state",
         "SidenavService",
         "$timeout",
-        "SimpleNavigationService"
+        "SimpleNavigationService",
+        "TodoFormService"
     ]
 })
 @LocalInjectables
@@ -37,10 +46,16 @@ export class AppClientsComponent {
     type = "clients";
     constructor(){
         this.sidenav = this.SidenavService.Init();
-        this.navigation_workspaces = clientsNavigationCollection;
-        this.navigation_app = appNavigationCollection;
+
+        // set clientsNavigationCollection
+        let TodoFormService = this.TodoFormService;
+        this.navigationWorkspaces = clientsNavigation({
+            TodoFormService
+        });
+        this.navigationApp = appNavigationCollection;
         this.SimpleNavigationService.getSelectedPromise().then(null, null, (notify) => {
-            this.selected = notify[this.type].selected.name;
+            console.log(notify);
+            this.simpleNavigation = notify;
         });
         this._helpers();
     }
@@ -49,14 +64,14 @@ export class AppClientsComponent {
         this.helpers({
             currentUser: () => {
                 this.currentUser = Meteor.user();
-                return Meteor.user();
+                return this.currentUser;
             }
         });
     }
 
     logout = () => {
         Meteor.logout((result) => {
-            this.$state.go("app.signin");
+            this.$state.go("app.sign.in");
         });
     }
 }
