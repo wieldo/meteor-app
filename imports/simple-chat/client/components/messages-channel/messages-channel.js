@@ -4,11 +4,11 @@ import templateUrl from "./messages-channel.html";
 import moment from "moment";
 //import { componentTemplate } from "../../utils";
 // channels
-import { Channels } from "../../../lib/channels/collection";
-import { markRead } from "../../../lib/channels/methods";
-import { messages } from "../../../lib/channels/selectors";
+import { Channels } from "../../../api/channels/collection";
+import { markRead } from "../../../api/channels/methods";
+import { messages } from "../../../api/channels/selectors";
 // messages
-import { Messages } from "../../../lib/messages/collection";
+import { Messages } from "../../../api/messages/collection";
 
 import {init,SetModule, Component, MeteorReactive, LocalInjectables} from "angular2-now";
 
@@ -63,68 +63,68 @@ export class ChatMessagesChannelComponent {
      * @param  {String} messageId message id
      */
     onRead(messageId) {
-      markRead({
-        messageId
-      });
+        markRead({
+            messageId
+        });
     }
 
     onLimitChange(limit) {
-      this.dateLimit = limit;
+        this.dateLimit = limit;
     }
 
     /**
      * Triggers `chat.messages` subscription
      */
     _subscribeMessages() {
-      const vm = this;
-      this.subscribe("chat.messages", () => {
-        this.loading = true;
-        return [
-          undefined,
-          this.getReactively("channel"), // channel Id
-          this.getReactively("dateLimit")
-        ];
-      }, {
-        onStop(error) {
-          vm.onStop(error);
-        },
-        onReady() {
-          vm.onReady();
-        }
-      });
+        const vm = this;
+        this.subscribe("chat.messages", () => {
+            this.loading = true;
+            return [
+                undefined,
+                this.getReactively("channel"), // channel Id
+                this.getReactively("dateLimit")
+            ];
+        }, {
+            onStop(error) {
+                if (error)
+                    vm.onStop(error);
+            },
+            onReady() {
+                vm.onReady();
+            }
+        });
     }
 
     /**
      * Set helpers
      */
     _setHelpers() {
-      this.helpers({
-        /**
-         * Get all messages
-         * @return {Collection.Cursor} Messages collection
-         */
-        messages() {
-          const cursor = Messages.find(
-            messages(this.getReactively("channel")),
-            {
-              sort: {
-                createdAt: 1
-              }
-            }
-        );
+        this.helpers({
+            /**
+             * Get all messages
+             * @return {Collection.Cursor} Messages collection
+             */
+            messages() {
+                const cursor = Messages.find(
+                    messages(this.getReactively("channel")),{
+                        sort: {
+                            createdAt: 1
+                        }
+                    }
+                );
+                cursor.observeChanges({
+                    added: (id, doc) => {
+                        if (!this.loading) {
+                            // broadcast an event because of new message
+                            // and not these loaded, the new one
+                            this.onMessage(id, doc);
+                        }
+                    }
+                });
 
-          cursor.observeChanges({
-            added: (id, doc) => {
-              if (!this.loading) {
-                // broadcast an event because of new message
-                // and not these loaded, the new one
-                this.onMessage(id, doc);
-              }
-            }
-          });
+                return cursor;
 
-          return cursor;
-        }
-      });
+            }
+        });
     }
 }

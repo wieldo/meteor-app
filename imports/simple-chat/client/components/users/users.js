@@ -1,7 +1,7 @@
 import templateUrl from "./users.html";
-import {name} from "../../module";
-import {Users} from "../../../lib/users/collection";
-import {all} from "../../../lib/users/selectors";
+import {name} from "./../../module";
+import {Users} from "./../../../api/users/collection";
+import {all} from "./../../../api/users/selectors";
 import {init,SetModule, Component, MeteorReactive, LocalInjectables} from "angular2-now";
 
 init();

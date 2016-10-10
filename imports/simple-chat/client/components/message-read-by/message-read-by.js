@@ -1,25 +1,25 @@
 import {name} from "../../module";
-import templateUrl from './message-read-by.html';
-import {init,SetModule,Component} from 'angular2-now';
+import templateUrl from "./message-read-by.html";
+import {init,SetModule,Component} from "angular2-now";
 
 init();
 SetModule(name);
 @Component({
-    selector: 'chat-message-read-by',
+    selector: "chat-message-read-by",
     templateUrl: templateUrl,
     bind: {
-        users: '=?',
-        idKey: '@?',
-        dateKey: '@?',
-        nameKey: '@?'
+        users: "=?",
+        idKey: "@?",
+        dateKey: "@?",
+        nameKey: "@?"
     }
 })
 export class ChatMessageReadByComponent {
     constructor() {
         this.keys = {
-            id: this._id || 'id',
-            date: this._date || 'date',
-            name: this._name || 'name'
+            id: this._id || "id",
+            date: this._date || "date",
+            name: this._name || "name"
         };
     }
 

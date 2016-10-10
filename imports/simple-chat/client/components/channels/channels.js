@@ -1,7 +1,7 @@
 import {name} from "../../module";
 import templateUrl from "./channels.html";
-import { Channels } from "../../../lib/channels/collection";
-import { all } from "../../../lib/channels/selectors";
+import { Channels } from "./../../../api/channels/collection";
+import { all } from "./../../../api/channels/selectors";
 import {init,SetModule, Component, MeteorReactive, LocalInjectables} from "angular2-now";
 
 init();
@@ -50,7 +50,8 @@ export class ChatChannelsComponent {
      * @param  {*} error
      */
     onStop(error) {
-        this.loading = false;
+        if (error)
+            this.loading = false;
     }
 
     /**

@@ -1,18 +1,18 @@
 import {name} from "../../module";
-import { message } from '../../../lib/direct/methods';
-import {init,SetModule, Component, LocalInjectables} from 'angular2-now';
+import { message } from "../../../api/direct/methods";
+import {init,SetModule, Component, LocalInjectables} from "angular2-now";
 
 init();
 SetModule(name);
 @Component({
-    selector: 'chat-post-direct',
+    selector: "chat-post-direct",
     bind: {
-        user: '='
+        user: "="
     },
     template: `
       <chat-post on-message="vm.send(message)"></chat-post>
     `,
-    providers: ['UsePromise']
+    providers: ["UsePromise"]
 })
 @LocalInjectables
 export class ChatPostDirectComponent {
@@ -36,6 +36,6 @@ export class ChatPostDirectComponent {
     }
 
     onError(error) {
-        console.log('error', error);
+        console.log("error", error);
     }
 }

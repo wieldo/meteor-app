@@ -2,11 +2,11 @@ import {name} from "../../module";
 import templateUrl from "./messages-direct.html";
 import moment from "moment";
 // direct
-import { markRead } from "../../../lib/direct/methods";
-import { messages } from "../../../lib/direct/selectors";
+import { markRead } from "./../../../api/direct/methods";
+import { messages } from "./../../../api/direct/selectors";
 // messages
-import { Messages } from "../../../lib/messages/collection";
-import { Users } from "../../../lib/users/collection";
+import { Messages } from "./../../../api/messages/collection";
+import { Users } from "./../../../api/users/collection";
 import {init,SetModule, Component, MeteorReactive, LocalInjectables} from "angular2-now";
 
 init();

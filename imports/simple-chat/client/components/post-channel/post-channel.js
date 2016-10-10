@@ -1,5 +1,5 @@
 import {name} from "../../module";
-import { message } from "../../../lib/channels/methods";
+import { message } from "../../../api/channels/methods";
 import {init,SetModule, Component, LocalInjectables} from "angular2-now";
 
 init();
@@ -9,9 +9,7 @@ SetModule(name);
     bind: {
         channel: "="
     },
-    template: `
-      <chat-post on-message="vm.send(message)"></chat-post>
-    `,
+    template: `<chat-post on-message="vm.send(message)"></chat-post>`,
     providers: ["UsePromise"]
 })
 @LocalInjectables

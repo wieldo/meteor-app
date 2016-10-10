@@ -1,16 +1,16 @@
 import {name} from "../../module";
-import templateUrl from './message-channel.html';
-import {init, SetModule, Component, MeteorReactive} from 'angular2-now';
+import templateUrl from "./message-channel.html";
+import {init, SetModule, Component, MeteorReactive} from "angular2-now";
 
 init();
 SetModule(name);
 @Component({
-    selector: 'chat-message-channel',
+    selector: "chat-message-channel",
     templateUrl: templateUrl,
     transclude: true,
     bind: {
-        message: '=',
-        onRead: '&?'
+        message: "=",
+        onRead: "&?"
     }
 })
 @MeteorReactive
