@@ -1,31 +1,31 @@
-import {ModuleName as Core} from "./core";
-import {moduleName as Routing} from "./routing";
-import highlight from "./helpers/highlight";
+import {
+    Core,
+    Routing,
+    highlight,
+    hljs,
+    jsfy
+} from "/imports/lib";
+
+// API USERS
+import "./../../users";
+// config
+import "./../config/simple-schema-messages";
+import {
+    mdThemingProvider,
+    stateProvider,
+    locationProvider,
+    sceProvider
+} from "./../config";
+// Imported Modules that are used in primary module below
+import "./modules";
+// Imported Components that are used in primary module below
+import "./components";
 // Chat
 import "./../../chat/client/";
-// Dashboard
-import "./../../clients/modules/dashboard/lib/module";
-import "./../../clients/modules/dashboard/client/";
-// Module Forms
-import "./../../developers/modules/index";
 // Sidenav
 import "./../../ui/sidenav/lib/service";
-// Module To do
-import "./../../clients/modules/todo/lib/module";
-import "./../../clients/modules/todo/client/";
-// Module Signin
-import "./../../clients/modules/signin/lib/module";
-import "./../../clients/modules/signin/client/";
-// Module Signup
-import "./../../clients/modules/signup/lib/module";
-import "./../../clients/modules/signup/client/";
-// Settings
-import "./../../clients/modules/settings/lib/module";
-import "./../../clients/modules/settings/client/";
-// Navigation
-import "./../../ui/navigation/lib/module";
-
 import {init, SetModule} from "angular2-now";
+
 // initialize
 export const ModuleName = "app";
 init();
@@ -44,25 +44,30 @@ SetModule(ModuleName,[
     "Signin",
     "Signup",
     "simple-chat"
-])
-.config(($locationProvider, $mdThemingProvider, $sceProvider) => {
-    $mdThemingProvider.theme("meteorApp");
-    $mdThemingProvider.theme("meteor");
+]);
+// Configs
+SetModule(ModuleName).config(mdThemingProvider);
+SetModule(ModuleName).config(stateProvider);
+SetModule(ModuleName).config(locationProvider);
+SetModule(ModuleName).config(sceProvider);
 
-    $mdThemingProvider.setDefaultTheme("default");
-    $locationProvider.html5Mode(true);
-    $sceProvider.enabled(false);
-}).run(($rootScope, $state, SimpleNavigationService) => {
+// Runs
+SetModule(ModuleName).run(($rootScope, $state) => {
     $rootScope.$on("$stateChangeError", (event, toState, toParams, fromState, fromParams, error) => {
-        console.log(error);
     });
     $rootScope.$on("$stateChangeStart", () => {
     });
     $rootScope.$on("$stateChangeSuccess", () => {
         highlight("pre code");
-        console.log($state);
-        console.log("CHANGE"+ $state.includes("app.clients"));
-        //NavigationService.setType($state.includes("app.clients") === true ? "clients" : "developers");
     });
 
+}).filter("highlight", function() {
+    return function(input) {
+        if (input) {
+            return hljs.highlightAuto(jsfy(input)).value;
+        }
+        return input;
+    };
+}).filter("unsafe", function($sce) {
+    return $sce.trustAsHtml;
 });
