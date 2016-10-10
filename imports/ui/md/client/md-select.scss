@@ -2,15 +2,12 @@
 md-select {
     &.md-meteor-theme {
         .md-select-value {
-            border-bottom-color: #6B63AC;
         }
     }
 }
 
-
 .md-select-menu-container {
     &.meteorApp {
-        border: 2px solid #6B63AC;
     }
 
     md-optgroup {

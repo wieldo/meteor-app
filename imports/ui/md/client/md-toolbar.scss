@@ -6,7 +6,7 @@ md-toolbar {
 		color: rgb(63,81,181);
 
 		&.meteor-primary {
-			border-bottom: 1px solid #f5f5f5;			
+			border-bottom: 2px solid #f5f5f5;
 		}
 
 		.md-button:not(.md-raised) {
@@ -19,5 +19,13 @@ md-toolbar {
 	}
 	.md-button:not(.md-raised) {
 		color: rgb(63,81,181);
+		font: {
+			size: 0.6875em;
+		}
+		&.md-icon-button {
+			font: {
+				size: 0.8125em;
+			}
+		}
 	}
 }

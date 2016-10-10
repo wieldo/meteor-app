@@ -1,10 +1,9 @@
 md-radio-group {
-    &.md-meteorApp-theme {
+    &.flex {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        &.layout-row {
 
-        md-radio-button {
-            .md-on {
-                background-color: #6B63AC;
-            }
         }
     }
 }

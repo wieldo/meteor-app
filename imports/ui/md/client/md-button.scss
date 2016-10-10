@@ -1,7 +1,19 @@
 .md-button {
     border-radius: 0;
-    font-weight: 400;
+    font: {
+        size: 1em;
+        weight: 400;
+    }
     .md-ripple-container {
         border-radius: inherit;
+    }
+
+    &.md-meteor-theme {
+        &.md-button {
+            min-width: 0px;
+            height: 40px;
+            line-height: 40px;
+            margin: 0;
+        }
     }
 }

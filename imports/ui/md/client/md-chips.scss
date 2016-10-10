@@ -1,17 +1,10 @@
 md-chips {
     &.md-primary {
-        color: #fff;
         .md-chip {
-            background: rgb(63,81,181);
-            border: 2px solid rgb(63,81,181);
-            color: #fff;
         }
     }
     &.md-meteor-theme {
         .md-chip {
-            background: #6B63AC;
-            color: #fff;
-            border: 2px solid #6B63AC;
         }
     }
 }
