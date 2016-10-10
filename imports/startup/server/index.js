@@ -1,3 +1,10 @@
-import "./../../clients/modules/todo/server/fixtures";
-import "./../../clients/modules/todo/server/publications";
+// Todo
+import "./../../clients/modules/todo/server";
+// simple-chat
 import "./../../simple-chat/server";
+// import users api
+import "./../../users";
+// config
+import "./../config/simple-schema-messages";
+// email
+import "./mail";
