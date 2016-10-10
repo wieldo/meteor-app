@@ -1,6 +1,6 @@
 {
   "name": "MeteorApp",
-  "description": "Example of meteor Application",
+  "description": "Meteor example application",
   "private": false,
   "version": "0.1.0",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Diabeu27/MeteorApp.git"
+    "url": "https://github.com/wieldo/meteor-app.git"
   },
   "license": "MIT",
   "postcss": {
@@ -34,11 +34,13 @@
     "api-check": "^7.5.5",
     "autoprefixer": "^6.3.7",
     "babel-eslint": "^6.1.2",
+    "babel-preset-es2015": "^6.16.0",
     "crypto-js": "^3.1.6",
     "eslint": "^2.13.1",
     "highlight.js": "^9.5.0",
     "install": "^0.8.1",
     "jquery": "^3.1.0",
+    "jsfy": "^1.6.5",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.14.1",
     "normalize.css": "^4.2.0",
@@ -49,5 +51,14 @@
     "ui-router": "^1.0.0-alpha.3",
     "underscore": "^1.8.3",
     "wieldoformlymaterial": "^0.1.5"
-  }
+  },
+  "keywords": [
+    "meteor-app",
+    "meteor",
+    "app"
+    "wieldo",
+    "wieldo-formly-material",
+    "angularjs",
+    "example"
+  ]
 }
