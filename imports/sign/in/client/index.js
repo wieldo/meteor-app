@@ -35,7 +35,10 @@ SetModule(moduleName);
 @Component(component)
 @LocalInjectables
 export class SigninComponent {
+    debug = false;
     constructor() {
-        console.log(this.signin);
+        if (this.debug === true) {
+            console.log(this.signin);
+        }
     }
 }
