@@ -9,34 +9,329 @@ import {
 } from "angular2-now";
 
 init();
-export var $Service = {
+export var service = {
     name: "SimpleNavigationService"
 };
 SetModule(moduleName);
 @Service({
-    name: $Service.name,
+    name: service.name,
     providers: [
-        "$q", "store"
+        "$q",
+        "store",
+        "$state"
     ]
 })
 @LocalInjectables
 export class SimpleNavigationService {
     context = this;
-    debug = false;
+    debug = true;
     name = null; // navigation name
     navigation = {};
+    options = {};
+    parent = null;
 
-    constructor($q, store) {
+    constructor($q, store, $state) {
         this.defer = {
             navigation: $q.defer()
         };
         if (this.debug === true) {
-            console.log(`-----------------------------------------------`);
-            console.info(`DEBUG SimpleNavigationService has been started!`);
-            console.trace(`SimpleNavigationService`);
-            console.log(`-----------------------------------------------`);
+            console.info(`---------------------------------------`);
+            console.info(`Debug ${service.name} has been started!`);
+            console.info(`---------------------------------------`);
         }
         this.store = store;
+        this.$state = $state;
+    }
+
+    /**
+     * _setSelected set navigation[name].selected json
+     * @param {json} selected selected option object
+     * @param {string} name
+     * @return {object} this context
+     */
+    _setSelected = (selected, name) => {
+        if (this.debug === true) {
+            console.group(`${service.name}._setSelected(selected, name)`);
+            console.log(`@param selected: `, selected);
+            console.log(`@param name: `, name);
+            console.log(`@return this: `, this);
+        }
+        if (!name) {
+            console.error(`@param name: `, name);
+            console.groupEnd();
+            throw(`_setSelected(selected, name); variable name is missing`);
+        }
+        if (!selected) {
+            console.error(`@param selected: `, selected);
+            console.groupEnd();
+            throw(`_setSelected(selected, name); variable selected is missing`);
+        }
+        if (this.debug === true)
+            console.groupEnd();
+
+        if (selected && name) {
+            this.navigation[name].selected = selected;
+
+            // Set navigation defer
+            this._notifyNavigation();
+        }
+
+        return this;
+    }
+
+    /**
+     * _notifyNavigation
+     * @return {object} this context
+     */
+    _notifyNavigation = () => {
+        if (this.debug === true) {
+            console.group(`${service.name}._notifyNavigation()`);
+            console.group(`this.defer.navigation.notify(this.navigation);`);
+            console.log(`@param this.navigation: `, this.navigation);
+            console.groupEnd();
+            console.groupEnd();
+        }
+        this.defer.navigation.notify(this.navigation);
+        return this;
+    }
+
+
+    /**
+     * _defineOptionsWithItems
+     * @param  {json} options
+     * @return {json} options
+     */
+    _defineOptionsWithItems = (options) => {
+        let name = this.name;
+        if (this.debug === true) {
+            let clonedOptions = _.clone(options);
+            console.group(`${service.name}._defineOptionsWithItems(options)`);
+            console.log(`@param options: `, clonedOptions);
+            console.log(`name: `, `${name}`);
+        }
+        if (options && name) {
+            for (var i = 0; i < options.length; i++) {
+                let optionIndex = i;
+                // with items - two level menu
+                if (options[i].items) {
+                    /*
+                    _.each(options[i].items,(item) => {
+                        console.log(item);
+                    });
+                    */
+                    for (var j = 0; j < options[i].items.length; j++) {
+                        let itemIndex = j;
+
+                        // DEFAULT ICON
+                        if (!options[i].items[j]["icon"] && options[i].items[j]["drop"] !== true) {
+                            options[i].items[j]["icon"] = "fa fa-angle-right";
+                        }
+                        // default disabled
+                        if (options[optionIndex].items[itemIndex]["ngDisabled"] == undefined)
+                            options[optionIndex].items[itemIndex]["ngDisabled"] = false;
+                        // default hidden
+                        if (!options[optionIndex].items[itemIndex]["hidden"]  == undefined)
+                            options[optionIndex].items[itemIndex]["hidden"] = false;
+                        // default ariaLabel
+                        if (!options[optionIndex].items[itemIndex]["ariaLabel"]  == undefined)
+                            options[optionIndex].items[itemIndex]["ariaLabel"] = options[optionIndex].items[itemIndex]["name"];
+
+                        // define items.select
+                        if (options[i].items[j]["select"] !== false) {
+                            options[i].items[j]["select"] = () => {
+                                // select only if option is not disabled
+                                if (this.debug === true) {
+                                    console.group(`options[i].items[j].["select"]`);
+                                    console.log(`options[optionIndex]: `, JSON.stringify(options[optionIndex]));
+                                    console.groupEnd();
+                                }
+                                if (options[optionIndex].items[itemIndex]["ngDisabled"] !== true || options[optionIndex].items[itemIndex]["disabled"] !== true) {
+                                    this._select({
+                                        optionIndex: optionIndex,
+                                        itemIndex: itemIndex
+                                    }, name, options[optionIndex].items[itemIndex]["callback"]);
+                                }
+                            };
+                        }
+                        if (this.$state.current.name == options[optionIndex].items[itemIndex].uisref) {
+                            let selected = angular.merge({
+                                optionIndex: optionIndex,
+                                itemIndex: itemIndex
+                            }, options[optionIndex].items[itemIndex]);
+                            if (this.debug === true) {
+                                console.group(`if (this.$state.current.name == options[optionIndex].items[itemIndex].uisref)`);
+                                console.log(`this.$state.current.name: `, this.$state.current.name);
+                                console.log(`options[optionIndex].items[itemIndex].uisref: `, options[optionIndex].items[itemIndex].uisref);
+                                console.log(`selected: `, selected);
+                                console.groupEnd();
+                            }
+                            this.store.set("navigation" + name, selected);
+                        }
+                    }
+                }
+            }
+        } else {
+            if (this.debug === true) {
+                console.warn(`if (options && name){} `);
+            }
+        }
+        if (this.debug === true) {
+            console.log(`@return options: `, options);
+            console.groupEnd();
+        }
+        return options;
+    }
+
+    /**
+     * _defineOptionsWithoutItems
+     * @param  {json} options
+     * @return {json} options
+     */
+    _defineOptionsWithoutItems = (options) => {
+        let name = this.name;
+        if (this.debug === true) {
+            let clonedOptions = _.clone(options);
+            console.group(`${service.name}._defineOptionsWithoutItems(options)`);
+            console.log(`@param options: `, clonedOptions);
+            console.log(`name: `, `${name}`);
+        }
+        if (options && name) {
+            for (var i = 0; i < options.length; i++) {
+                let optionIndex = i;
+                if (!options[i].items) {
+                    // default disabled
+                    if (options[optionIndex]["ngDisabled"] == undefined)
+                        options[optionIndex]["ngDisabled"] = false;
+                    // default hidden
+                    if (options[optionIndex]["hidden"] == undefined)
+                        options[optionIndex]["hidden"] = false;
+                    // default ariaLabel
+                    if (options[optionIndex]["ariaLabel"] == undefined)
+                        options[optionIndex]["ariaLabel"] = options[optionIndex]["name"];
+
+                    // ng-click _select()
+                    if (options[optionIndex]["select"] !== false) {
+                        options[optionIndex]["select"] = () => {
+                            // select only if option is not disabled
+                            if (this.debug === true) {
+                                console.group(`options[i]["select"]`);
+                                console.log(`options[optionIndex]: `, options[optionIndex]);
+                                console.groupEnd();
+                            }
+                            if (options[optionIndex]["ngDisabled"] !== true)
+                                this._select({
+                                    optionIndex: optionIndex
+                                }, name, options[optionIndex]["callback"]);
+                        };
+                    }
+                    console.group(`if (this.$state.current.name == options[optionIndex].uisref)`);
+                    console.assert(this.$state.current.name == options[optionIndex].uisref, {
+                        "message": "Not equal",
+                        "this.$state.current.name": this.$state.current.name,
+                        "options[optionIndex].uisref": options[optionIndex].uisref
+                    });
+                    if (this.$state.current.name == options[optionIndex].uisref) {
+                        let selected = angular.merge({
+                            optionIndex: optionIndex
+                        }, options[optionIndex]);
+                        if (this.debug === true) {
+                            console.log(`this.$state.current.name: `, this.$state.current.name);
+                            console.log(`options[optionIndex].uisref: `, options[optionIndex].uisref);
+                            console.log(`selected: `, selected);
+                        }
+                        this.store.set("navigation" + name, selected);
+                    }
+                    console.groupEnd();
+                }
+            }
+        } else {
+            if (this.debug === true) {
+                console.warn(`if (options && name){} `);
+            }
+        }
+        if (this.debug === true) {
+            console.log(`@return options: `, options);
+            console.groupEnd();
+        }
+        return options;
+    }
+
+    /**
+     * get - return navigation json
+     * @param {string} name holder name
+     * @return {json} this.navigation || this.navigation[name]
+     */
+    get = (name) => {
+        name = (name) ? name : this.getName();
+        if (this.debug === true) {
+            console.group(`${service.name}.get(name)`);
+            console.log(`@param name: `, `"${name}"`);
+        }
+        if (name !== false && this.navigation[name]) {
+            if (this.debug === true) {
+                console.log(`@return this.navigation[name]: `, this.navigation[name]);
+                console.groupEnd();
+            }
+            return this.navigation[name];
+        }
+        else {
+            if (this.debug === true) {
+                console.log(`@return this.navigation: `, this.navigation);
+                console.groupEnd();
+            }
+            return this.navigation;
+        }
+    }
+
+    /**
+     * getName return last defined holder navigation name
+     * @return {string} this.name
+     */
+    getName = () => {
+        if (this.debug === true) {
+            console.group(`${service.name}.getName()`);
+            console.log(`@return this.name: `, `${this.name}`);
+            console.groupEnd();
+        }
+        if (this.name)
+            return this.name;
+    }
+
+    /**
+     * findOptionByIndex - get navigation object
+     * @param {json} index {optionIndex: Number, itemIndex: Number}
+     * @param {name} name navigation holder name
+     * @return {json}
+     */
+    findOptionByIndex = (index, name) => {
+        if (this.debug === true) {
+            console.group(`${service.name}.findOptionByIndex(index)`);
+            console.log(`@param index: `, index);
+            console.log(`@param name: `, name);
+        }
+        if (this.navigation[name]) {
+            if (this.navigation[name].selected && this.navigation[name].options) {
+                if (index.optionIndex > -1 && index.itemIndex > -1) {
+                    if (this.debug === true) {
+                        console.groupEnd();
+                    }
+                    return angular.merge(index, this.navigation[name].options[index.optionIndex].items[index.itemIndex]);
+                }else {
+                    if (this.debug === true) {
+                        console.log(`this.navigation[name]: `, this.navigation[name]);
+                        console.groupEnd();
+                    }
+                    return angular.merge(index, this.navigation[name].options[index.optionIndex]);
+                }
+            }
+        } else {
+            if (this.debug === true) {
+                console.warn(`this.navigation["${name}"]:`, this.navigation[name]);
+            }
+        }
+        if (this.debug === true) {
+            console.groupEnd();
+        }
     }
 
     /**
@@ -48,92 +343,31 @@ export class SimpleNavigationService {
     }
 
     /**
-     * set - set holder name and options
-     * @param {String} name holder name
-     * @param {Json} options displayed options
-     * @return {this} this context
-     */
-    set = (name, options) => {
-        if (this.debug === true) {
-            console.group(`${$Service.name}.set(name, options)`);
-            console.debug(`name:`, `"${name}"`);
-            console.debug(`options: `, JSON.stringify(options));
-            console.groupEnd();
-        }
-        return this.setName(name).setOptions(options);
-    }
-
-    /**
-     * getSelected - get navigation object
-     * @param {String} name get navigation object by holder name
-     * @return
-     */
-    getSelected = (name) => {
-        name = (name) ? name : this.name;
-        if (this.debug === true) {
-            console.group(`${$Service.name}.getSelected(name)`);
-            console.debug(`name: `, name);
-        }
-        if (name !== false) {
-            if (this.navigation[name]) {
-                if (this.navigation[name].selected && this.navigation[name].options) {
-                    var options_index = this.navigation[name].selected.options_index;
-                    var items_index = this.navigation[name].selected.items_index;
-                    if (options_index > -1 && items_index > -1) {
-                        if (this.debug === true)
-                            console.groupEnd();
-
-                        return this.navigation[name].options[options_index].items[items_index].name;
-                    }else {
-                        if (this.debug === true)
-                            console.groupEnd();
-                        return this.navigation[name].options[options_index].name;
-                    }
-                }
-            } else {
-                if (this.debug === true) {
-                    console.group(`this.navigation[name]`);
-                    console.warn(`this.navigation["${name}"]:`, this.navigation[name]);
-                    console.groupEnd();
-                    //throw (`${$Service.name}.getSelected(${name}) is empty; this.navigation[${name}] is null`);
-                }
-            }
-        } else {
-            if (this.debug === true) {
-                console.warn(`name:`, name);
-                //throw (`${$Service.name}.getSelected(name) - variable name is missing`);
-            }
-        }
-        if (this.debug === true)
-            console.groupEnd();
-    }
-
-    /**
-     * select - click on option navigation to select it
-     * @param {String} name holder name
-     * @param {Json} selected  set selected name and set to variable .selected {options_index, items_index}
-     * @param {Function} callback Function that execute after
+     * _select - click on option navigation to select it
+     * @param {json} index  set selected name and set to variable .selected {optionIndex, itemIndex}
+     * @param {function} callback Function that execute after
      * @return
     */
-    select = (name, select, callback) => {
+    _select = (index, name, callback) => {
         if (this.debug === true) {
-            console.group(`${$Service.name}.select(name, select, callback)`);
-            console.debug(`name: `, `"${name}"`);
-            console.debug(`select:`, JSON.stringify(select));
-            console.debug(`callback: `, callback);
+            console.group(`${service.name}._select(index, name, callback)`);
+            console.log(`index:`, index);
+            console.log(`name: `, name);
+            console.log(`callback: `, callback);
+        }
+
+        var selected = this.findOptionByIndex(index, name);
+        // Remember last choose
+        this.store.set("navigation" + name, selected);
+        // Selected option and item
+        this._setSelected(selected, name);
+
+        if (this.debug === true) {
+            console.log(`selected`, selected);
+            console.log(`this.navigation[name]`, this.navigation[name]);
             console.groupEnd();
         }
 
-        if (!name) {
-            console.error(`${$Service.name}.select(name, select, callback) - variable name is missing`);
-            throw (`${$Service.name}.select(name, select, callback) - variable name is missing`);
-        }
-        // Selected option and item
-        this.navigation[name].selected = select;
-        this.navigation[name].selected["name"] = this.getSelected(name);
-        this.defer.navigation.notify(this.navigation);
-        // Remember last choose
-        this.store.set("navigation" + name, select);
         // After select run callback below
         if (callback)
             callback();
@@ -149,38 +383,89 @@ export class SimpleNavigationService {
     */
 
     /**
-     * setName - set navigation holder name
-     * @param {String} name holder name
-     * @retrun {this} this
+     * set - set holder name and options
+     * @param {string} name holder name or setName()
+     * @param {json} options displayed options or setOptions()
+     * @param {string} header header name or setHeader()
+     * @return {object} this context
      */
-    setName = (name) => {
+    set = (name, options, header, parentName) => {
         if (this.debug === true) {
-            console.group(`${$Service.name}.setName(name)`);
-            console.debug(`name: `, `"${name}"`);
+            console.group(`${service.name}.set(name, options, header)`);
+            console.log(`name:`, `"${name}"`);
+            console.log(`options: `, JSON.stringify(options));
+            console.log(`header: `, header);
             console.groupEnd();
         }
-        if (!name) {
-            console.error(`${$Service.name}.setName(name) - variable name is missing`);
-            throw (`${$Service.name}.setName(name) - variable name is missing`);
+        if (name && options) {
+            this
+                .setName(name)
+                .setHeader(header)
+                .setOptions(options)
+                .setParentNavigation(parentName);
         }
-        this.name = name;
         return this;
     }
 
     /**
      * setHeader - set simple header navigation
-     * @param  {String} header Header navigation
-     * @return {Object}        This context
+     * @param  {string} header Header navigation
+     * @return {object} this context
      */
     setHeader = (header) => {
         if (this.debug === true) {
-            console.group(`${$Service.name}.setHeader(header)`);
-            console.debug(`header: `, `"${header}"`);
-            console.debug(`this.name: `, `"${this.name}"`);
+            console.group(`${service.name}.setHeader(header)`);
+            console.log(`header: `, `"${header}"`);
+            console.log(`this.navigation[name].header: `, this.navigation[this.name].header);
             console.groupEnd();
         }
+        this._setHeader(header);
+
+        return this;
+    }
+
+    /**
+     * _setHeader set this header and navigation header
+     * @param {string} header name of navigation header
+     * @return {object} this context
+     */
+    _setHeader = (header) => {
         if (header && this.name) {
+            this.header = header;
             this.navigation[this.name].header = header;
+        }
+        return this;
+    }
+
+    /**
+     * setName - set navigation holder name
+     * @param {string} name holder name
+     * @return {object} this context
+     */
+    setName = (name) => {
+        if (this.debug === true) {
+            console.group(`${service.name}.setName(name)`);
+            console.log(`name: `, name);
+            if (!name)
+                console.error(`${service.name}.setName(name) - variable name is missing`);
+            console.groupEnd();
+        }
+        if (!name && this.debug === true) {
+            throw (`${service.name}.setName(name) - variable name is missing`);
+        }
+        this._setName(name);
+
+        return this;
+    }
+
+    /**
+     * [_setName description]
+     * @param {[type]} name [description]
+     */
+    _setName = (name) => {
+        if (name) {
+            this.name = name;
+            this.navigation[name] = {};
         }
         return this;
     }
@@ -188,139 +473,86 @@ export class SimpleNavigationService {
     /**
      * setOptions - create navigation options with defined holder name
      * @param {json} options Menu options with {}
-     * @return {this} this return this object
+     * @return {object} this context
      */
     setOptions = (options) => {
-        if (this.debug === true) {
-            console.group(`${$Service.name}.setOptions(options)`);
+        if (this.debug === true)
+            console.group(`${service.name}.setOptions(options)`);
+        if (!options) {
+            console.groupEnd();
+            throw (`${service.name}.setOptions(options) - variable options is missing`);
         }
-        let name;
-        if (this.name)
-            name = this.name;
-        if (!name)
-            throw (`${$Service.name}.setOptions(options) - variable name is missing`);
-        if (!options)
-            throw (`${$Service.name}.setOptions(options) - variable options is missing`);
         // define options
-        for (var i = 0; i < options.length; i++) {
-            let option_index = i;
-            // with items - two level menu
-            if (options[i].items) {
-                /*
-                _.each(options[i].items,(item) => {
-                    console.log(item);
+        options = this._defineOptionsWithoutItems(options);
+        options = this._defineOptionsWithItems(options);
+        this._setOptions(options);
+        this._setSelected(this.store.get("navigation" + this.name), this.name);
+
+        /*
+        if (this.navigation[this.name]) {
+            if (this.$state.current.name != this.navigation[this.name].selected.uisref) {
+                var index = {};
+                _.each(this.navigation[this.name].options, (option, key) => {
+                    if (option.uisref == this.$state.current.name) {
+                        index = {
+                            optionIndex: key
+                        };
+                    }
                 });
-                */
-                for (var j = 0; j < options[i].items.length; j++) {
-                    let item_index = j;
-
-                    // DEFAULT ICON
-                    if (!options[i].items[j]["icon"] && options[i].items[j]["drop"] !== true) {
-                        options[i].items[j]["icon"] = "fa fa-angle-right";
-                    }
-                    // default disabled
-                    if (options[option_index].items[item_index]["ngDisabled"] == undefined)
-                        options[option_index].items[item_index]["ngDisabled"] = false;
-                    // default hidden
-                    if (!options[option_index].items[item_index]["hidden"]  == undefined)
-                        options[option_index].items[item_index]["hidden"] = false;
-                    // default ariaLabel
-                    if (!options[option_index].items[item_index]["ariaLabel"]  == undefined)
-                        options[option_index].items[item_index]["ariaLabel"] = options[option_index].items[item_index]["name"];
-
-                    // define items.select
-                    options[i].items[j]["select"] = () => {
-                        // select only if option is not disabled
-                        if (this.debug === true) {
-                            console.group(`options[i].items[j].["select"]`);
-                            console.debug(`options[option_index]: `, JSON.stringify(options[option_index]));
-                            console.groupEnd();
-                        }
-                        if (options[option_index].items[item_index]["ngDisabled"] !== true || options[option_index].items[item_index]["disabled"] !== true)
-                            this.select(name, {options_index: option_index, items_index: item_index}, options[option_index].items[item_index]["callback"]);
-                    };
-                }
-            // without items - one level menu
-            } else {
-                // default disabled
-                if (options[option_index]["ngDisabled"] == undefined)
-                    options[option_index]["ngDisabled"] = false;
-                // default hidden
-                if (options[option_index]["hidden"] == undefined)
-                    options[option_index]["hidden"] = false;
-                // default ariaLabel
-                if (options[option_index]["ariaLabel"] == undefined)
-                    options[option_index]["ariaLabel"] = options[option_index]["name"];
-
-                // ng-click  select()
-                options[i]["select"] = () => {
-                    // select only if option is not disabled
-                    if (this.debug === true) {
-                        console.group(`options[i].["select"]`);
-                        console.debug(`options[option_index]: `, JSON.stringify(options[option_index]));
-                        console.groupEnd();
-                    }
-                    if (options[option_index]["ngDisabled"] !== true)
-                        this.select(name, {options_index: option_index}, options[option_index]["callback"]);
-                };
+                var selected = this.findOptionByIndex(index, this.name);
+                if (selected)
+                    this._setSelected(selected, this.name);
             }
         }
+        */
+
+
         if (this.debug === true) {
-            console.debug(`options: `, JSON.stringify(options));
+            console.log(`options: `, options);
             console.groupEnd();
         }
-        this.setNavigation(options);
+
         return this;
     }
 
     /**
-     * setNavigation - set object navigation with specified name
-     * @param {json} items menu options
+     * _setOptions set this and navigation options
+     * @param {json} options navigation option in format [[
+         {icon: "zmdi zmdi-plus", name: "Create"},
+         {icon: "zmdi zmdi-home", name: "Dashboard",uisref:"app.clients.dashboard"},
+     ]]
+     * @return {object} this context
      */
-    setNavigation = (items) => {
-        let name = this.name;
-        this.navigation[name] = {
-            selected: this.store.get("navigation" + name),
-            options: items
-        };
-        if (this.debug === true) {
-            console.group(`${$Service.name}.setNavigation(items)`);
-            console.debug(`items: `, JSON.stringify(items));
-            console.groupEnd();
+    _setOptions = (options) => {
+        if (options && this.name) {
+            this.options = options;
+            this.navigation[this.name].options = options;
         }
-        this.defer.navigation.notify(this.navigation);
-        return false;
+        return this;
     }
 
+    /**
+     * setParentNavigation description
+     * @param {string} parentName it is the name navigation above that is linked with
+     * @param {object} this context
+     */
+    setParentNavigation = (parentName) => {
+        this._setParentName(parentName);
+
+        return this;
+    }
 
     /**
-     * get - return navigation json
-     * @param {string} name - holder name
-     * @return {json}
+     * _setParentName set parent name for navigation
+     * @param {string} parentName parent navigation holder name
+     * @return {object} this context
      */
-    get = (name) => {
-        name = (name) ? name : this.name;
-        if (this.debug === true) {
-            console.group(`${$Service.name}.get(name)`);
-            console.debug(`name: `, `"${name}"`);
+    _setParentName = (parentName) => {
+        if (this.name && parentName) {
+            this.parentName = parentName;
+            this.navigation[this.name].parentName = parentName;
         }
-        if (!name) {
-            throw(`${$Service.name}.get(name) - variable name is missing`)
-        }
-        if (name !== false && this.navigation[name]) {
-            if (this.debug === true) {
-                console.debug(`return: ${JSON.stringify(this.navigation[name])}`);
-                console.groupEnd();
-            }
-            return this.navigation[name];
-        }
-        else {
-            if (this.debug === true) {
-                console.debug(`return: ${JSON.stringify(this.navigation)}`);
-                console.groupEnd();
-            }
-            return this.navigation;
-        }
+        return this;
     }
 
     /**
