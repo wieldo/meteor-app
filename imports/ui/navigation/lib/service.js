@@ -10,17 +10,15 @@ import {
 
 init();
 export var service = {
-    name: "SimpleNavigationService"
-};
-SetModule(moduleName);
-@Service({
-    name: service.name,
+    name: "SimpleNavigationService",
     providers: [
         "$q",
         "store",
         "$state"
     ]
-})
+};
+SetModule(moduleName);
+@Service(service)
 @LocalInjectables
 export class SimpleNavigationService {
     context = this;
@@ -224,12 +222,15 @@ export class SimpleNavigationService {
                                 }, name, options[optionIndex]["callback"]);
                         };
                     }
-                    console.group(`if (this.$state.current.name == options[optionIndex].uisref)`);
-                    console.assert(this.$state.current.name == options[optionIndex].uisref, {
-                        "message": "Not equal",
-                        "this.$state.current.name": this.$state.current.name,
-                        "options[optionIndex].uisref": options[optionIndex].uisref
-                    });
+                    if (this.debug === true) {
+                        console.group(`if (this.$state.current.name == options[optionIndex].uisref)`);
+                        console.assert(this.$state.current.name == options[optionIndex].uisref, {
+                            "message": "Not equal",
+                            "this.$state.current.name": this.$state.current.name,
+                            "options[optionIndex].uisref": options[optionIndex].uisref
+                        });
+
+                    }
                     if (this.$state.current.name == options[optionIndex].uisref) {
                         let selected = angular.merge({
                             optionIndex: optionIndex
@@ -241,7 +242,9 @@ export class SimpleNavigationService {
                         }
                         this.store.set("navigation" + name, selected);
                     }
-                    console.groupEnd();
+                    if (this.debug === true) {
+                        console.groupEnd();
+                    }
                 }
             }
         } else {
