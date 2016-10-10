@@ -1,16 +1,16 @@
 import _ from "underscore";
 // users
-import {Users} from "./../lib/users/collection";
-import {all as usersAll} from "./../lib/users/selectors";
+import {Users} from "./../api/users/collection";
+import {all as usersAll} from "./../api/users/selectors";
 // messages
-import {Messages} from "./../lib/messages/collection";
-import messagesSchema from "./../lib/messages/schema";
-import messagesPublicFields from "./../lib/messages/public-fields";
+import {Messages} from "./../api/messages/collection";
+import messagesSchema from "./../api/messages/schema";
+import messagesPublicFields from "./../api/messages/public-fields";
 // channels
-import {Channels} from "./../lib/channels/collection";
-import {all as channelsAll, one as channelsOne, messages as channelsMessages} from "./../lib/channels/selectors";
+import {Channels} from "./../api/channels/collection";
+import {all as channelsAll, one as channelsOne, messages as channelsMessages} from "./../api/channels/selectors";
 // direct
-import {messages as directMessages} from "./../lib/direct/selectors";
+import {messages as directMessages} from "./../api/direct/selectors";
 
 //
 // Publish all available users

@@ -1,73 +1,107 @@
-import { Users } from './../lib/users/collection';
-import { Messages } from './../lib/messages/collection';
-import { Channels } from './../lib/channels/collection';
-/*
+import { Users } from "./../api/users/collection";
+import { Messages } from "./../api/messages/collection";
+import { Channels } from "./../api/channels/collection";
 Meteor.startup(() => {
-    Users.remove({});
-    Messages.remove({});
-    Channels.remove({});
+    if (Meteor.isServer) {
+        /*
+        Messages.remove({});
+        Channels.remove({});
 
-    const usersCount = 5;
-    const users = [];
-    const messagesCount = 15;
+        let mys = Users.findOne({
+            "emails.address": "mys.sterowiec@gmail.com"
+        });
+        if (!mys) {
+            Accounts.createUser({
+                email: "mys.sterowiec@gmail.com",
+                password: "admin123"
+            });
+            mys = Users.findOne({
+                "emails.address": "mys.sterowiec@gmail.com"
+            });
+        }
 
-    Accounts.createUser({
-        email: 'mys.sterowiec@gmail.com',
-        password: 'admin123'
-    });
+        let diabeu = Users.findOne({
+            "emails.address": "diabeuster@gmail.com"
+        });
 
-    const mys = Users.findOne({
-        'emails.address': 'mys.sterowiec@gmail.com'
-    });
+        if (!diabeu) {
+            Accounts.createUser({
+                email: "diabeuster@gmail.com",
+                password: "admin123"
+            });
+            diabeu = Users.findOne({
+                "emails.address": "diabeuster@gmail.com"
+            });
+        }
 
-    Accounts.createUser({
-        email: 'diabeuster@gmail.com',
-        password: 'admin123'
-    });
+        Channels.insert({
+            name: "General",
+            authorId: mys._id,
+            users: [
+                {
+                    id: diabeu._id,
+                    addedAt: new Date
+                }
+            ]
+        });
 
-    const diabeu = Users.findOne({
-        'emails.address': 'diabeuster@gmail.com'
-    });
+        /*
+        Users.remove({});
 
-    Channels.insert({
-        name: 'General',
-        authorId: mys._id,
-        users: [{
-            id: diabeu._id,
-            addedAt: new Date
-        }]
-    });
+        const usersCount = 5;
+        const users = [];
+        const messagesCount = 15;
 
-    for (let i = 0; i < usersCount; i++) {
-        const fuser = Fake.user({
-            fields: ['name', 'username', 'email']
+        Accounts.createUser({
+            email: "mys.sterowiec@gmail.com",
+            password: "admin123"
+        });
+
+        const mys = Users.findOne({
+            "emails.address": "mys.sterowiec@gmail.com"
         });
 
         Accounts.createUser({
-            email: fuser.email,
-            password: fuser.name
+            email: "diabeuster@gmail.com",
+            password: "admin123"
         });
 
-        users.push(fuser.email);
-
-        for (let j = 0; j < messagesCount; j++) {
-            const text = Fake.sentence(15);
-            const author = Users.findOne({
-                'emails.address': users[i]
+        const diabeu = Users.findOne({
+            "emails.address": "diabeuster@gmail.com"
+        });
+        */
+        /*
+        for (let i = 0; i < usersCount; i++) {
+            const fuser = Fake.user({
+                fields: ["name", "username", "email"]
             });
 
-            Messages.insert({
-                text,
-                author: {
-                    id: author._id,
-                    name: author.emails[0].address
-                },
-                recipient: {
-                    id: mys._id,
-                    name: mys.emails[0].address
-                }
+            Accounts.createUser({
+                email: fuser.email,
+                password: fuser.name
             });
+
+            users.push(fuser.email);
+
+            for (let j = 0; j < messagesCount; j++) {
+                const text = Fake.sentence(15);
+                const author = Users.findOne({
+                    "emails.address": users[i]
+                });
+
+                Messages.insert({
+                    text,
+                    author: {
+                        id: author._id,
+                        name: author.emails[0].address
+                    },
+                    recipient: {
+                        id: mys._id,
+                        name: mys.emails[0].address
+                    }
+                });
+            }
         }
+        */
     }
 });
-*/
