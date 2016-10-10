@@ -1,5 +1,22 @@
 
 .navigation {
-    overflow: auto;
-    border-right: 1px solid #f1f1f1;
+    display: flex;
+
+    width: 250px;
+    height: 100%;
+
+    overflow-x: hidden;
+
+    &:not(.right) {
+        border-right: 2px solid #f1f1f1;
+    }
+    &.right {
+        flex-shrink: 0;
+        border-left: 2px solid #f1f1f1;
+    }
+    box-sizing: border-box;
+
+    > md-content {
+        min-width: 264px;
+    }
 }

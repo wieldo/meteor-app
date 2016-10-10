@@ -1,6 +1,22 @@
 simple-navigation {
+    i {
+        &.zmdi {
+            position: relative;
+            display: flex;
+
+            width: 24px;
+            height: 24px;
+
+            padding: 8px;
+            margin-right: 6px;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.3em;
+        }
+    }
     &#app {
-        width: inherit;
         md-toolbar.md-default-theme:not(.md-menu-toolbar),
         md-toolbar:not(.md-menu-toolbar) {
             background-color: #fff;
@@ -13,6 +29,9 @@ simple-navigation {
                     font-weight: bold;
                 }
             }
+        }
+        md-content.navigation_holder ul li .md-button {
+            margin-left: -8px;
         }
     }
 }

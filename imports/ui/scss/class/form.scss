@@ -1,0 +1,59 @@
+.form {
+    width: 300px;
+    margin-left: 16px;
+    text-align: left;
+
+    md-input-container {
+        display: block;
+    }
+
+    .model {
+        display: block;
+        padding: 0px;
+        text-align: left;
+        pre {
+            width: inherit;
+            > code {
+                white-space: pre-wrap;
+            }
+        }
+    }
+
+    div.validation-messages {
+        padding: 2px;
+    }
+
+    div.messages {
+        font-size: 0.875em;
+        &.success {
+            padding: 16px 16px;
+            margin: 0;
+            color: #3c763d;
+            background: #dff0d8;
+            border: 1px solid #d6e9c6;
+        }
+        &.error {
+            margin: 0;
+            padding: 16px 16px;
+            color: #a94442;
+            background: #f2dede;
+            border: 1px solid #ebccd1;
+        }
+    }
+
+    div.actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        margin-top: 32px;
+
+        .md-button {
+            margin: 0;
+            &[type="submit"] {
+                font-weight: 600;
+            }
+        }
+    }
+}
