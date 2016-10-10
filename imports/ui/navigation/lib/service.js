@@ -24,7 +24,7 @@ SetModule(moduleName);
 @LocalInjectables
 export class SimpleNavigationService {
     context = this;
-    debug = true;
+    debug = false;
     name = null; // navigation name
     navigation = {};
     options = {};
