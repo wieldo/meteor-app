@@ -1,8 +1,8 @@
 import hljs from "highlight.js";
-import $ from "jquery";
+import "jquery";
 export default (element) => {
-    $(document).ready(function() {
-        $(element).each(function(i, block) {
+    jQuery(document).ready(function() {
+        jQuery(element).each(function(i, block) {
             hljs.highlightBlock(block);
         });
     });
