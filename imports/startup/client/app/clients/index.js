@@ -1,9 +1,9 @@
+import "./style";
+import "./../../../../ui/navigation/lib/service";
 import clientsNavigation from "./../../../../navigation/api/clients";
 import appNavigationCollection from "./../../../../navigation/api/app";
 import templateUrl from "./../view/signed-in.html";
-import "./style";
 import {ModuleName} from "./../../";
-import "./../../../../ui/navigation/lib/service";
 import {
     SetModule,
     init,
@@ -13,9 +13,19 @@ import {
     MeteorReactive
 } from "angular2-now";
 
-init();
-SetModule(ModuleName);
-@State({
+export var component = {
+    selector: "clients",
+    templateUrl: templateUrl,
+    providers: [
+        "$q",
+        "$state",
+        "SidenavService",
+        "$timeout",
+        "SimpleNavigationService",
+        "TodoFormService"
+    ]
+};
+export var state = {
     name: "app.clients",
     abstract: true,
     resolve: {
@@ -27,26 +37,19 @@ SetModule(ModuleName);
             }
         }
     }
-})
-@Component({
-    selector: "clients",
-    templateUrl: templateUrl,
-    providers: [
-        "$q",
-        "$state",
-        "SidenavService",
-        "$timeout",
-        "SimpleNavigationService",
-        "TodoFormService"
-    ]
-})
+};
+
+init();
+SetModule(ModuleName);
+@State(state)
+@Component(component)
 @LocalInjectables
 @MeteorReactive
 export class AppClientsComponent {
     type = "clients";
+    debug = false;
     constructor(){
         this.sidenav = this.SidenavService.Init();
-
         // set clientsNavigationCollection
         let TodoFormService = this.TodoFormService;
         this.navigationWorkspaces = clientsNavigation({
@@ -54,7 +57,9 @@ export class AppClientsComponent {
         });
         this.navigationApp = appNavigationCollection;
         this.SimpleNavigationService.getSelectedPromise().then(null, null, (notify) => {
-            console.log(notify);
+            if (this.debug === true) {
+                console.log(`notify`, notify);
+            }
             this.simpleNavigation = notify;
         });
         this._helpers();
@@ -71,6 +76,9 @@ export class AppClientsComponent {
 
     logout = () => {
         Meteor.logout((result) => {
+            if (this.debug === true) {
+                console.log(`result`, result);
+            }
             this.$state.go("app.sign.in");
         });
     }
