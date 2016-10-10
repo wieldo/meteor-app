@@ -16,9 +16,11 @@ md-content {
                 padding: 0;
                 margin: 0;
 
+                font-weight: 500;
+
                 &.active {
                     .md-button {
-                        font-weight: bold;
+                        color: #6B63AC;
                     }
                 }
 

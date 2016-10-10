@@ -8,16 +8,16 @@
         <!-- MENU OPTIONS -->
         <ul>
             <li
-                ng-repeat ="option in vm.navigation.options"
-                ng-init="option_index = $index"
-                ng-class  ="[{active: (vm.navigation.selected.options_index == option_index)}]"
-                ng-if="option.hidden === false"
+                ng-repeat   = "option in vm.navigation.options"
+                ng-init     = "optionIndex = $index"
+                ng-class    = "[{active: (vm.navigation.selected.optionIndex == optionIndex)}]"
+                ng-if       = "option.hidden === false"
             >
                 <md-button
-                    ui-sref="{{option.uisref}}"
-                    ng-click="option.select()"
-                    aria-label="{{vm.navigation.options[option_index].ariaLabel}}"
-                    ng-disabled="vm.navigation.options[option_index].ngDisabled"
+                    ui-sref     = "{{option.uisref}}"
+                    ng-click    = "option.ngclick ? option.ngclick($event) : option.select()"
+                    aria-label  = "{{vm.navigation.options[option_index].ariaLabel}}"
+                    ng-disabled = "vm.navigation.options[option_index].ngDisabled"
                 >
                     <i ng-if='option.icon' class='{{option.icon}}'></i>
                     {{option.name}}
@@ -25,7 +25,11 @@
             </li>
         </ul>
     </div>
-    <div ng-if="vm.navigation.options[0].items" ng-repeat ="option in vm.navigation.options" ng-init="option_index = $index">
+    <div
+        ng-if       = "vm.navigation.options[0].items"
+        ng-repeat   = "option in vm.navigation.options"
+        ng-init     = "optionIndex = $index"
+    >
         <!-- OPTIONS HEADER -->
         <md-subheader>
             {{option.header}}
@@ -33,19 +37,19 @@
         <!-- MENU OPTIONS -->
         <ul>
             <li
-                ng-repeat ="item in option.items"
-                ng-init="item_index = $index"
-                ng-class  ="[{active: (vm.navigation.selected.options_index == option_index && vm.navigation.selected.items_index == item_index)}]"
-                ng-if="item.hidden !== true"
+                ng-repeat   = "item in option.items"
+                ng-init     = "itemIndex = $index"
+                ng-class    = "[{active: (vm.navigation.selected.optionIndex == optionIndex && vm.navigation.selected.itemIndex == itemIndex)}]"
+                ng-if       = "item.hidden !== true"
             >
                 <md-button
-                    ui-sref="{{vm.navigation.options[option_index].items[item_index].uisref}}"
-                    ng-click="vm.navigation.options[option_index].items[item_index].select()"
-                    aria-label="{{item.ariaLabel}}"
-                    ng-disabled="vm.navigation.options[option_index].items[item_index].ngDisabled"
+                    ui-sref     = "{{vm.navigation.options[optionIndex].items[itemIndex].uisref}}"
+                    ng-click    = "item.ngclick ? item.ngclick() : item.select()"
+                    aria-label  = "{{item.ariaLabel}}"
+                    ng-disabled = "vm.navigation.options[optionIndex].items[itemIndex].ngDisabled"
                 >
-                    <i ng-if='item.icon' class='{{vm.navigation.options[option_index].items[item_index].icon}}'></i>
-                    {{vm.navigation.options[option_index].items[item_index].name}}
+                    <i ng-if='item.icon' class='{{vm.navigation.options[optionIndex].items[itemIndex].icon}}'></i>
+                    {{vm.navigation.options[optionIndex].items[itemIndex].name}}
                 </md-button>
             </li>
         </ul>
