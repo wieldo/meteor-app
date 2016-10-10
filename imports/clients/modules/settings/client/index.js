@@ -11,7 +11,7 @@ SetModule(moduleName);
         user: ($stateParams, $state, $timeout) => {
             if (!Meteor.userId()) {
                 $timeout(function() {
-                    $state.go('app.signin');
+                    $state.go("app.sign.in");
                 },0);
             }
             else
