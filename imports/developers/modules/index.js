@@ -10,7 +10,7 @@ export const moduleName = "Developers";
 import {init,SetModule} from "angular2-now";
 init();
 SetModule(moduleName,[
-    "crypto",
+    "Crypto",
     "DevelopersDashboard",
-    "ModuleForms"
+    "FormsModule"
 ]);
