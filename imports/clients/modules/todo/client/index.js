@@ -1,12 +1,8 @@
 import "./style";
-import "./../form/client/";
 import templateUrl from "./view";
-import TodoSchema from "./../api/schemas";
-import TodoCollection from "./../api/collection";
-import {ModuleName} from "./../lib/module";
+import {moduleName} from "./../lib/module";
 import {init,SetModule,Component,State,LocalInjectables,MeteorReactive} from "angular2-now";
-
-SetModule(ModuleName);
+SetModule(moduleName);
 init();
 @State({
     name: "app.clients.todo",
@@ -14,48 +10,47 @@ init();
 })
 @Component({
     selector: "meteor-todo",
+    templateUrl: templateUrl,
     providers: [
         "$scope",
-        "$timeout"
-    ],
-    templateUrl: templateUrl
+        "$timeout",
+        "TodoFormService"
+    ]
 })
 @MeteorReactive
 @LocalInjectables
 export class TodoComponent {
+
+    debug = false;
+
     constructor(){
         this._helpers();
         this._subscribes();
-        TodoCollection.attachSchema(TodoSchema);
     }
 
+    createDialog = (ev) => {
+        this.TodoFormService.mdDialog(ev);
+    }
+
+    /**
+     * Subscribes
+     * @return
+     */
     _subscribes = () => {
         if (Meteor.isClient) {
-            this.subscribe("todo");
+            this.subscribe("users.list", () => [{}]);
         }
     }
 
+
     _helpers = () => {
         this.$scope.helpers({
-            todo_collection: () => {
-                console.log(TodoCollection.find({}));
-                return TodoCollection.find({}).fetch().reverse();
+            createdBy: () => {
+                return {};
+            },
+            find: () => {
+                return {};
             }
         });
     }
-
-    SetCompleted = (update) => {
-        TodoCollection.update(update._id, {
-            $set: {'completed': update.completed}
-        });
-    }
-
-    Remove = (_id) => {
-        TodoCollection.remove(_id);
-    }
-
-    Edit = (_id) => {
-        this.model = TodoCollection.find({'_id': _id}).fetch()[0];
-    }
-
 }
