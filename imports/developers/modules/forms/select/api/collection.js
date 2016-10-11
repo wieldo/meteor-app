@@ -2,6 +2,7 @@ export default [
     {
         title: "Default, theme and ariaLabel",
         description: "Select with typical options",
+        form: "first",
         js: JSON.stringify([
             {
                 type: "select",
@@ -111,6 +112,7 @@ export default [
     },
     {
         title: "Placeholder, label and both",
+        form: "second",
         js: JSON.stringify([
             {
                 type: "select",
@@ -669,6 +671,7 @@ export default [
     },
     {
         title: "md-on-open, md-on-close",
+        form: "md-on",
         js: JSON.stringify([
             {
                 type: "select",

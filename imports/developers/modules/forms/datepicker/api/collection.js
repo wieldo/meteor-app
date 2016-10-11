@@ -1,9 +1,11 @@
 import date from "./date";
+import jsfy from "jsfy";
+import replacer from "./../../client/helpers/replacer";
 export default [
     {
         title: "Default, theme and required",
         description: "Just typical datepicker with theme and with required option",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                 key: "date",
@@ -47,7 +49,7 @@ export default [
                     description: "Datepicker has ngRequired attribute to true"
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",
@@ -97,7 +99,7 @@ export default [
     {
         title: "className, ngClass, ngClick, ngDisabled, disabled",
         description: "Datepicker with placeholder",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                 key: "dateclassname",
@@ -114,7 +116,7 @@ export default [
                     description: "Datepicker with ngClass function return 'ngClass'",
                     mdPlaceholder: "ngClass",
                     ngClass: (value, options, scope) => {
-                        return 'ngClass';
+                        return "ngClass";
                     }
                 }
             },
@@ -125,7 +127,7 @@ export default [
                     description: "Datepicker with ngClick function with alert",
                     mdPlaceholder: "ngClick",
                     ngClick: (value, options, scope) => {
-                        alert('ngClick');
+                        alert("ngClick");
                     }
                 }
             },
@@ -147,7 +149,7 @@ export default [
                     disabled: true
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",
@@ -203,7 +205,7 @@ export default [
     {
         title: "Hide expression, ngChange",
         description: "Datepicker that reveal after model",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                  key: "datefill",
@@ -234,7 +236,7 @@ export default [
                 },
                 hideExpression: "!model.datefill"
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",
@@ -271,7 +273,7 @@ export default [
     {
         title: "Placeholder and Label",
         description: "Datepicker with placeholder",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                 key: "dateplaceholder",
@@ -296,7 +298,7 @@ export default [
                     label: "Label"
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",
@@ -327,7 +329,7 @@ export default [
     {
         title: "Min, Max and both",
         description: "With minimum, maximum and both date",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                 key: "datemin",
@@ -356,7 +358,7 @@ export default [
                     mdMaxDate: date.maxDate
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",
@@ -391,7 +393,7 @@ export default [
     {
         title: "mdDateFilter: Weekends",
         description: "Only weekends within given range are selectable",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "datepicker",
                 key: "datefilter",
@@ -409,7 +411,7 @@ export default [
                     }
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "datepicker",

@@ -11,8 +11,8 @@ export default [
                 templateOptions: {
                     description: "Default radio",
                     options: [
-                        {label: "First", ngValue: "First value"},
-                        {label: "Second", ngValue: "Second value"}
+                        {name: "First", ngValue: "First value"},
+                        {name: "Second", ngValue: "Second value"}
                     ]
                 }
             },
@@ -23,8 +23,8 @@ export default [
                     theme: "meteorApp",
                     description: "Radio with theme changed to 'meteorApp'",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -35,8 +35,8 @@ export default [
                     mdTheme: "meteorApp",
                     description: "Radio with mdTheme changed to 'meteorApp'",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -47,8 +47,8 @@ export default [
                     label: "Radio label",
                     description: "Radio with label",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -58,9 +58,9 @@ export default [
                 templateOptions: {
                     description: "Radio is disabled",
                     options: [
-                        {label: "First", value: "First value", disabled: false},
-                        {label: "Second", value: "Second value", disabled: true},
-                        {label: "Third", value: "Third value", disabled: true}
+                        {name: "First", value: "First value", disabled: false},
+                        {name: "Second", value: "Second value", disabled: true},
+                        {name: "Third", value: "Third value", disabled: true}
                     ]
                 },
                 expressionProperties: {
@@ -86,8 +86,8 @@ export default [
                 templateOptions: {
                     description: "Default radio",
                     options: [
-                        {label: "First", ngValue: "First value"},
-                        {label: "Second", ngValue: "Second value"}
+                        {name: "First", ngValue: "First value"},
+                        {name: "Second", ngValue: "Second value"}
                     ]
                 }
             },
@@ -98,8 +98,8 @@ export default [
                     theme: "meteorApp",
                     description: "Radio with theme changed to 'meteorApp'",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -110,8 +110,8 @@ export default [
                     mdTheme: "meteorApp",
                     description: "Radio with mdTheme changed to 'meteorApp'",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -122,8 +122,8 @@ export default [
                     label: "Radio label",
                     description: "Radio with label",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second value"}
                     ]
                 }
             },
@@ -133,9 +133,9 @@ export default [
                 templateOptions: {
                     description: "Radio is disabled",
                     options: [
-                        {label: "First", value: "First value", disabled: false},
-                        {label: "Second", value: "Second value", disabled: true},
-                        {label: "Third", value: "Third value", disabled: true}
+                        {name: "First", value: "First value", disabled: false},
+                        {name: "Second", value: "Second value", disabled: true},
+                        {name: "Third", value: "Third value", disabled: true}
                     ]
                 },
                 expressionProperties: {
@@ -166,9 +166,9 @@ export default [
                     className: "md-primary",
                     description: "className = 'md-primary' defined",
                     options: [
-                        {label: "First", value: "First ng-value"},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Third", value: "Third value"}
+                        {name: "First", value: "First ng-value"},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -184,9 +184,9 @@ export default [
                     },
                     description: "Radio options with ng-class",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Click to change label", value: "Second value"},
-                        {label: "Third", value: "Third ng-value"}
+                        {name: "First", value: "First value"},
+                        {name: "Click to change label", value: "Second value"},
+                        {name: "Third", value: "Third ng-value"}
                     ]
                 }
             },
@@ -200,9 +200,9 @@ export default [
                             alert("You clicked on me!");
                     },
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Click on me to alert !", value: "Third ng-value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Click on me to alert !", value: "Third ng-value"}
                     ]
                 }
             },
@@ -214,15 +214,15 @@ export default [
                     ngClick: (value, options, scope) => {
                         if (options.value() == "Third ng-value") {
                             scope.options.templateOptions.options[0] = {
-                                label: "Is not disabled",
+                                name: "Is not disabled",
                                 disabled: false
                             };
                         }
                     },
                     options: [
-                        {label: "First", value: "First value", disabled: true},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Third", value: "Third ng-value"}
+                        {name: "First", value: "First value", disabled: true},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Third", value: "Third ng-value"}
                     ]
                 }
             }
@@ -235,9 +235,9 @@ export default [
                     className: "md-primary",
                     description: "className = 'md-primary' defined",
                     options: [
-                        {label: "First", value: "First ng-value"},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Third", value: "Third value"}
+                        {name: "First", value: "First ng-value"},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -253,9 +253,9 @@ export default [
                     },
                     description: "Radio options with ng-class",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Click to change label", value: "Second value"},
-                        {label: "Third", value: "Third ng-value"}
+                        {name: "First", value: "First value"},
+                        {name: "Click to change label", value: "Second value"},
+                        {name: "Third", value: "Third ng-value"}
                     ]
                 }
             },
@@ -269,9 +269,9 @@ export default [
                             alert("You clicked on me!");
                     },
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Click on me to alert !", value: "Third ng-value"}
+                        {name: "First", value: "First value"},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Click on me to alert !", value: "Third ng-value"}
                     ]
                 }
             },
@@ -283,15 +283,15 @@ export default [
                     ngClick: (value, options, scope) => {
                         if (options.value() == "Third ng-value") {
                             scope.options.templateOptions.options[0] = {
-                                label: "Is not disabled",
+                                name: "Is not disabled",
                                 disabled: false
                             };
                         }
                     },
                     options: [
-                        {label: "First", value: "First value", disabled: true},
-                        {label: "Second", value: "Second ng-value"},
-                        {label: "Third", value: "Third ng-value"}
+                        {name: "First", value: "First value", disabled: true},
+                        {name: "Second", value: "Second ng-value"},
+                        {name: "Third", value: "Third ng-value"}
                     ]
                 }
             }
@@ -309,9 +309,9 @@ export default [
                 templateOptions: {
                     description: "Radio option with options[arialabel] defined",
                     options: [
-                        {label: "ariaLabel", value: "ariaLabel value", ariaLabel: "My Aria Label"},
-                        {label: "Second", value: "Second value"},
-                        {label: "Third", value: "Third value"}
+                        {name: "ariaLabel", value: "ariaLabel value", ariaLabel: "My Aria Label"},
+                        {name: "Second", value: "Second value"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -322,9 +322,9 @@ export default [
                     label: "Label",
                     description: "Radio option with ngValue defined",
                     options: [
-                        {label: "value = '15x'", value: "15x"},
-                        {label: "value = '153'", value: "153"},
-                        {label: "Third", value: "Third value"}
+                        {name: "value = '15x'", value: "15x"},
+                        {name: "value = '153'", value: "153"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -334,9 +334,9 @@ export default [
                 templateOptions: {
                     description: "Radio options with second option[className]  md-primary",
                     options: [
-                        {label: "First", ngValue: "First value"},
-                        {label: "class='md-primary'", ngValue: "Second value", className: "md-primary"},
-                        {label: "Third", ngValue: "Third test"}
+                        {name: "First", ngValue: "First value"},
+                        {name: "class='md-primary'", ngValue: "Second value", className: "md-primary"},
+                        {name: "Third", ngValue: "Third test"}
                     ]
                 }
             },
@@ -346,10 +346,10 @@ export default [
                 templateOptions: {
                     description: "Radio options with second option disabled",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "ngDisabled", value: "Second value", ngDisabled: true},
-                        {label: "disabled", value: "Third value", disabled: true},
-                        {label: "Fourth", value: "Fourth value"}
+                        {name: "First", value: "First value"},
+                        {name: "ngDisabled", value: "Second value", ngDisabled: true},
+                        {name: "disabled", value: "Third value", disabled: true},
+                        {name: "Fourth", value: "Fourth value"}
                     ]
                 }
             }
@@ -361,9 +361,9 @@ export default [
                 templateOptions: {
                     description: "Radio option with options[arialabel] defined",
                     options: [
-                        {label: "ariaLabel", value: "ariaLabel value", ariaLabel: "My Aria Label"},
-                        {label: "Second", value: "Second value"},
-                        {label: "Third", value: "Third value"}
+                        {name: "ariaLabel", value: "ariaLabel value", ariaLabel: "My Aria Label"},
+                        {name: "Second", value: "Second value"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -374,9 +374,9 @@ export default [
                     label: "Label",
                     description: "Radio option with ngValue defined",
                     options: [
-                        {label: "value = '15x'", value: "15x"},
-                        {label: "value = '153'", value: "153"},
-                        {label: "Third", value: "Third value"}
+                        {name: "value = '15x'", value: "15x"},
+                        {name: "value = '153'", value: "153"},
+                        {name: "Third", value: "Third value"}
                     ]
                 }
             },
@@ -386,9 +386,9 @@ export default [
                 templateOptions: {
                     description: "Radio options with second option[className]  md-primary",
                     options: [
-                        {label: "First", ngValue: "First value"},
-                        {label: "class='md-primary'", ngValue: "Second value", className: "md-primary"},
-                        {label: "Third", ngValue: "Third test"}
+                        {name: "First", ngValue: "First value"},
+                        {name: "class='md-primary'", ngValue: "Second value", className: "md-primary"},
+                        {name: "Third", ngValue: "Third test"}
                     ]
                 }
             },
@@ -398,10 +398,10 @@ export default [
                 templateOptions: {
                     description: "Radio options with second option disabled",
                     options: [
-                        {label: "First", value: "First value"},
-                        {label: "ngDisabled", value: "Second value", ngDisabled: true},
-                        {label: "disabled", value: "Third value", disabled: true},
-                        {label: "Fourth", value: "Fourth value"}
+                        {name: "First", value: "First value"},
+                        {name: "ngDisabled", value: "Second value", ngDisabled: true},
+                        {name: "disabled", value: "Third value", disabled: true},
+                        {name: "Fourth", value: "Fourth value"}
                     ]
                 }
             }

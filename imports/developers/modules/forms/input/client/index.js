@@ -1,6 +1,6 @@
 import templateUrl from "./view";
 import {ModuleName} from "./../../lib/module";
-import InputsCollection from "./../lib/api/collection";
+import InputsCollection from "./../api/collection";
 import submit from "./../../client/helpers/on-submit";
 import {init, SetModule, State, Component, LocalInjectables} from "angular2-now";
 

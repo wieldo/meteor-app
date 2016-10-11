@@ -1,17 +1,17 @@
 import templateUrl from "./view";
 import {ModuleName} from "./../../lib/module";
-import elements from "./../lib/api/collection";
+import elements from "./../api/collection";
 import submit from "./../../client/helpers/on-submit";
-import {init,SetModule,State,Component,LocalInjectables} from 'angular2-now';
+import {init,SetModule,State,Component,LocalInjectables} from "angular2-now";
 
 init();
 SetModule(ModuleName);
 @State({
-    name: 'app.developers.forms.datepicker',
-    url: '/datepicker'
+    name: "app.developers.forms.datepicker",
+    url: "/datepicker"
 })
 @Component({
-    selector: 'meteor-forms-datepicker',
+    selector: "meteor-forms-datepicker",
     templateUrl: templateUrl
 })
 @LocalInjectables

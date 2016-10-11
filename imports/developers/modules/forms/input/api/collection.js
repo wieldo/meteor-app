@@ -1,6 +1,6 @@
-import myOwnFunction from "./../../client/helpers/my-own-function";
-import customTemplate from "./../../client/custom-template";
-import customTemplateWrapper from "./../../client/wrapper/wrapper";
+import myOwnFunction from "./../client/helpers/my-own-function";
+import customTemplate from "./../client/custom-template";
+import customTemplateWrapper from "./../client/wrapper/wrapper";
 export default [
     {
         title: "Label and placeholder with description",
@@ -140,7 +140,7 @@ export default [
             },
             {
                 type: "input",
-                key: "required",
+                key: "ngRequired",
                 templateOptions: {
                     label: "ngRequired",
                     description: "This is required input with label",
@@ -199,7 +199,7 @@ export default [
             },
             {
                 type: "input",
-                key: "required",
+                key: "ngRequired",
                 templateOptions: {
                     label: "ngRequired",
                     description: "This is required input with label",
