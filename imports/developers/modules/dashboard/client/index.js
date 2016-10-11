@@ -20,7 +20,7 @@ export var component = {
 init();
 SetModule(moduleName);
 @State(state)
-@Component()
+@Component(component)
 export class DevelopersDashboardComponent {
     constructor() {
     }
