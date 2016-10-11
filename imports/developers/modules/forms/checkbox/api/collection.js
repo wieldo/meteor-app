@@ -1,12 +1,14 @@
 import toggleAll from "./../client/helpers/toggle-all";
 import isChecked from "./../client/helpers/is-checked";
+import jsfy from "jsfy";
+import replacer from "./../../client/helpers/replacer";
 export default [
     {
         title: "Theme and aria-label",
         description: "Checkbox with different theme and ariaLabel",
         form: "form_1",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.theme",
@@ -31,7 +33,7 @@ export default [
                     description: "Checkbox with aria-label defined"
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n"),
         field: [
             {
                 className: "display-flex",
@@ -70,7 +72,7 @@ export default [
         description: "Checkbox with name, label or both",
         form: "form_label",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.label",
@@ -96,7 +98,7 @@ export default [
                     description: "Checkbox with name and label defined"
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n"),
         field: [
             {
                 type: "checkbox",
@@ -132,7 +134,7 @@ export default [
         description: "Checkbox with defined true value",
         form: "form_2",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.ngtruevalue",
@@ -159,7 +161,7 @@ export default [
                     ngFalseValue: "'false title'"
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n"),
         field: [
             {
                 type: "checkbox",
@@ -194,7 +196,7 @@ export default [
         description: "Checkbox without ink on click",
         form: "form_3",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.mdnoink",
@@ -203,7 +205,7 @@ export default [
                     mdNoInk: true
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n"),
         field: [
             {
                 type: "checkbox",
@@ -218,7 +220,7 @@ export default [
     {
         title: "ngChange",
         description: "Checkbox that set name to 'You changed me' on change",
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "input",
                 key: "textclass",
@@ -247,7 +249,7 @@ export default [
                     "templateOptions.name": "to.className.indexOf('md-primary') > -1 ? 'Yes, its work, i am on md-primary' : 'Write md-primary to add class to me'"
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n"),
         field: [
             {
                 type: "input",
@@ -284,7 +286,7 @@ export default [
         description: "Checkbox with primary material design class",
         form: "form_4",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.classname",
@@ -308,15 +310,17 @@ export default [
                     name: "This checkbox is checked, depends on checkbox.depends",
                     ngChecked: (value, options, scope) => {
                         if (scope.model.mdcheckbox) {
-                            if (scope.model.mdcheckbox.depends)
+                            if (scope.model.mdcheckbox.depends) {
                                 return scope.model.mdcheckbox.depends;
-                            else
+                            }
+                            else {
                                 return false;
+                            }
                         }
                     }
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "checkbox",
@@ -341,10 +345,12 @@ export default [
                     name: "This checkbox is checked, depends on checkbox.depends",
                     ngChecked: (value, options, scope) => {
                         if (scope.model.mdcheckbox) {
-                            if (scope.model.mdcheckbox.depends)
+                            if (scope.model.mdcheckbox.depends) {
                                 return scope.model.mdcheckbox.depends;
-                            else
+                            }
+                            else {
                                 return false;
+                            }
                         }
                     }
                 }
@@ -356,7 +362,7 @@ export default [
         description: "Checkboxes with disabled attribute",
         form: "form_5",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.disabled",
@@ -403,8 +409,8 @@ export default [
                     "templateOptions.ngDisabled": "!model.text"
                 }
             }
-        ],undefined, 4),
-        field: [
+        ], 4, "\n"),
+            field: [
             {
                 type: "checkbox",
                 key: "mdcheckbox.disabled",
@@ -458,7 +464,7 @@ export default [
         description: "Checkbox that class depends",
         form: "form_ngclassexpression",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "input",
                 key: "textngclass",
@@ -473,22 +479,23 @@ export default [
                 key: "mdcheckbox.ngclass",
                 templateOptions: {
                     name: "Add md-primary class to me",
-                    ngClass: (value, options, scope) => {
-                        return scope.model.textngclass;
+                    ngClass: (value, options, scope) = > {
+                    return scope.model.textngclass;
                     }
                 }
             },
             {
-                type: "checkbox",
-                key: "mdcheckbox.ngclick",
+                "checkbox",
+                    key: "mdcheckbox.ngclick",
                 templateOptions: {
-                    name: "Click to see what this checkbox think about it",
-                    ngClick: (value, options, scope) => {
+                    "Click to see what this checkbox think about it",
+                        ngClick: (value, options, scope) => {
                         alert("Please, do it again, i love it.");
+                        return;
                     }
-                }
-            }
-        ],undefined, 4),
+            };;
+            };;
+    ],4 , "\n").replace(replacer, ""),
         field: [
             {
                 type: "input",
@@ -510,23 +517,25 @@ export default [
                 }
             },
             {
-                type: "checkbox",
-                key: "mdcheckbox.ngclick",
+                "checkbox",
+                    key: "mdcheckbox.ngclick",
                 templateOptions: {
-                    name: "Click to see what this checkbox think about it",
-                    ngClick: (value, options, scope) => {
+                    "Click to see what this checkbox think about it",
+                        ngClick: (value, options, scope) => {
                         alert("Please, do it again, i love it.");
+                        return;
                     }
-                }
-            }
-        ]
-    },
-    {
-        title: "name expression",
-        description: "Change checkbox name by input",
+            };;
+            };;
+    ]
+    };;;;;
+,
+{
+        "name expression",
+            description: "Change checkbox name by input",
         form: "form_name_expression",
         model: {},
-        js: JSON.stringify([
+        jsfy([
             {
                 type: "input",
                 key: "textname",
@@ -546,8 +555,8 @@ export default [
                     "templateOptions.name": "model.textname"
                 }
             }
-        ],undefined, 4),
-        field: [
+        ], 4, "\n"),
+            field: [
             {
                 type: "input",
                 key: "textname",
@@ -568,58 +577,64 @@ export default [
                 }
             }
         ]
-    },
-    {
-        title: "Groups",
-        description: "Checkboxes in groups",
+    };;;;
+,
+{
+        "Groups",
+            description: "Checkboxes in groups",
         form: "form_groups",
         model: {},
-        js: JSON.stringify([
+        jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.selectgroup",
                 templateOptions: {
                     name: "Select all below",
-                    ngChecked: (value, options, scope) => {
-                        return isChecked(scope);
+                    ngChecked: (value, options, scope) = > {
+                    return isChecked(scope);
                     },
-                    ngClick: (value, options, scope) => {
+                    (value, options, scope) => {
                         toggleAll(scope);
                     }
                 },
-                expressionProperties: {
-                    "templateOptions.name": "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
+                {
+                    "templateOptions.name";
+                :
+                    "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
                 }
-            },
+    },
             {
-                type: "checkbox",
-                key: "mdcheckbox.group.first",
+                "checkbox",
+                    key: "mdcheckbox.group.first",
                 templateOptions: {
-                    name: "checkbox - first"
+                    "checkbox - first"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.second",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.second",
                 templateOptions: {
-                    name: "checkbox - second"
+                    "checkbox - second"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.third",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.third",
                 templateOptions: {
-                    name: "checkbox - third"
+                    "checkbox - third"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.fourth",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.fourth",
                 templateOptions: {
-                    name: "checkbox - fourth"
+                    "checkbox - fourth"
                 }
-            }
-        ],undefined, 4),
+            };;
+    ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "checkbox",
@@ -629,42 +644,47 @@ export default [
                     ngChecked: (value, options, scope) => {
                         return isChecked(scope);
                     },
-                    ngClick: (value, options, scope) => {
+                    (value, options, scope) => {
                         toggleAll(scope);
                     }
                 },
-                expressionProperties: {
-                    "templateOptions.name": "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
+                {
+                    "templateOptions.name";
+                :
+                    "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
                 }
-            },
+    },
             {
-                type: "checkbox",
-                key: "mdcheckbox.group.first",
+                "checkbox",
+                    key: "mdcheckbox.group.first",
                 templateOptions: {
-                    name: "checkbox - first"
+                    "checkbox - first"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.second",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.second",
                 templateOptions: {
-                    name: "checkbox - second"
+                    "checkbox - second"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.third",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.third",
                 templateOptions: {
-                    name: "checkbox - third"
+                    "checkbox - third"
                 }
-            },
-            {
-                type: "checkbox",
-                key: "mdcheckbox.group.fourth",
+            };;
+    ,
+        {
+                "checkbox",
+                    key: "mdcheckbox.group.fourth",
                 templateOptions: {
-                    name: "checkbox - fourth"
+                    "checkbox - fourth"
                 }
-            }
-        ]
-    }
-];
+            };;
+    ]
+    };;;;;;;
+]
