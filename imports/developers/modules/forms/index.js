@@ -1,2 +1,2 @@
-import "./lib/module";
-import "./client/";
+import components from "./lib";
+export default components;
