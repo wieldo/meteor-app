@@ -53,12 +53,13 @@
     "wieldoformlymaterial": "^0.1.5"
   },
   "keywords": [
-    "meteor-app",
-    "meteor",
-    "app",
-    "wieldo",
-    "wieldo-formly-material",
     "angularjs",
-    "example"
+    "app",
+    "crypto-js",
+    "example",
+    "meteor",
+    "meteor-app",
+    "wieldo",
+    "wieldo-formly-material"
   ]
 }
