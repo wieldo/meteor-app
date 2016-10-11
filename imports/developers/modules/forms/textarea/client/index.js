@@ -15,7 +15,7 @@ SetModule(ModuleName);
     templateUrl: templateUrl
 })
 @LocalInjectables
-export class MeteorFormsTextareaComponent {
+export class FormsTextareaComponent {
     constructor(){
         this.elements = elements;
     }
