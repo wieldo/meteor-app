@@ -2,7 +2,7 @@ import crypto from "./crypto";
 export const moduleName = "Crypto";
 import {init, SetModule, Directive, Filter, LocalInjectables, options} from "angular2-now";
 options({controllerAs: "vm"});
-var directive = {
+export var directive = {
     name: "EncryptedModelDirective",
     selector: "encrypted-model",
     bind: {
