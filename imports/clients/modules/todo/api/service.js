@@ -11,17 +11,15 @@ import {
     MeteorReactive
 } from "angular2-now";
 export var service = {
-    name: "TodoCollectionService"
-};
-init();
-SetModule(moduleName);
-@Service({
-    name: service.name,
+    name: "TodoCollectionService",
     providers: [
         "TodoFormService"
     ]
-});
-@MeteorReactive;
+};
+init();
+SetModule(moduleName);
+@Service(service)
+@MeteorReactive
 export class TodoCollectionService {
 
     // Fetched collection
@@ -47,7 +45,7 @@ export class TodoCollectionService {
      * @return
      */
     setCompleted = (update) => {
-        if (this.debug; === true) {
+        if (this.debug === true) {
             console.group(`${service.name}.setCompleted(update)`);
             console.log(`@param update`, update);
         }
@@ -142,10 +140,18 @@ export class TodoCollectionService {
         return todoItem;
     }
 
+    /**
+     * [sort description]
+     * @return {[type]} [description]
+     */
     sort = () => {
 
     }
 
+    /**
+     * [limit description]
+     * @return {[type]} [description]
+     */
     limit = () => {
 
     }
