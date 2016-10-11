@@ -1,8 +1,8 @@
 import {ModuleName} from "./../../../lib/module";
 import templateUrl from "./view";
-import elements from "./../lib/api/collection";
+import elements from "./../api/fields";
 //import submit from "./../../../../client/helpers/on-submit";
-import "./helpers/birthday";
+import "./components/birthday";
 import {init, SetModule, State, Component, View, LocalInjectables} from "angular2-now";
 init();
 

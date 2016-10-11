@@ -1,4 +1,4 @@
-import {ModuleName} from "./../../../../lib/module";
+import {ModuleName} from "./../../../../../lib/module";
 import templateUrl from "./view";
 import "./style";
 import {init, SetModule, Component, LocalInjectables} from "angular2-now";
@@ -7,29 +7,35 @@ SetModule(ModuleName);
 @Component({
     selector: "select-birthday",
     templateUrl: templateUrl,
+    transclude: true,
     bind: {
         model: "="
     }
 })
 @LocalInjectables
 export class SelectBirthdayComponent {
-    model = {};
     constructor() {
         this.birthday = [
             {
                 type: "select-day",
                 key: "select.birthday.day",
-                templateOptions: {}
+                templateOptions: {
+                    required: true
+                }
             },
             {
                 type: "select-month",
                 key: "select.birthday.month",
-                templateOptions: {}
+                templateOptions: {
+                    required: true
+                }
             },
             {
                 type: "select-year",
                 key: "select.birthday.year",
-                templateOptions: {}
+                templateOptions: {
+                    required: true
+                }
             }
         ];
     }
