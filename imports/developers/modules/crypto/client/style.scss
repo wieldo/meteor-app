@@ -1,0 +1,8 @@
+crypto {
+    display: flex;
+    width: 100%;
+
+    > md-content {
+        width: inherit;
+    }
+}
