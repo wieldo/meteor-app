@@ -17,7 +17,7 @@ SetModule(ModuleName);
     templateUrl: templateUrl
 })
 @LocalInjectables
-export class MeteorFormsSelectComponent {
+export class FormsSelectComponent {
     constructor(){
         this.elements = elements;
     }

@@ -15,7 +15,7 @@ SetModule(ModuleName);
     templateUrl: templateUrl
 })
 @LocalInjectables
-export class MeteorFormsSwitchComponent {
+export class FormsSwitchComponent {
     constructor(){
         this.elements = elements;
     }

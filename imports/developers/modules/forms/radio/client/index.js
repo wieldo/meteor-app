@@ -15,7 +15,7 @@ SetModule(ModuleName);
     templateUrl: templateUrl
 })
 @LocalInjectables
-export class MeteorFormsRadioComponent {
+export class FormsRadioComponent {
     model = {};
     constructor(){
         this.elements = elements;

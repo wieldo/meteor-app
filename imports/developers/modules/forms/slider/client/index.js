@@ -15,7 +15,7 @@ SetModule(ModuleName);
     templateUrl: templateUrl
 })
 @LocalInjectables
-export class MeteorFormsSliderComponent {
+export class FormsSliderComponent {
     constructor(){
         this.elements = elements;
     }
