@@ -1,20 +1,23 @@
-import templateUrl from "./view";
 import "./style";
+import templateUrl from "./view";
 import crypto from "./../lib/crypto";
 import {moduleName} from "./../lib/module";
 import {init, SetModule, Component, State, LocalInjectables} from "angular2-now";
-
-init();
-SetModule(moduleName);
-@State({
+export var state = {
     name: "app.developers.crypto",
     url: "/crypto"
-});
-@Component({
+};
+export var component = {
+    name: "CryptoComponent",
+    state: state,
     selector: "crypto",
     templateUrl: templateUrl
-});
-@LocalInjectables;
+};
+init();
+SetModule(moduleName);
+@State(state)
+@Component(component)
+@LocalInjectables
 export class CryptoComponent {
     /* Salt should be backend-generated and stored data */
     salt = "135576d158c5ed15132ffc36decde569fe59fef78b6192cd3a521205fb43c47344";
@@ -59,46 +62,40 @@ export class CryptoComponent {
                 }
             },
             {
-                "input",
-                    key: "valuetoencrypt",
+                type: "input",
+                key: "valuetoencrypt",
                 templateOptions: {
-                    "Value",
-                        description: "Specify value to encrypt",
+                    label: "Value",
+                    description: "Specify value to encrypt",
                     onKeyup: (options, value, scope, event) => {
                         let encrypted = crypto().encrypt(scope.model.valuetoencrypt, scope.model.key);
                         scope.model.encryptedvalue = encrypted.toString();
                     }
-                };;;
-            };;,
+                }
+            },
             {
-                "input",
-                    key: "encryptedvalue",
+                type: "input",
+                key: "encryptedvalue",
                 templateOptions: {
-                    "Encrypted value",
-                        readonly: true,
+                    label: "Encrypted value",
+                    readonly: true,
                     description: "Encrypted value from input above and settings above"
-                };;
-            };;,
+                }
+            },
             {
-                "input",
-                    key: "decryptedvalue",
+                type: "input",
+                key: "decryptedvalue",
                 templateOptions: {
-                    "Decrypted value",
-                        readonly: true,
+                    label: "Decrypted value",
+                    readonly: true,
                     description: "Decrypted value from input above and settings above"
-                };;,
-                {
-                    "model"
-                :
-                    ($viewValue, $modelValue, scope) =
-                >
-                    {
+                },
+                expressionProperties: {
+                    "model": ($viewValue, $modelValue, scope) => {
                         scope.model.decryptedvalue = crypto().decrypt(scope.model.encryptedvalue, scope.model.key);
                     }
                 }
-                ;
-                ;
-            };;
-    ]
+            }
+        ];
     }
 }
