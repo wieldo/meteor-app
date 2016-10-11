@@ -4,7 +4,7 @@ import customTemplateWrapper from "./../input/client/wrapper/wrapper";
 import {init,SetModule,options} from "angular2-now";
 options({controllerAs: "vm"});
 init();
-export const ModuleName = "ModuleForms";
+export const ModuleName = "FormsModule";
 SetModule(ModuleName,[
     "wieldoFormlyMaterial"
 ]).config((formlyConfigProvider) => {
