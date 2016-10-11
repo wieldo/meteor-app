@@ -409,8 +409,8 @@ export default [
                     "templateOptions.ngDisabled": "!model.text"
                 }
             }
-        ], 4, "\n"),
-            field: [
+        ],4, "\n"),
+        field: [
             {
                 type: "checkbox",
                 key: "mdcheckbox.disabled",
@@ -479,23 +479,23 @@ export default [
                 key: "mdcheckbox.ngclass",
                 templateOptions: {
                     name: "Add md-primary class to me",
-                    ngClass: (value, options, scope) = > {
-                    return scope.model.textngclass;
+                    ngClass: (value, options, scope) => {
+                        return scope.model.textngclass;
                     }
                 }
             },
             {
-                "checkbox",
-                    key: "mdcheckbox.ngclick",
+                type: "checkbox",
+                key: "mdcheckbox.ngclick",
                 templateOptions: {
-                    "Click to see what this checkbox think about it",
-                        ngClick: (value, options, scope) => {
+                    name: "Click to see what this checkbox think about it",
+                    ngClick: (value, options, scope) => {
                         alert("Please, do it again, i love it.");
                         return;
                     }
-            };;
-            };;
-    ],4 , "\n").replace(replacer, ""),
+                }
+            }
+        ],4 , "\n").replace(replacer, ""),
         field: [
             {
                 type: "input",
@@ -517,25 +517,24 @@ export default [
                 }
             },
             {
-                "checkbox",
-                    key: "mdcheckbox.ngclick",
+                type: "checkbox",
+                key: "mdcheckbox.ngclick",
                 templateOptions: {
-                    "Click to see what this checkbox think about it",
-                        ngClick: (value, options, scope) => {
+                    name: "Click to see what this checkbox think about it",
+                    ngClick: (value, options, scope) => {
                         alert("Please, do it again, i love it.");
                         return;
                     }
-            };;
-            };;
-    ]
-    };;;;;
-,
-{
-        "name expression",
-            description: "Change checkbox name by input",
+                }
+            }
+        ]
+    },
+    {
+        title: "name expression",
+        description: "Change checkbox name by input",
         form: "form_name_expression",
         model: {},
-        jsfy([
+        js: jsfy([
             {
                 type: "input",
                 key: "textname",
@@ -556,7 +555,7 @@ export default [
                 }
             }
         ], 4, "\n"),
-            field: [
+        field: [
             {
                 type: "input",
                 key: "textname",
@@ -577,64 +576,58 @@ export default [
                 }
             }
         ]
-    };;;;
-,
-{
-        "Groups",
-            description: "Checkboxes in groups",
+    },
+    {
+        title: "Groups",
+        description: "Checkboxes in groups",
         form: "form_groups",
         model: {},
-        jsfy([
+        js: jsfy([
             {
                 type: "checkbox",
                 key: "mdcheckbox.selectgroup",
                 templateOptions: {
                     name: "Select all below",
-                    ngChecked: (value, options, scope) = > {
-                    return isChecked(scope);
+                    ngChecked: (value, options, scope) => {
+                        return isChecked(scope);
                     },
-                    (value, options, scope) => {
+                    ngClick: (value, options, scope) => {
                         toggleAll(scope);
                     }
                 },
-                {
-                    "templateOptions.name";
-                :
-                    "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
+                expressionProperties: {
+                    "templateOptions.name": "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
                 }
-    },
+            },
             {
-                "checkbox",
-                    key: "mdcheckbox.group.first",
+                type: "checkbox",
+                key: "mdcheckbox.group.first",
                 templateOptions: {
-                    "checkbox - first"
+                    name: "checkbox - first"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.second",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.second",
                 templateOptions: {
-                    "checkbox - second"
+                    name: "checkbox - second"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.third",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.third",
                 templateOptions: {
-                    "checkbox - third"
+                    name: "checkbox - third"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.fourth",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.fourth",
                 templateOptions: {
-                    "checkbox - fourth"
+                    name: "checkbox - fourth"
                 }
-            };;
-    ], 4, "\n").replace(replacer, ""),
+            }
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "checkbox",
@@ -644,47 +637,42 @@ export default [
                     ngChecked: (value, options, scope) => {
                         return isChecked(scope);
                     },
-                    (value, options, scope) => {
+                    ngClick: (value, options, scope) => {
                         toggleAll(scope);
                     }
                 },
-                {
-                    "templateOptions.name";
-                :
-                    "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
+                expressionProperties: {
+                    "templateOptions.name": "model.mdcheckbox.selectgroup === true ? 'Deselect all below' : 'Select all below'"
                 }
-    },
+            },
             {
-                "checkbox",
-                    key: "mdcheckbox.group.first",
+                type: "checkbox",
+                key: "mdcheckbox.group.first",
                 templateOptions: {
-                    "checkbox - first"
+                    name: "checkbox - first"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.second",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.second",
                 templateOptions: {
-                    "checkbox - second"
+                    name: "checkbox - second"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.third",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.third",
                 templateOptions: {
-                    "checkbox - third"
+                    name: "checkbox - third"
                 }
-            };;
-    ,
-        {
-                "checkbox",
-                    key: "mdcheckbox.group.fourth",
+            },
+            {
+                type: "checkbox",
+                key: "mdcheckbox.group.fourth",
                 templateOptions: {
-                    "checkbox - fourth"
+                    name: "checkbox - fourth"
                 }
-            };;
-    ]
-    };;;;;;;
-]
+            }
+        ]
+    }
+];
