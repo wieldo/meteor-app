@@ -16,7 +16,7 @@ SetModule(ModuleName);
 })
 @LocalInjectables
 
-export class MeteorFormsChipsComponent {
+export class FormsChipsComponent {
     constructor() {
         this.elements = elements;
     }
