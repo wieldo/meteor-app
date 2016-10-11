@@ -1,4 +1,4 @@
-import {todoCollection} from "./../api/collection";
+import {todoCollection} from "./../collection";
 
 Meteor.startup(() => {
     /*
