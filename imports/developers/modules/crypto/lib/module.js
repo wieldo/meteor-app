@@ -1,6 +1,7 @@
 import crypto from "./crypto";
-export const moduleName = "crypto";
-import {init, SetModule, Directive, Filter, LocalInjectables} from "angular2-now";
+export const moduleName = "Crypto";
+import {init, SetModule, Directive, Filter, LocalInjectables, options} from "angular2-now";
+options({controllerAs: "vm"});
 init();
 SetModule(moduleName, []);
 @Directive({
@@ -14,8 +15,8 @@ SetModule(moduleName, []);
         "$attrs",
         "$element"
     ]
-})
-@LocalInjectables
+});
+@LocalInjectables;
 class EncryptedModelDirective {
     constructor() {
         this.$dependson = function (ngModel) {
@@ -36,7 +37,7 @@ class EncryptedModelDirective {
         };
     }
 }
-@Filter({name: "decrypt"})
+@Filter({name: "decrypt"});
 class DecryptFilter {
     constructor() {
         return function (value, key) {
