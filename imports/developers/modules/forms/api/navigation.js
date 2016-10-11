@@ -13,7 +13,7 @@ export default {
             {name: "Textarea", uisref: "app.developers.forms.textarea"}
         ]},
         {header: "Custom", items: [
-            {name: "Select birthday", uisref: "app.developers.forms.checkbox"}
+            {name: "Select birthday", uisref: "app.developers.forms.selectbirthday"}
         ]}
     ]
 };
