@@ -1,12 +1,14 @@
-import customKeys from "./../../client/helpers/custom-keys";
-import customTemplate from "./../../client/custom-template";
+import customKeys from "./../client/helpers/custom-keys";
+import customTemplate from "./../client/custom-template";
+import jsfy from "jsfy";
+import replacer from "./../../client/helpers/replacer";
 export default [
     {
         title: "Label, Name with placeholder and secondary placeholder",
         description: "Chips with label and placeholders",
         form: "placeholder",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "chips",
                 key: "chips.label",
@@ -54,7 +56,7 @@ export default [
                     secondaryPlaceholder: "Enter a tag (secondaryPlaceholder)"
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "chips",
@@ -111,7 +113,7 @@ export default [
         description: "Chips with style manipulate",
         form: "class",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "chips",
                 key: "chips.classname",
@@ -155,7 +157,7 @@ export default [
                     }
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "chips",
@@ -208,7 +210,7 @@ export default [
         description: "Chips with some button hints",
         form: "delete",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "chips",
                 key: "chips.deleteButtonLabel",
@@ -242,7 +244,7 @@ export default [
                     readonly: true
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "chips",
@@ -284,7 +286,7 @@ export default [
         description: "Chips with on actions",
         form: "mdOn",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "chips",
                 key: "chips.mdonadd",
@@ -328,7 +330,7 @@ export default [
                 templateOptions: {
                     description: "On remove - check your console",
                     mdOnRemove: (value, options, scope) => {
-                        console.log('md-on-remove');
+                        console.log("md-on-remove");
                         console.log(value);
                         console.log(options);
                         console.log(scope);
@@ -336,7 +338,7 @@ export default [
                     }
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "chips",
@@ -381,7 +383,7 @@ export default [
                 templateOptions: {
                     description: "On remove - check your console",
                     mdOnRemove: (value, options, scope) => {
-                        console.log('md-on-remove');
+                        console.log("md-on-remove");
                         console.log(value);
                         console.log(options);
                         console.log(scope);
@@ -396,7 +398,7 @@ export default [
         description: "Chips with seprator keys defined",
         form: "separator",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 type: "chips",
                 key: "chips.mdseparatorkeys",
@@ -408,7 +410,7 @@ export default [
                     mdSeparatorKeys: customKeys()
                 }
             }
-        ],undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 type: "chips",
@@ -428,7 +430,7 @@ export default [
         description: "Chips with custom template",
         form: "customtemplate",
         model: {},
-        js: JSON.stringify([
+        js: jsfy([
             {
                 key: "chips.customtemplate",
                 defaultValue: [
@@ -458,7 +460,7 @@ export default [
                     description: "prewrapper to manipulate chips"
                 }
             }
-        ], undefined, 4),
+        ], 4, "\n").replace(replacer, ""),
         field: [
             {
                 key: "chips.customtemplate",
