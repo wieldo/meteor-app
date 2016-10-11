@@ -8,7 +8,7 @@
 [![Gitter join](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/wieldo/meteor-app-example)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/wieldo/meteor-app.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
-This is an example of Module Meteor Application on angular2-now with packages below
+This is an example of Module Meteor Application on angular2-now with packages below. It is consists of module for clients and developers.
 
 ## Demo
 http://meteor-app.wieldo.com/
@@ -207,7 +207,7 @@ Encrypt your collection data with crypto-js library
 - [x] Example with formly material
 
 ### Events
-- [ ] Create
+- [ ] Form
 - [ ] Display on calendar
 - [ ] Remove
 - [ ] Update
@@ -215,20 +215,25 @@ Encrypt your collection data with crypto-js library
 ### Task
 - [ ] Console debug
 - [ ] Create new
-- [ ] Display list
 - [ ] Decrypt
+- [ ] Description
+- [ ] Display list
+- [ ] Due date from events
 - [ ] Edit
 - [ ] Edit in line
 - [ ] Encrypt
 - [ ] Filter by people
 - [ ] Filter by status
 - [ ] Form
+- [ ] Map location
 - [ ] Paging
+- [ ] Permissions
 - [ ] Remove (as updated removed field)
-- [ ] Sort list by
+- [ ] Sort list
 - [ ] Search
+- [ ] Todos as completed
 - [ ] Update
-- [ ] Update history name
+- [ ] Updates history
 
 ### Todo
 - [x] Console debug
@@ -243,7 +248,7 @@ Encrypt your collection data with crypto-js library
 - [x] Form
 - [ ] Paging
 - [x] Remove (as updated removed field)
-- [x] Sort list by
+- [x] Sort list
 - [ ] Search
 - [x] Update
 - [x] Update history name
@@ -278,6 +283,9 @@ Set some things
 - [ ] Roles
 - [ ] Update
 - [ ] Remove from invites
+
+### Developers navigation
+- [ ] Few examples of navigationComponent
 
 ## Licence
 
