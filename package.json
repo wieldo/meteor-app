@@ -2,7 +2,7 @@
   "name": "MeteorApp",
   "description": "Meteor example application",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "start": "meteor run"
   },
@@ -50,10 +50,11 @@
     "tweetnacl-util": "^0.13.3",
     "ui-router": "^1.0.0-alpha.3",
     "underscore": "^1.8.3",
-    "wieldoformlymaterial": "^0.1.5"
+    "wieldoformlymaterial": "^0.1.7"
   },
   "keywords": [
     "angularjs",
+    "angular-formly",
     "app",
     "crypto-js",
     "example",
