@@ -6,7 +6,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/wieldo/meteor-app.svg)](https://github.com/wieldo/meteor-app/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wieldo/formlyMaterial/master/LICENSE)
 [![Gitter join](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/wieldo/meteor-app-example)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/wieldo/meteor-app.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 This is an example of Module Meteor Application on angular2-now with packages below. It is consists of module for clients and developers.
 
