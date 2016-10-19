@@ -1,8 +1,10 @@
 
 .navigation {
+
+    $width: 200px;
     display: flex;
 
-    width: 250px;
+    width: $width;
     height: 100%;
 
     overflow-x: hidden;
@@ -17,6 +19,6 @@
     box-sizing: border-box;
 
     > md-content {
-        min-width: 264px;
+        min-width: $width + 14;
     }
 }
