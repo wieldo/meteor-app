@@ -1,7 +1,7 @@
+import todoSchema from "./../schemas";
 import {
-    todoCollection,
-    todoSchema
-} from "./../collection";
+    todoCollection
+} from "./../collections";
 
 export const todoUpdate = new ValidatedMethod({
     name: "todo.update",

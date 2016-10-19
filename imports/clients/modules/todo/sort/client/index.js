@@ -1,9 +1,9 @@
 import "./style";
 import templateUrl from "./view";
-import fields from "./../api/fields";
+import fields from "./../sort.formly";
 import {
     moduleName as Todo
-} from "./../../lib/module";
+} from "./../../todo.module";
 import {
     init,
     SetModule,

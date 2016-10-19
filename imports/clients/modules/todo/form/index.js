@@ -1,10 +1,8 @@
-
 // Component
-import TodoFormComponent from "./client/";
+import TodoForm from "./client";
 // Service
-import TodoFormApi from "./api/";
-
+import TodoFormLib from "./lib";
 export default {
-    TodoFormComponent,
-    TodoFormApi
+    TodoForm,
+    TodoFormLib
 };

@@ -1,6 +1,6 @@
 import templateUrl from "./view";
-import fields from "./../api/fields";
-import {moduleName} from "./../../../lib/module";
+import fields from "./../lib/fields";
+import {moduleName} from "./../../../todo.module";
 import {
     init,
     SetModule,

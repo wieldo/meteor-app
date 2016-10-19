@@ -1,5 +1,5 @@
 import templateUrl from "./view";
-import {moduleName} from "./../../../lib/module";
+import {moduleName} from "./../../../todo.module";
 import {
     init,
     SetModule,

@@ -1,8 +1,15 @@
 import "./style";
 import templateUrl from "./view";
-import fields from "./../api/fields";
-import {moduleName} from "./../../lib/module";
-import {init,SetModule,Component,LocalInjectables} from "angular2-now";
+import {
+    TodoFormFields
+} from "./../lib";
+import {moduleName} from "./../../todo.module";
+import {
+    init,
+    SetModule,
+    Component,
+    LocalInjectables
+} from "angular2-now";
 init();
 SetModule(moduleName);
 @Component({
@@ -31,7 +38,7 @@ export class TodoFormComponent {
     fields = [];
 
     constructor() {
-        this.fields = fields;
+        this.fields = TodoFormFields;
         if (this.setForm)
             this.form = this.setForm;
     }

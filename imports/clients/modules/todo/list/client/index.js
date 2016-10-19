@@ -1,11 +1,11 @@
-//import {todoCollection} from "./../../api/collection";
 import "./style";
-import "./../../form/api/service";
 import templateUrl from "./view";
-import {ReactiveVar} from "meteor/reactive-var";
+import {
+    ReactiveVar
+} from "meteor/reactive-var";
 import {
     moduleName as Todo
-} from "./../../lib/module";
+} from "./../../todo.module";
 import {
     init,
     SetModule,
@@ -26,7 +26,8 @@ SetModule(Todo);
         "$scope",
         "$reactive",
         "TodoFormService",
-        "TodoCollectionService"
+        "TodoCollectionService",
+        "cfpLoadingBar"
     ],
     bind: {
         "getCreatedBy": "=createdBy",
@@ -37,6 +38,9 @@ SetModule(Todo);
 @LocalInjectables
 @MeteorReactive
 export class TodoListComponent {
+
+    // preloader
+    loading = true;
 
     // debug
     debug = false;
@@ -63,9 +67,10 @@ export class TodoListComponent {
             console.info(`Debug ${component.name} has been started`);
             console.info(`----------------------------------------`);
         }
+        this.startLoading(true);
         this.watch();
-        this.helpers();
-        this.subscribes();
+        this._helpers();
+        this._subscribes();
     }
 
     /**
@@ -93,6 +98,8 @@ export class TodoListComponent {
      */
     getSortByWatch = () => {
         this.$scope.$watch("vm.getSort", (value) => {
+            this.startLoading();
+
             let setSort = {
                 sort: value
             };
@@ -112,6 +119,8 @@ export class TodoListComponent {
             console.debug(`${component.name}.getCreatedByWatch()`);
         }
         this.$scope.$watch("vm.getCreatedBy", (value) => {
+            this.startLoading();
+
             let clonedValue = _.clone(value);
             clonedValue = this.deleteFalseValues(clonedValue);
 
@@ -156,6 +165,8 @@ export class TodoListComponent {
             console.debug(`${component.name}.getFindWatch()`);
         }
         this.$scope.$watch("vm.getFind", (find) => {
+            this.startLoading();
+
             let clonedFind = _.clone(find);
             let clonedFindReactive = _.clone(this.findReactive.get());
 
@@ -206,10 +217,10 @@ export class TodoListComponent {
     }
 
     /**
-     * helpers reactively assign todoCollection to $scope
+     * _helpers reactively assign todoCollection to $scope
      * @return
      */
-    helpers = () => {
+    _helpers = () => {
         if (this.debug === true) {
             console.debug(`${component.name}.helpers()`);
         }
@@ -225,23 +236,58 @@ export class TodoListComponent {
                     console.groupEnd();
                     console.groupEnd();
                 }
+                this.stopLoading();
                 return result;
             }
         });
     }
 
     /**
-     * Subscribes
+     * _subscribes
      * @return {object} this context
      */
-    subscribes = () => {
+    _subscribes = () => {
         if (Meteor.isClient) {
             if (this.debug === true) {
-                console.debug(`${component.name}.subscribes()`);
+                console.debug(`${component.name}._subscribes()`);
             }
-            this.subscribe("todo", () => [{}]);
+            this.subscribe("todo", () => [{}], {
+                onStop: (error) => {
+                    if (this.debug === true) {
+                        console.log(`error`, error);
+                    }
+                },
+                onReady: () => {
+                }
+            });
         }
         return this;
     }
 
+    /**
+     * [stopLoading description]
+     * @return {[type]} [description]
+     */
+    stopLoading = () => {
+        this._setLoading(false);
+        this.cfpLoadingBar.complete();
+    }
+
+    /**
+     * [startLoading description]
+     * @return {[type]} [description]
+     */
+    startLoading = () => {
+        this._setLoading(true);
+        this.cfpLoadingBar.start();
+    }
+
+
+    /**
+     * _setLoading set
+     * @param {[type]} value [description]
+     */
+    _setLoading = (value) => {
+        this.loading = value;
+    }
 }

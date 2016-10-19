@@ -1,8 +1,13 @@
 import "./../style";
 import templateUrl from "./view";
-import fields from "./../../api/fields";
-import {moduleName} from "./../../../lib/module";
-import {init,SetModule,Component,LocalInjectables} from "angular2-now";
+import fields from "./../../lib/fields";
+import {moduleName} from "./../../../todo.module";
+import {
+    init,
+    SetModule,
+    Component,
+    LocalInjectables
+} from "angular2-now";
 
 init();
 SetModule(moduleName);
@@ -19,18 +24,19 @@ SetModule(moduleName);
     ]
 })
 @LocalInjectables
-export class TodoDialogFormComponent {
+export class TodoFormDialogComponent {
     // valid
     valid = false;
 
     // name
-    form = "TodoDialogForm";
+    form = "TodoFormDialog";
 
     // fields
     fields = [];
     constructor() {
         this.fields = fields;
-        if (this.setForm)
+        if (this.setForm) {
             this.form = this.setForm;
+        }
     }
 }

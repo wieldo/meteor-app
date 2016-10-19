@@ -1,4 +1,6 @@
-import {todoInsert} from "./insert";
+import {
+    todoInsert
+} from "./insert";
 import {
     todoSetCompleted,
     todoUpdate
@@ -6,7 +8,6 @@ import {
 import {
     todoRemove
 } from "./remove";
-
 export default {
     todoInsert,
     todoRemove,

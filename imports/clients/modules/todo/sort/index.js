@@ -1,5 +1,4 @@
-import TodoSortComponent from "./client";
-
-export {
+import {
     TodoSortComponent
-};
+} from "./client";
+export default TodoSortComponent;

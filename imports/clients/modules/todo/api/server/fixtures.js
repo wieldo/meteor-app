@@ -1,4 +1,6 @@
-import {todoCollection} from "./../collection";
+import {
+    todoCollection
+} from "./../collections/collection";
 
 Meteor.startup(() => {
     /*
