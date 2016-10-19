@@ -1,8 +1,8 @@
 const benefitsTemplateUrl = templateUrl;
 import templateUrl from "./view";
 export default benefitsTemplateUrl;
-import {ModuleName} from "./../../startup/client/";
-import {init, SetModule, Component} from "angular2-now";
+import { ModuleName } from "./../../app/app.module";
+import {init, SetModule, Component } from "angular2-now";
 
 export var component = {
     name: "BenefitsComponent",
