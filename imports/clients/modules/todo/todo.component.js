@@ -1,8 +1,7 @@
 import "./todo.style";
 import templateUrl from "./todo.view";
-import {
-    moduleName
-} from "./todo.module";
+import todoState from "./todo.state";
+import { moduleName } from "./todo.module";
 import {
     init,
     SetModule,
@@ -13,10 +12,7 @@ import {
 } from "angular2-now";
 SetModule(moduleName);
 init();
-@State({
-    name: "app.clients.todo",
-    url: "/todo"
-})
+@State(todoState)
 @Component({
     selector: "meteor-todo",
     templateUrl: templateUrl,

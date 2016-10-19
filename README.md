@@ -1,10 +1,5 @@
 # meteorApp
 
-Using class names to import instead of "String"
-Check redux, angular redux
-add apollo1-stack
-
-
 [![GitHub version](https://badge.fury.io/gh/wieldo%2Fmeteor-app.svg)](https://badge.fury.io/gh/wieldo%2Fmeteor-app)
 [![GitHub issues](https://img.shields.io/github/issues/wieldo/meteor-app.svg)](https://github.com/wieldo/meteor-app/issues)
 [![GitHub forks](https://img.shields.io/github/forks/wieldo/meteor-app.svg)](https://github.com/wieldo/meteor-app/network)
@@ -12,7 +7,9 @@ add apollo1-stack
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wieldo/formlyMaterial/master/LICENSE)
 [![Gitter join](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/wieldo/meteor-app-example)
 
-This is an example of Module Meteor Application on angular2-now with packages below. It consists clients and developers states.
+This is an example of module Meteor Application on angular2-now with packages below.
+It consists clients and developers states where developers is created to help develop meteorApp and clients
+to manage todos or tasks.
 
 ## Table of contents
 * [Inside](#inside)
@@ -163,118 +160,109 @@ How do I know when to release 1.0.0?
 - http://karma-runner.github.io/0.10/dev/git-commit-msg.html
 
 ## Folder structure   
-This project is using bundle folder structure and every module should be independent. It means that it has got own folders api, library, client, styles that are useful for only that module.
+This project is using bundle folder structure and every module should act like independent.
+It means that it has got own folders api, client, styles that are useful for only that bundle.
 
-### client/
-- index.js (primary component)
-- style.scss (styles for component)
-- view.html (component view)
-
-### lib/
-- fields.js (formlyMaterial)
-- index.js (import/export importants from bundle)
-- module.js (angular module)
-- service.js (angular service)
-
-### lib/services/
-- index.js (import/export importants of this folder)
-- do-service.js (some kind of service)
-
-### api/
-- collections.js (mongo collection or import ./collections index)
-- methods.js (meteor methods or import ./methods index)
-- schemas.js (simple-schema)
-
-### api/collections/
-- allow.js (allow collection)
-- attach-schema.js (attach simple-schema to collection)
-- collection.js (bundle collection)
-- deny.js (deny collection)
-- index.js (import/export importants of this folder)
-
-### api/methods/
-- index.js (import/export importants of this folder)
-- insert.js
-- remove.js
-
-### api/server/
-- fixtures.js
-- index.js (import/export importants of this folder)
-- publish.js (meteor publish or import ./publish index)
-
-Example
+**app/**
 ```
 meteor-app/
- ├──client/                      * client entry point, imports all client code
- |   ├──main.html                * main html code with app tag
- |   ├──main.js                  * import main.scss, startup files, scss from other packages
- |   └──main.scss                * import scss startup file(s)
- │
- ├──imports/                     * all project files are placed here
- |   ├──clients/                 * here are placed files with todos, calendar etc. modules
- │   │   ├──dashboard/           *
+ └──app/                                    * app module folder
+     ├──config/                             * configuration for app
+     ├──developers/                         * here are placed files that help create module todo, calendar and are useful for programmers
+     ├──helpers/                            * helpers for all components
+     ├──sign/                               * sign component
+     ├──app.component.js                    * app component
+     ├──app.module.js                       * app module
+     ├──app.navigation.js                   * json for navigation
+     ├──app.view.html                       * app component view
+     ├──core.module.js                      * core module with angular-meteor, angular-storage and routingModule
+     ├──index.js                            * export everything from app module
+     ├──modules.js                          * import and export every available module
+     ├──routing.module.js                   * routerModule that contains angular-ui-router
+     └──run.js                              * default run for app module
+```
+**client/, server/, developers/**
+```
+meteor-app/
+ ├──client/                                 * client entry point, imports all client code
+ |   ├──main.html                           * main html code with app tag
+ |   ├──main.js                             * import main.scss, startup files, scss from other packages
+ |   └──main.scss                           * import scss startup file(s)
+ ├──server/                                 * server entry point, imports all server code
+ |    └──main.js                            * import all server code
+ └──developers/                             * here are placed files that help create module todos, calendar and are useful for programmers
+
+ ```
+
+ **module example**
+ ```
+ meteor-app/
+ ├──imports/                                           * all module files are placed here
+ |   ├──clients/                                       * here are placed packages like todo, calendar etc. modules
+ │   │   ├──dashboard/                                 * module and index file to export
  |   |   |   ├──client/
- │   │   └──todos/
- │   │   
- |   ├──developers/              * here are placed files that help create module todos, calendar and are useful for programmers
- │   ├──app/                   * WebApp: folder
- │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.e2e.ts         * a simple end-to-end test for /
- │   │   └──app.ts             * App.ts: a simple version of our App component components
- │   │
- |   ├──lib/                     *
- │   └──server/                * server entry point, imports all server code
- │       ├──main.js              * import
-
-
-/clients
-    /modules
-      /task
-        /client
-      /todo
-        /api
-            collection.js
-            schemas.js
-            /server
-                fixtures.js
-                publish.js
-        /lib
-            index.js
-            fields.js
-            module.js
-        /client
-            index.js
-            style.scss
-            view.html
-        /list
-            /api
-            /lib
-            /client
-                index.js
-                style.scss
-                view.html
+ |   |   |   |   ├──dashboard.component.js             * default component
+ |   |   |   |   ├──dashboard.spec.js                  * a simple test of component
+ |   |   |   |   ├──dashboard.style.scss               * component scss styles
+ |   |   |   |   └──dashboard.view.html                * component default view
+ |   |   |   ├──dashboard.module.js                    * dashboard module
+ |   |   |   └──index.js                               * export all from module
+ │   │   ├──todo/
+ │   │   |   ├──api/                                   * here are placed all api files for todo module
+ |   |   |   |   |
+ |   |   |   |   ├──collections/                       * here are placed files for todo module to manage collections
+ |   |   |   |   |   ├──todo.allow.js                  * mongo collection allow
+ |   |   |   |   |   ├──todo-attach-schema.js          * attach schema to todo collection
+ |   |   |   |   |   ├──todo.collection.js             * exported mongo collection
+ |   |   |   |   |   └──index.js                       * export all from collection
+ |   |   |   |   ├──methods/                           * here are placed all api methods
+ |   |   |   |   |   ├──index.js                       * export all from methods
+ |   |   |   |   |   ├──todo.insert.js                 * todo insert method
+ |   |   |   |   |   ├──todo.remove.js
+ |   |   |   |   |   └──todo.update.js
+ |   |   |   |   ├──server/                            * here are placed all server code for todo module
+ |   |   |   |   |   ├──todo.fixtures.js               
+ |   |   |   |   |   ├──index.js                       * export all from server
+ |   |   |   |   |   └──todo.publish.js                * all publications for todo are placed here or in folder publish
+ |   |   |   |   ├──index.js                           * export all from api
+ |   |   |   |   └──schemas.js                         *
+ |   |   |   ├──client/
+ |   |   |   |   └──index.js
+ |   |   |   ├──sort/                                  * sub component of todo module to sort list
+ |   |   |   |   ├──client/
+ |   |   |   |   |   └──index.js
+ |   |   |   |   ├──sort.component.js
+ |   |   |   |   ├──sort.service.js
+ |   |   |   |   ├──sort.style.scss
+ |   |   |   |   └──sort.view.html
+ |   |   |   ├──index.js                               * export module todo
+ |   |   |   ├──todo.component.js
+ |   |   |   ├──todo.module.js
+ |   |   |   ├──todo.service.js
+ |   |   |   ├──todo.state.js
+ |   |   |   ├──todo.style.scss
+ |   |   |   └──todo.view.html
+ |   |   └──index.js                                   * export all from clients
 ```
 ## Road map
 
 ### Dashboard
 Start page
-- [ ] Active
-- [ ] Display statistics
+- [ ] Statistics
 - [ ] Charts
 
 ### Calendar
-- [ ] Display events
+- [ ] Events
 
 ### Chat
 Chat with your friends
-- [ ] Active
 - [ ] Chat on room
-- [ ] Chat user - user
+- [x] Chat user - user
 
 ### Create dialog
 - [ ] Events
 - [ ] Tasks
-- [ ] Todos
+- [x] Todos
 
 ### Crypto
 Encrypt your collection data with crypto-js library
@@ -331,7 +319,6 @@ Encrypt your collection data with crypto-js library
 
 ### Settings
 Set some things
-- [ ] Active
 - [ ] Manage profile photo
 - [ ] Update user data
 
