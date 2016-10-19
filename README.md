@@ -12,7 +12,7 @@ It consists clients and developers states where developers is created to help de
 to manage todos or tasks.
 
 ## Table of contents
-* [Inside](#inside)
+* [Packages](#Packages)
 * [Install](#install)
 * [How to run](#how-to-run)
 * [JS Conventions](#js-conventions)
@@ -26,7 +26,7 @@ to manage todos or tasks.
 ## Demo
 http://meteor-app.wieldo.com/
 
-## Inside
+## Packages
 
 Wieldo
 - formly Material - https://github.com/wieldo/formlyMaterial/,
@@ -74,55 +74,22 @@ Collections
 
 ## Install
 ```
-meteor remove
-           blaze-html-templates
-           ecmascript
-           standard-minifier-css
-meteor npm install --save
-           angular
-           angular-meteor
-           angular-ui-router
-           angular2-now
-           underscore
-meteor add
-           aldeed:collection2
-           aldeed:schema-deny
-           aldeed:simple-schema
-           angular:angular-material
-           angular:angular-messages
-           angularui:angular-ui-router
-           anti:fake
-           dburles:collection-helpers
-           email
-           formly:angular-formly
-           fourseven:scss
-           ixdi:material-design-iconic-font
-           jagi:astronomy
-           juliancwirko:postcss
-           mdg-validation-error
-           mdg:validated-method
-           modules angular-templates
-           pbastowski:angular-babel
-           wieldo:api-check
-npm install --save
-           angular-marked
-           autoprefixer
-           babel-eslint
-           babel-eslint@5
-           babel-eslint@6
-           crypto-js
-           eslint
-           eslint@1.x
-           eslint@2.x
-           jsfy
-           moment semver
-           normalize.css
-           postcss-scss
+# clone repo
+git clone https://github.com/wieldo/meteor-app.git
+
+# go to cloned directory
+cd meteor-app
+
+# install npm packages
+npm install
+
 ```
 
 ## How to run
 ```
 meteor run
+
+# open browser with http://localhost:3000
 ```
 
 ## JS conventions
