@@ -16,7 +16,12 @@ md-content {
                 padding: 0;
                 margin: 0;
 
-                font-weight: 500;
+                font: {
+                    family: Roboto;
+                    size: 0.9375em;
+                    weight: 500;
+                }
+                color: #4a4a4a;
 
                 &.active {
                     .md-button {
@@ -31,8 +36,10 @@ md-content {
                     box-sizing: border-box;
                     align-items: center;
 
-                    text-align: left;
-                    text-transform: none;
+                    text: {
+                        align: left;
+                        transform: none;
+                    }
 
                     min-height: 48px;
                     padding: 0 16px;
