@@ -1,16 +1,46 @@
-import "./channels/channels";
-import "./message-author/message-author";
-import "./message-channel/message-channel";
-import "./message-direct/message-direct";
-import "./message-read/message-read";
-import "./message-read-at/message-read-at";
-import "./message-read-by/message-read-by";
-import "./message-text/message-text";
-import "./messages-channel/messages-channel";
-import "./messages-direct/messages-direct";
-import "./messages-limit/messages-limit";
-import "./post/post";
-import "./post-channel/post-channel";
-import "./post-direct/post-direct";
-import "./preloader/preloader";
-import "./users/users";
+import {
+    ChatChannelsComponent
+} from "./channels";
+import {
+    ChatMessageAuthorComponent,
+    ChatMessageChannelComponent,
+    ChatMessageDirectComponent,
+    ChatMessageReadComponent,
+    ChatMessageReadAtComponent,
+    ChatMessageReadByComponent,
+    ChatMessageTextComponent
+} from "./message";
+import {
+    ChatMessagesChannelComponent,
+    ChatMessagesDirectComponent,
+    ChatMessagesLimitComponent
+} from "./messages";
+import {
+    ChatPostComponent,
+    ChatPostChannelComponent,
+    ChatPostDirectComponent
+} from "./post";
+import {
+    ChatPreloaderComponent
+} from "./preloader";
+import {
+    ChatUsersComponent
+} from "./users";
+export default {
+    ChatChannelsComponent,
+    ChatMessageAuthorComponent,
+    ChatMessageChannelComponent,
+    ChatMessageDirectComponent,
+    ChatMessageReadComponent,
+    ChatMessageReadAtComponent,
+    ChatMessageReadByComponent,
+    ChatMessageTextComponent,
+    ChatMessagesChannelComponent,
+    ChatMessagesDirectComponent,
+    ChatMessagesLimitComponent,
+    ChatPostComponent,
+    ChatPostChannelComponent,
+    ChatPostDirectComponent,
+    ChatPreloaderComponent,
+    ChatUsersComponent
+};
