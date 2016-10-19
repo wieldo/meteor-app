@@ -1,5 +1,10 @@
 # meteorApp
 
+Using class names to import instead of "String"
+Check redux, angular redux
+add apollo1-stack
+
+
 [![GitHub version](https://badge.fury.io/gh/wieldo%2Fmeteor-app.svg)](https://badge.fury.io/gh/wieldo%2Fmeteor-app)
 [![GitHub issues](https://img.shields.io/github/issues/wieldo/meteor-app.svg)](https://github.com/wieldo/meteor-app/issues)
 [![GitHub forks](https://img.shields.io/github/forks/wieldo/meteor-app.svg)](https://github.com/wieldo/meteor-app/network)
@@ -7,12 +12,24 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/wieldo/formlyMaterial/master/LICENSE)
 [![Gitter join](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/wieldo/meteor-app-example)
 
-This is an example of Module Meteor Application on angular2-now with packages below. It is consists of module for clients and developers.
+This is an example of Module Meteor Application on angular2-now with packages below. It consists clients and developers states.
+
+## Table of contents
+* [Inside](#inside)
+* [Install](#install)
+* [How to run](#how-to-run)
+* [JS Conventions](#js-conventions)
+* [Versioning](#versioning)
+* [Git commit](#git-commit)
+* [Folder structure](#folder-structure)
+* [Road map](#road-map)
+* [Licence](#licence)
+* [Donate](#donate)
 
 ## Demo
 http://meteor-app.wieldo.com/
 
-## What's inside
+## Inside
 
 Wieldo
 - formly Material - https://github.com/wieldo/formlyMaterial/,
@@ -111,7 +128,7 @@ npm install --save
 meteor run
 ```
 
-## JS Conventions
+## JS conventions
 http://eslint.org/
 - eslint:recommended
 
@@ -141,28 +158,89 @@ How do I know when to release 1.0.0?
 
 >If your software is being used in production, it should probably already be 1.0.0. If you have a stable API on which users have come to depend, you should be 1.0.0. If you’re worrying a lot about backwards compatibility, you should probably already be 1.0.0.
 
-## GIT Commit
+## GIT commit
 - AngularJS Git Commit Message Conventions https://gist.github.com/stephenparish/9941e89d80e2bc58a153
 - http://karma-runner.github.io/0.10/dev/git-commit-msg.html
 
-## File structure example   
+## Folder structure   
 This project is using bundle folder structure and every module should be independent. It means that it has got own folders api, library, client, styles that are useful for only that module.
+
+### client/
+- index.js (primary component)
+- style.scss (styles for component)
+- view.html (component view)
+
+### lib/
+- fields.js (formlyMaterial)
+- index.js (import/export importants from bundle)
+- module.js (angular module)
+- service.js (angular service)
+
+### lib/services/
+- index.js (import/export importants of this folder)
+- do-service.js (some kind of service)
+
+### api/
+- collections.js (mongo collection or import ./collections index)
+- methods.js (meteor methods or import ./methods index)
+- schemas.js (simple-schema)
+
+### api/collections/
+- allow.js (allow collection)
+- attach-schema.js (attach simple-schema to collection)
+- collection.js (bundle collection)
+- deny.js (deny collection)
+- index.js (import/export importants of this folder)
+
+### api/methods/
+- index.js (import/export importants of this folder)
+- insert.js
+- remove.js
+
+### api/server/
+- fixtures.js
+- index.js (import/export importants of this folder)
+- publish.js (meteor publish or import ./publish index)
+
+Example
 ```
-imports
-  /clients
+meteor-app/
+ ├──client/                      * client entry point, imports all client code
+ |   ├──main.html                * main html code with app tag
+ |   ├──main.js                  * import main.scss, startup files, scss from other packages
+ |   └──main.scss                * import scss startup file(s)
+ │
+ ├──imports/                     * all project files are placed here
+ |   ├──clients/                 * here are placed files with todos, calendar etc. modules
+ │   │   ├──dashboard/           *
+ |   |   |   ├──client/
+ │   │   └──todos/
+ │   │   
+ |   ├──developers/              * here are placed files that help create module todos, calendar and are useful for programmers
+ │   ├──app/                   * WebApp: folder
+ │   │   ├──app.spec.ts        * a simple test of components in app.ts
+ │   │   ├──app.e2e.ts         * a simple end-to-end test for /
+ │   │   └──app.ts             * App.ts: a simple version of our App component components
+ │   │
+ |   ├──lib/                     *
+ │   └──server/                * server entry point, imports all server code
+ │       ├──main.js              * import
+
+
+/clients
     /modules
       /task
         /client
       /todo
         /api
             collection.js
-            fields.js
             schemas.js
             /server
                 fixtures.js
                 publish.js
         /lib
             index.js
+            fields.js
             module.js
         /client
             index.js
@@ -176,7 +254,6 @@ imports
                 style.scss
                 view.html
 ```
-
 ## Road map
 
 ### Dashboard
