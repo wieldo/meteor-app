@@ -1,0 +1,9 @@
+<md-list>
+    <md-list-item
+        ng-repeat="user in vm.users"
+        ng-click="vm.select(user, $event)"
+        user-id="{{user._id}}"
+    >
+        {{user.profile.firstName}} {{user.profile.lastName}}
+    </md-list-item>
+</md-list>

@@ -1,0 +1,11 @@
+<md-list>
+    <md-list-item
+        ng-repeat="channel in vm.channels"
+        ng-click="vm.select(channel, $event)"
+        channel-id="{{channel._id}}"
+    >
+        <p>
+            {{channel.name}}
+        </p>
+    </md-list-item>
+</md-list>

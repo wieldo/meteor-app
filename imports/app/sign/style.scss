@@ -1,0 +1,11 @@
+div#sign {
+    display: flex;
+    flex-direction: column;
+
+    width: 332px;
+    max-width: 332px;
+    min-width: 332px;
+}
+div[ui-view="features"] {
+    padding: 0 16px;
+}

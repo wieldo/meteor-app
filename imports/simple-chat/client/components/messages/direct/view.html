@@ -1,0 +1,14 @@
+<md-content>
+    <chat-preloader ng-if="vm.loading"></chat-preloader>
+    <md-list ng-if="!vm.loading">
+        <!-- messages limit change -->
+        <md-list-item>
+            <chat-messages-limit increase-limit="{{::vm.increaseLimit}}" increase-type="{{::vm.increaseType}}" on-change="vm.onLimitChange(limit)"></chat-messages-limit>
+        </md-list-item>
+        <!-- display message -->
+        <chat-message-direct message="message" on-read="vm.onRead(messageId)" ng-repeat="message in vm.messages track by message._id" id="message-{{::message._id}}">
+            <md-divider></md-divider>
+        </chat-message-direct>
+    </md-list>
+</md-content>
+<ng-transclude></ng-transclude>
