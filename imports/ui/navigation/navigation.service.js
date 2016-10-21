@@ -1,13 +1,5 @@
-import {
-    moduleName
-} from "./module";
-import {
-    init,
-    SetModule,
-    Service,
-    LocalInjectables
-} from "angular2-now";
-
+import { moduleName } from "./navigation.module";
+import { init, SetModule, Service, LocalInjectables } from "angular2-now";
 init();
 export var service = {
     name: "SimpleNavigationService",
@@ -29,6 +21,7 @@ export class SimpleNavigationService {
     parent = null;
 
     constructor($q, store, $state) {
+        debugger;
         this.defer = {
             navigation: $q.defer()
         };
