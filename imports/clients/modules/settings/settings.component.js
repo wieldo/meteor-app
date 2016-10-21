@@ -1,6 +1,6 @@
 import templateUrl from "./settings.view";
 import settingsState from "./settings.state";
-import { moduleName } from "./../settings.module";
+import { moduleName } from "./settings.module";
 import { init, SetModule, Component, State, LocalInjectables } from "angular2-now";
 init();
 SetModule(moduleName);
