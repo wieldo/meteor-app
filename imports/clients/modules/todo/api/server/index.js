@@ -1,3 +1,3 @@
-import "./fixtures";
-import "./publish";
+import "./todo.fixtures";
+import "./todo.publish";
 import "./../methods";
