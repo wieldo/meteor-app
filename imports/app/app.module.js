@@ -46,8 +46,8 @@ SetModule(ModuleName,[
     "Developers",
     "SimpleNavigationModule",
     "Sidenav",
-    "Signin",
-    "Signup",
+    "SigninModule",
+    "SignupModule",
     "simple-chat"
 ]);
 // Configs
@@ -61,7 +61,6 @@ SetModule(ModuleName).config(["cfpLoadingBarProvider", function(cfpLoadingBarPro
     cfpLoadingBarProvider.latencyThreshold = 0;
     cfpLoadingBarProvider.parentSelector = "#loading-bar-container";
     cfpLoadingBarProvider.startSize = 0.0;
-    console.log(cfpLoadingBarProvider);
 }]);
 // Runs
 SetModule(ModuleName)
