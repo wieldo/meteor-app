@@ -1,12 +1,12 @@
-import {name} from './module';
-import {init,SetModule,Service,Inject} from "angular2-now";
+import { name } from "./module";
+import { init,SetModule,Service,Inject } from "angular2-now";
 
 init();
 SetModule(name);
 @Service({
-    name: 'UsePromise'
+    name: "UsePromise"
 })
-@Inject(['$q'])
+@Inject(["$q"])
 export class UsePromise {
     constructor($q) {
         this.$q = $q;
