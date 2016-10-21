@@ -1,9 +1,9 @@
 import "./sign.up.form.style";
+import "/imports/developers/modules/forms/select/birthday/client/components/birthday";
 import templateUrl from "./sign.up.form.view";
 import fields from "./sign.up.form.formly";
 import {moduleName} from "./../sign.up.module";
 import {ReactiveVar} from "meteor/reactive-var";
-import "/imports/developers/modules/forms/select/birthday/client/components/birthday";
 import { init, SetModule, Component, LocalInjectables, MeteorReactive } from "angular2-now";
 
 export var component = {
