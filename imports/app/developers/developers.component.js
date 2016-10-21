@@ -1,6 +1,6 @@
 import "./developers.style";
-import "./../../ui/navigation/lib/service";
-import templateUrl from "./../view/signed-in.html";
+import "./../../ui/navigation/navigation.service";
+import templateUrl from "./../app.signed-in.view";
 import developersNavigationCollection from "./developers.navigation";
 import appNavigationCollection from "./../app.navigation";
 import developersState from "./developers.state";
