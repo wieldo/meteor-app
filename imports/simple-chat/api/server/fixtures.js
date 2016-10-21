@@ -1,6 +1,6 @@
 import { Users } from "./../users/collection";
 import { Messages } from "./../messages/collection";
-import { Channels } from "./../channels/collection";
+import { Channels } from "./../channels/channels.collection";
 Meteor.startup(() => {
     if (Meteor.isServer) {
         /*

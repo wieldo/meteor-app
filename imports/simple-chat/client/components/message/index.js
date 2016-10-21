@@ -1,19 +1,5 @@
-import {ChatMessageAuthorComponent} from "./author";
-import {ChatMessageChannelComponent} from "./channel";
-import {ChatMessageDirectComponent} from "./direct";
-import {
-    ChatMessageReadComponent,
-    ChatMessageReadAtComponent,
-    ChatMessageReadByComponent
-} from "./read";
-import {ChatMessageTextComponent} from "./text";
-
-export default {
-    ChatMessageAuthorComponent,
-    ChatMessageChannelComponent,
-    ChatMessageDirectComponent,
-    ChatMessageReadComponent,
-    ChatMessageReadAtComponent,
-    ChatMessageReadByComponent,
-    ChatMessageTextComponent
-};
+export * from "./author";
+export * from "./channel";
+export * from "./direct";
+export * from "./read";
+export * from "./text";

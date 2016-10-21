@@ -1,17 +1,10 @@
 // messages
-import {
-    Messages
-} from "./../../messages/collection";
+import { Messages } from "./../../messages/collection";
 import messagesSchema from "./../../messages/schema";
 import messagesPublicFields from "./../../messages/public-fields";
 // channels
-import {
-    Channels
-} from "./../../channels/collection";
-import {
-    one as channelsOne,
-    messages as channelsMessages
-} from "./../../channels/selectors";
+import { Channels } from "./../../channels/channels.collection";
+import { one as channelsOne, messages as channelsMessages } from "./../../channels/channels.selectors";
 // direct
 import {
     messages as directMessages

@@ -1,10 +1,6 @@
 // channels
-import {
-    Channels
-} from "./../../channels/collection";
-import {
-    all as channelsAll
-} from "./../../channels/selectors";
+import { Channels } from "./../../channels/channels.collection";
+import { all as channelsAll } from "./../../channels/channels.selectors";
 
 
 //

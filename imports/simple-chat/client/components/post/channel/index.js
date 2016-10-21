@@ -1,5 +1,5 @@
 import {name} from "../../../module";
-import { message } from "../../../../api/channels/methods";
+import { message } from "../../../../api/channels/channels.methods";
 import {init,SetModule, Component, LocalInjectables} from "angular2-now";
 
 init();

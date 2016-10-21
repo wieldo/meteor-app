@@ -4,9 +4,9 @@ import templateUrl from "./view";
 import moment from "moment";
 //import { componentTemplate } from "../../utils";
 // channels
-import { Channels } from "./../../../../api/channels/collection";
-import { markRead } from "./../../../../api/channels/methods";
-import { messages } from "./../../../../api/channels/selectors";
+import { Channels } from "./../../../../api/channels/channels.collection";
+import { markRead } from "./../../../../api/channels/channels.methods";
+import { messages } from "./../../../../api/channels/channels.selectors";
 // messages
 import { Messages } from "./../../../../api/messages/collection";
 
