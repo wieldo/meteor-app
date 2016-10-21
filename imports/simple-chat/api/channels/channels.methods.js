@@ -1,8 +1,8 @@
 import _ from "underscore";
 // channels
-import channelsSchema from "./schema";
-import { Channels } from "./collection";
-import { one as channelsOne } from "./selectors";
+import channelsSchema from "./channels.schema";
+import { Channels } from "./channels.collection";
+import { one as channelsOne } from "./channels.selectors";
 // users
 import { Users } from "./../users/collection";
 // messages

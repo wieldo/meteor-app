@@ -1,4 +1,4 @@
-import schema from "./schema";
+import schema from "./channels.schema";
 export const Channels = new Mongo.Collection("channels");
 Channels.attachSchema(schema);
 Channels.deny({
