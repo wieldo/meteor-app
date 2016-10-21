@@ -12,7 +12,7 @@ It consists clients and developers states where developers is created to help de
 to manage todos or tasks.
 
 ## Table of contents
-* [Packages](#Packages)
+* [Packages](#packages)
 * [Install](#install)
 * [How to run](#how-to-run)
 * [JS Conventions](#js-conventions)
