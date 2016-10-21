@@ -2,13 +2,8 @@ import "./sign.in.form.style";
 import templateUrl from "./sign.in.form.view";
 import fields from "./sign.in.form.formly";
 import {Email} from "meteor/email";
-import {moduleName} from "./../sign.in.module";
-import {
-    init,
-    SetModule,
-    Component,
-    LocalInjectables
-} from "angular2-now";
+import { moduleName } from "./../sign.in.module";
+import { init, SetModule, Component, LocalInjectables } from "angular2-now";
 
 export var component = {
     name: "SigninFormComponent",

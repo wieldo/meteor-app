@@ -1,7 +1,4 @@
 <form name="vm.form" ng-submit="vm.onSubmit()">
-    <md-checkbox ng-model="vm.debug">
-        Debug {{vm.component.name}}
-    </md-checkbox>
     <div class="messages" ng-class="{'error': vm.result.error}">
         {{vm.result.reason}}
         <p ng-repeat="message in result.messages" ng-if="result.messages">
