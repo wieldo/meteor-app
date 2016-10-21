@@ -1,15 +1,10 @@
 // Developers modules
-import "./../developers/modules/index";
+export * from "./../developers/modules/index";
 // To do Module
-import { DashboardModule, TodoModule, SettingsModule } from "./../clients/modules";
+export * from "./../clients/modules";
 // Signin Module
-import "./../sign/in/lib/module";
+export * from "./../sign/in/sign.in.module";
 // Signup Module
-import "./../sign/up/lib/module";
+export * from "./../sign/up/sign.up.module";
 // Navigation Module
-import "./../ui/navigation/lib/module";
-export default {
-    DashboardModule,
-    TodoModule,
-    SettingsModule
-};
+export * from "./../ui/navigation/navigation.module";
