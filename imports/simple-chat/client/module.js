@@ -4,7 +4,7 @@ options({controllerAs: "vm"});
 // workaround
 init();
 export const name = "simple-chat";
-SetModule(name, [
+export const SimpleChatModule = SetModule(name, [
     "angular-meteor",
     "ngAria",
     "ngAnimate",
