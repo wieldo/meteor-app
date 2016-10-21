@@ -1,16 +1,7 @@
-import dialogTemplateUrl from "./../dialog/client/view";
-import {
-    todoInsert,
-    todoUpdate
-} from "./../../api/methods/";
-import {moduleName} from "./../../todo.module";
-import {
-    init,
-    SetModule,
-    Service,
-    LocalInjectables,
-    MeteorReactive
-} from "angular2-now";
+import dialogTemplateUrl from "./dialog/client/view";
+import { todoInsert, todoUpdate } from "./../api/methods/";
+import {moduleName} from "./../todo.module";
+import { init, SetModule, Service, LocalInjectables, MeteorReactive } from "angular2-now";
 init();
 SetModule(moduleName);
 @Service({

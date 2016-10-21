@@ -1,15 +1,9 @@
-import "./style";
-import templateUrl from "./view";
-import {
-    TodoFormFields
-} from "./../lib";
-import {moduleName} from "./../../todo.module";
-import {
-    init,
-    SetModule,
-    Component,
-    LocalInjectables
-} from "angular2-now";
+import "./todo.form.style";
+import "./todo.form.service";
+import templateUrl from "./todo.form.view";
+import TodoFormFields from "./todo.form.formly";
+import { moduleName } from "./../todo.module";
+import { init, SetModule, Component, LocalInjectables } from "angular2-now";
 init();
 SetModule(moduleName);
 @Component({

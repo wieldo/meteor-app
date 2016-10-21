@@ -1,7 +1,4 @@
-import {
-    createdBy,
-    updatedBy
-} from "./../../../../users/api/schema";
+import { createdBy, updatedBy } from "./../../../../users/api/schema";
 export var todoSchema = {
     _id: {
         type: String,

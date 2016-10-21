@@ -1,15 +1,9 @@
 import "./todo.style";
+import "./form";
 import templateUrl from "./todo.view";
 import todoState from "./todo.state";
 import { moduleName } from "./todo.module";
-import {
-    init,
-    SetModule,
-    Component,
-    State,
-    LocalInjectables,
-    MeteorReactive
-} from "angular2-now";
+import { init, SetModule, Component, State, LocalInjectables, MeteorReactive } from "angular2-now";
 SetModule(moduleName);
 init();
 @State(todoState)

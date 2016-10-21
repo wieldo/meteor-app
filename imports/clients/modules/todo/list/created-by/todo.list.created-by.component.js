@@ -1,15 +1,11 @@
-import templateUrl from "./view";
-import {moduleName} from "./../../../todo.module";
-import {
-    init,
-    SetModule,
-    Component,
-    LocalInjectables
-} from "angular2-now";
+import templateUrl from "./todo.list.created-by.view";
+import { service as TodoCollectionService} from "./../../todo.service";
+import { moduleName } from "./../../todo.module";
+import { init, SetModule, Component, LocalInjectables } from "angular2-now";
 init();
 SetModule(moduleName);
 @Component({
-    selector: "todo-filter-created-by",
+    selector: "todo-list-created-by",
     templateUrl: templateUrl,
     bind: {
         model: "=",
@@ -17,11 +13,11 @@ SetModule(moduleName);
     },
     providers: [
         "$scope",
-        "TodoCollectionService"
+        TodoCollectionService.name
     ]
 })
 @LocalInjectables
-export class TodoFilterCreatedByComponent {
+export class TodoListCreatedByComponent {
 
     fields = [];
     debug = false;

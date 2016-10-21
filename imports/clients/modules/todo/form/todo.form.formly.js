@@ -1,4 +1,4 @@
-import {todoSchema} from "./../../api/schemas";
+import { todoSchema } from "./../api/todo.schemas";
 // todoSchema.name.max
 export default [
     {
