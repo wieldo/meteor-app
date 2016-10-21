@@ -1,4 +1,4 @@
-import templateUrl from "./view";
+import templateUrl from "./sign.view";
 import statusTemplateUrl from "./status";
 import featuresTemplateUrl from "./features";
 export default ($stateProvider) => {
