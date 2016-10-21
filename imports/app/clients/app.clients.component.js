@@ -1,8 +1,9 @@
-import "./clients.style";
-import "./../../ui/navigation/lib/service";
-import clientsNavigation from "./clients.navigation";
+import "./app.clients.style";
+import "./../../ui/navigation/navigation.service";
+import clientsNavigation from "./app.clients.navigation";
 import appNavigationCollection from "./../app.navigation";
-import templateUrl from "./../view/signed-in.html";
+import templateUrl from "./../app.signed-in.view";
+import clientsState from "./app.clients.state";
 import { ModuleName } from "./../app.module";
 import { SetModule, init, Component, State, LocalInjectables, MeteorReactive } from "angular2-now";
 
@@ -19,7 +20,6 @@ export var component = {
         "cfpLoadingBar"
     ]
 };
-import clientsState from "./clients.state";
 init();
 SetModule(ModuleName);
 @State(clientsState)
@@ -39,9 +39,6 @@ export class AppClientsComponent {
         });
         this.navigationApp = appNavigationCollection;
         this.SimpleNavigationService.getSelectedPromise().then(null, null, (notify) => {
-            if (this.debug === true) {
-                console.log(`notify`, notify);
-            }
             this.simpleNavigation = notify;
         });
         this._helpers();
@@ -58,9 +55,6 @@ export class AppClientsComponent {
 
     logout = () => {
         Meteor.logout((result) => {
-            if (this.debug === true) {
-                console.log(`result`, result);
-            }
             this.$state.go("app.sign.in");
         });
     }
