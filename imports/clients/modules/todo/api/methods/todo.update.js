@@ -1,4 +1,4 @@
-import todoSchema from "./../schemas";
+import todoSchema from "./../todo.schemas";
 import {
     todoCollection
 } from "./../collections";

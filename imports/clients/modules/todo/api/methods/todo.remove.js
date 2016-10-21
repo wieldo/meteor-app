@@ -1,7 +1,5 @@
-import todoSchema from "./../schemas";
-import {
-    todoCollection
-} from "./../collections";
+import todoSchema from "./../todo.schemas";
+import { todoCollection } from "./../collections";
 
 export const todoRemove = new ValidatedMethod({
     name: "todo.remove",

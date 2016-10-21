@@ -1,13 +1,6 @@
-import {
-    todoInsert
-} from "./insert";
-import {
-    todoSetCompleted,
-    todoUpdate
-} from "./update";
-import {
-    todoRemove
-} from "./remove";
+import { todoInsert } from "./todo.insert";
+import { todoSetCompleted, todoUpdate } from "./todo.update";
+import { todoRemove } from "./todo.remove";
 export default {
     todoInsert,
     todoRemove,
