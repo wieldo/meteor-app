@@ -4,6 +4,7 @@ import "./developers";
 import "./clients";
 import "./sign";
 import "./../ui/navigation/client/";
+import appState from "./app.state";
 import { ModuleName } from "./app.module";
 import { init, SetModule, State, Component, bootstrap, options, LocalInjectables } from "angular2-now";
 options({controllerAs: "vm"});
@@ -13,17 +14,13 @@ export var $Component = {
     Name: "app"
 };
 SetModule(ModuleName);
-@State({
-    name: $Component.State,
-    abstract: true
-})
+@State(appState)
 @Component({
     selector: $Component.Name,
     templateUrl: templateUrl
 })
 @LocalInjectables
 class AppComponent {
-    constructor() {
-    }
+    constructor() {}
 }
 bootstrap(AppComponent);
