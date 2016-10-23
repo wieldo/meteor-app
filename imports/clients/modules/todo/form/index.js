@@ -1,2 +1,0 @@
-// Component
-export * from "./client";

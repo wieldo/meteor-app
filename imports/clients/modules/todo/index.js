@@ -1,2 +1,0 @@
-// TodoComponent
-export * from "./client";

@@ -1,5 +1,5 @@
 // Todo
-import "./../../clients/modules/todo/api/server";
+import "./../../clients/todo/api/server";
 // simple-chat
 import "./../../simple-chat/api/server";
 // import users api
