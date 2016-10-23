@@ -1,10 +1,8 @@
 // Developers modules
-export * from "./../developers/modules/index";
+export * from "./../developers";
 // To do Module
-export * from "./../clients/modules";
-// Signin Module
-export * from "./../sign/in/sign.in.module";
-// Signup Module
-export * from "./../sign/up/sign.up.module";
+export * from "./../clients";
+// Sign Module
+export * from "./../sign";
 // Navigation Module
 export * from "./../ui/navigation/navigation.module";
