@@ -1,37 +1,28 @@
 // Modules
 import { CoreModule } from "./core.module";
-
 // Optional
 import "angular-loading-bar";
-
 // Filters
 import { highlightAuto, unsafe } from "./filter";
-
 // API USERS
 import "./../users";
 // config
 import "./config/simple-schema-messages";
-
 import { mdThemingProvider, stateProvider, locationProvider, sceProvider } from "./config";
-
 // run
-import run from "./run";
-
+import run from "./app.run";
 // Imported Modules that are used in primary module below
-import { DashboardModule, TodoModule, SettingsModule } from "./modules";
-
+import { DashboardModule, TodoModule, SettingsModule, DevelopersModule, SignModule } from "./modules";
 // Imported Components that are used in primary module below
 import "./components";
-// Chat
-import "./../chat/client/";
 // Sidenav
 import "./../ui/sidenav/lib/service";
 
 import { init, SetModule } from "angular2-now";
 // initialize
-export const ModuleName = "app";
 init();
-SetModule(ModuleName,[
+export const ModuleName = "app";
+export const AppModule = SetModule(ModuleName,[
     CoreModule.name,
 
     "angular-loading-bar",
@@ -41,13 +32,12 @@ SetModule(ModuleName,[
     "ngAnimate",
 
     DashboardModule.name,
+    DevelopersModule.name,
     TodoModule.name,
     SettingsModule.name,
-    "Developers",
     "SimpleNavigationModule",
     "Sidenav",
-    "SigninModule",
-    "SignupModule",
+    SignModule.name,
     "simple-chat"
 ]);
 // Configs
