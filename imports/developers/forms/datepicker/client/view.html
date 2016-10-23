@@ -1,0 +1,117 @@
+
+<section>
+	<h3 class="md-headline">
+		Datepicker
+		<!--
+		<small>
+			Angular material design input with angular-formly and wieldo form types
+		</small>
+	-->
+	</h3>
+	<md-button class="md-primary md-link" ng-href="https://material.angularjs.org/1.0.6/demo/datepicker">
+		Go to Material Design official page
+	</md-button>
+	<div>
+		<md-content>
+			<table class='parameters'>
+				<thead>
+					<tr>
+						<th>templateOptions</th>
+						<th>Type</th>
+						<th>defaultValue</th>
+						<th>Directive</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>mdDateFilter</td>
+						<td>function(Date): boolean</td>
+						<td></td>
+						<td>md-date-filter</td>
+						<td>Function expecting a date and returning a boolean whether it can be selected or not.</td>
+					</tr>
+					<tr>
+						<td>mdMaxDate</td>
+						<td>Date</td>
+						<td></td>
+						<td>md-max-date</td>
+						<td>Expression representing a max date (inclusive).</td>
+					</tr>
+					<tr>
+						<td>mdMinDate</td>
+						<td>Date</td>
+						<td></td>
+						<td>md-min-date</td>
+						<td>Expression representing a min date (inclusive).</td>
+					</tr>
+					<tr>
+						<td>mdPlaceholder</td>
+						<td>String</td>
+						<td></td>
+						<td>md-placeholder</td>
+						<td>The date input placeholder value.</td>
+					</tr>
+					<tr>
+						<td>ngChange</td>
+						<td>Expression</td>
+						<td></td>
+						<td>ng-change</td>
+						<td>Expression evaluated when the model value changes.</td>
+					</tr>
+					<tr>
+						<td>ngRequired</td>
+						<td>Boolean</td>
+						<td></td>
+						<td>ng-required</td>
+						<td>Whether a value is required for the datepicker.</td>
+					</tr>
+					<tr>
+						<td>placeholder</td>
+						<td>String</td>
+						<td></td>
+						<td>md-placeholder</td>
+						<td>The date input placeholder value.</td>
+					</tr>
+					<tr>
+						<td>required</td>
+						<td>Boolean</td>
+						<td></td>
+						<td>ng-required</td>
+						<td>Whether a value is required for the datepicker.</td>
+					</tr>
+				</tbody>
+			</table>
+		</md-content>
+	</div>
+</section>
+
+<section ng-repeat="element in vm.elements">
+	<h3 class="md-subhead">
+		{{ element.title }}
+        <small>
+			{{ element.description }}
+        </small>
+    </h3>
+    <div ng-cloak>
+		<md-content>
+			<md-tabs md-dynamic-height md-border-bottom>
+
+              <!-- Example Tab -->
+              <md-tab label="Example">
+				  <md-content>
+					  <div class='example md-padding'>
+						  <form name="vm.form" ng-submit="vm.onSubmit()">
+							  <formly-form model="vm.model" fields="element.field" options="vm.options"></formly-form>
+                          </form>
+                      </div>
+                  </md-content>
+              </md-tab>
+
+              <!-- JS -->
+              <md-tab label="JS" ng-if="element.js"><md-content><pre><code>{{ element.js }}</code></pre></md-content></md-tab>
+
+            </md-tabs>
+        </md-content>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+select-birthday {
+    > ng-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        div.formly-field {
+            &.formly-field-select-month {
+                width: 100%;
+            }
+        }
+    }
+    div[ng-transclude] {
+        clear: both;
+        float: none;
+    }
+}
