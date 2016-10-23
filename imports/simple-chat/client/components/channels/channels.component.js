@@ -1,15 +1,8 @@
 import templateUrl from "./channels.view";
-import {name} from "../../module";
-import {Channels} from "./../../../api/channels/channels.collection";
-import {all} from "./../../../api/channels/channels.selectors";
-import {
-    init,
-    SetModule,
-    Component,
-    MeteorReactive,
-    LocalInjectables
-} from "angular2-now";
-
+import { name } from "../../module";
+import { Channels } from "./../../../api/channels/channels.collection";
+import { all } from "./../../../api/channels/channels.selectors";
+import { init, SetModule, Component, MeteorReactive, LocalInjectables } from "angular2-now";
 init();
 SetModule(name);
 @Component({
