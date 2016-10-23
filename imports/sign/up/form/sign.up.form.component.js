@@ -1,5 +1,5 @@
 import "./sign.up.form.style";
-import "/imports/developers/modules/forms/select/birthday/client/components/birthday";
+import "/imports/developers/forms/select/birthday/client/components/birthday";
 import templateUrl from "./sign.up.form.view";
 import fields from "./sign.up.form.formly";
 import {moduleName} from "./../sign.up.module";
