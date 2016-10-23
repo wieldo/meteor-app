@@ -1,0 +1,90 @@
+<div class="todolist" flex layout="column" ng-cloak>
+    <md-checkbox ng-model="vm.debug">
+        Debug TodoListComponent
+    </md-checkbox>
+    <debug ng-if="vm.debug == true">
+        <h4>
+            Debug TodoListComponent
+        </h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Variable name</th>
+                    <th>Variable value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>vm.getCreatedBy:</td>
+                    <td>{{vm.getCreatedBy}}</td>
+                </tr>
+                <tr>
+                    <td>vm.findReactive.get()</td>
+                    <td>{{vm.findReactive.get()}}</td>
+                </tr>
+                <tr>
+                    <td>vm.sort:</td>
+                    <td>{{vm.sort}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </debug>
+    <div
+        ng-repeat="todo in todoCollection track by $index"
+        flex="100"
+        layout="row"
+        ng-class="{completed: todo.completed === true, removed: todo.removed == 1}"
+    >
+        <md-checkbox
+            ng-if="todo.removed == 0"
+            class="md-primary"
+            ng-model="todoCollection[$index].completed"
+            ng-click="vm.TodoCollectionService.setCompleted({'_id': todo._id, 'completed': !todo.completed})"
+            aria-label="Set as completed"
+        ></md-checkbox>
+        <div flex="100" class="name">
+            {{todo.name}}
+        </div>
+        <!--
+        <div class="createdAt">
+            <md-tooltip md-direction="left">
+                Created at {{todo.createdAt.toString()}}
+            </md-tooltip>
+            <i class="zmdi zmdi-time"></i>
+        </div>
+    -->
+        <div class="dueDateAt" ng-if="todo.dueDateAt">
+            <md-tooltip md-direction="left">
+                Due date at {{todo.dueDateAt.toString()}}
+            </md-tooltip>
+            <i class="zmdi zmdi-time-interval"></i>
+        </div>
+        <div class="createdBy">
+            <md-button class="md-icon-button">
+                <md-tooltip md-direction="left">
+                    {{todo.createdBy.firstName}} {{todo.createdBy.lastName}} created at {{todo.createdAt}}
+                </md-tooltip>
+                <i class="zmdi zmdi-account-circle"></i>
+            </md-button>
+        </div>
+
+        <div class="wield" ng-if="todo.removed == 0">
+            <div class="edit">
+                <md-tooltip md-direction="bottom">
+                    Edit
+                </md-tooltip>
+                <md-button class="md-icon-button" aria-label="Edit" ng-click="vm.TodoCollectionService.edit(todo._id)">
+                    <i class="zmdi zmdi-edit"></i>
+                </md-button>
+            </div>
+            <div class="remove">
+                <md-tooltip md-direction="bottom">
+                    Remove
+                </md-tooltip>
+                <md-button class="md-icon-button" aria-label="Remove" ng-click="vm.TodoCollectionService.remove(todo._id)">
+                    <i class="zmdi zmdi-delete"></i>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

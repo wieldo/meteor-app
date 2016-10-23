@@ -1,0 +1,24 @@
+todo-form {
+    display: flex;
+    width: 100%;
+    md-dialog {
+        width: 500px;
+        md-dialog-actions {
+            padding-right: 24px;
+        }
+    }
+    form[name~="TodoForm"] {
+        width: inherit;
+
+        md-dialog-content,
+        md-dialog-actions {
+            width: inherit;
+            .md-button {
+                margin: 0;
+            }
+        }
+        md-input-container {
+            display: block;
+        }
+    }
+}

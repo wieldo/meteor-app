@@ -1,0 +1,51 @@
+
+todo-list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    div {
+        &.todolist {
+            > div {
+                align-items: center;
+                border-bottom: 1px solid #f1f1f1;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+                &.completed {
+                    > div {
+                        text-decoration: line-through;
+                    }
+                }
+                &.removed {
+                    > div {
+                        color: silver;
+                    }
+                }
+                md-checkbox {
+                    flex-shrink: 0;
+                    margin: 0;
+                }
+
+                > div {
+                    display: flex;
+                    font-size: 0.9375em;
+                    margin-left: 8px;
+
+                    &:first-child {
+                        margin: 0;
+                    }
+
+                    i.zmdi {
+                        font-size: 1.4em;
+                    }
+
+                    button.md-button {
+                        margin: 0;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+}

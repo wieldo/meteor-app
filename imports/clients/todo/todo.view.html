@@ -1,0 +1,194 @@
+<div layout="row" layout-fill ng-cloak>
+    <div layout="column" flex="100">
+        <md-content class="md-padding">
+            <md-checkbox ng-model="vm.debug">
+                Debug TodoComponent
+            </md-checkbox>
+            <debug ng-if="vm.debug == true">
+                <h4>
+                    Debug TodoComponent
+                </h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable name</th>
+                            <th>Variable value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>find:</td>
+                            <td>{{find}}</td>
+                        </tr>
+                        <tr>
+                            <td>createdBy</td>
+                            <td>{{createdBy}}</td>
+                        </tr>
+                        <tr>
+                            <td>sort:</td>
+                            <td>{{sort}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </debug>
+            <!-- Todo Form -->
+            <todo-form></todo-form>
+        </md-content>
+        <md-content flex class="md-padding">
+            <!-- Todo List Component -->
+            <todo-list
+                created-by="createdBy['user']"
+                find="find['filterStatus']"
+                sort="sort"
+            ></todo-list>
+        </md-content>
+    </div>
+    <div layout="column" class="navigation right">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3>
+                    <span class="md-subhead">
+                        Sort by
+                    </span>
+                </h3>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <todo-list-sort
+            model="sort"
+            style="overflow: auto; min-height: 200px;"
+        ></todo-list-sort>
+
+        <!-- Filter by status -->
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3>
+                    <span class="md-subhead">
+                        Status
+                    </span>
+                </h3>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+        <todo-list-status
+            model="find"
+            style="overflow: auto;min-height: 115px;">
+        </todo-list-status>
+
+        <!-- Filter by people -->
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3>
+                    <span class="md-subhead">
+                        People
+                    </span>
+                </h3>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <todo-list-created-by
+            model="createdBy"
+            style="overflow: auto;">
+        </todo-list-created-by>
+
+        <!--
+        <md-card>
+            <md-card-content>
+                <div layout="row" layout-align="space-between center">
+                    <span>Name</span>
+                    <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+                        <md-option value="axe">Axe</md-option>
+                        <md-option value="sword">Sword</md-option>
+                        <md-option value="wand">Wand</md-option>
+                        <md-option value="pen">Pen?</md-option>
+                    </md-select>
+                </div>
+            </md-card-content>
+        </md-card>
+    -->
+        <!--
+        <md-list flex="100" style="overflow: auto;">
+            <md-subheader class="md-no-sticky">
+                Selected
+            </md-subheader>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+
+            <md-subheader class="md-no-sticky">
+                Not selected
+            </md-subheader>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Ścibor Rudnicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['3HjdpZCu9gJmJPq4n']" ng-true-value="'3HjdpZCu9gJmJPq4n'"></md-checkbox>
+            </md-list-item>
+            <md-list-item>
+                <p>Mateusz Kropownicki</p>
+                <md-checkbox class="md-primary" ng-model="createdBy['s7NsZaSrJYqkfmWTp']" ng-true-value="'s7NsZaSrJYqkfmWTp'"></md-checkbox>
+            </md-list-item>
+        </md-list>
+-->
+    </div>
+</div>
