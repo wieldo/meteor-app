@@ -1,3 +1,8 @@
+
+Because of angular 1 digest cycle performance i don't maintain anymore this package but if you want to continue do this just write to me scibor.rudnicki@wwwdev.io. 
+
+Now i am working on the similar project but with much better performance (i have already tested it) because of angular 2+ with facebook graphql and some other new features that will be available soon - [sodalite](https://github.com/wwwdevio/sodalite).
+
 # meteorApp
 
 [![GitHub version](https://badge.fury.io/gh/wieldo%2Fmeteor-app.svg)](https://badge.fury.io/gh/wieldo%2Fmeteor-app)
